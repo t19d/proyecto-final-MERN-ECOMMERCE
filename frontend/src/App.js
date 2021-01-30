@@ -242,13 +242,13 @@ function App() {
       </header>
 
       <section>
-        <img src="Cabecera_camiseta_negra_grande.png" width="100%" />
+        <img src="images/recursos/Cabecera_camiseta_negra_grande.png" width="100%" />
         <div className="container">
           <div className="row">
             <div className="col-6">
               <div className="card text-center">
                 <div className="card-body">
-                  <img src="1_equipacion_general_frente.png" className="img-fluid" alt="Equipación local 20/21" />
+                  <img src="images/equipaciones/primera20-21/1_equipacion_general_frente.png" className="img-fluid" alt="Equipación local 20/21" />
                   <h5 className="card-title">1ª Equipación 20/21</h5>
                   <a href="#" className="btn btn-primary">Go somewhere</a>
                 </div>
@@ -257,7 +257,7 @@ function App() {
             <div className="col-6">
               <div className="card text-center">
                 <div className="card-body">
-                  <img src="2_equipacion_general_frente.png" className="img-fluid" alt="Equipación visitante 20/21" />
+                  <img src="images/equipaciones/segunda20-21/2_equipacion_general_frente.png" className="img-fluid" alt="Equipación visitante 20/21" />
                   <h5 className="card-title">2ª Equipación 20/21</h5>
                   <a href="#" className="btn btn-primary">Go somewhere</a>
                 </div>
