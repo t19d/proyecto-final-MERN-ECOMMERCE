@@ -1,4 +1,5 @@
 import React from 'react';
+import data from './data.js';
 import './App.css';
 
 function App() {
@@ -12,9 +13,9 @@ function App() {
                 <div className="text-white">
                   <svg width="2em" height="1em" viewBox="0 0 16 16" className="bi bi-arrow-left"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
+                    <path fillRule="evenodd"
                       d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
-                    <path fill-rule="evenodd"
+                    <path fillRule="evenodd"
                       d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                   </svg>
                   <a className="navbar-link text-white" href="#">clubpastorizabalimpie.es</a>
@@ -27,8 +28,8 @@ function App() {
                       fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                      <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fill-rule="evenodd"
+                      <path fillRule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                      <path fillRule="evenodd"
                         d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
                     </svg>
                     <a className="navbar-link text-white" href="#"> Iniciar sesión / Registrarse</a>
@@ -245,24 +246,20 @@ function App() {
         <img src="images/recursos/Cabecera_camiseta_negra_grande.png" width="100%" />
         <div className="container">
           <div className="row">
-            <div className="col-6">
-              <div className="card text-center">
-                <div className="card-body">
-                  <img src="images/equipaciones/primera20-21/1_equipacion_general_frente.png" className="img-fluid" alt="Equipación local 20/21" />
-                  <h5 className="card-title">1ª Equipación 20/21</h5>
-                  <a href="#" className="btn btn-primary">Go somewhere</a>
+            {
+              data.productos.map(producto =>
+                <div className="col-6">
+                  <div className="card text-center">
+                    <div className="card-body">
+                      <img src={producto.miniatura} className="img-fluid" alt={producto.imgDescripcion} />
+                      <h5 className="card-title">{producto.nombre}</h5>
+                      <a href="#" className="btn btn-primary">{producto.precio}</a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="card text-center">
-                <div className="card-body">
-                  <img src="images/equipaciones/segunda20-21/2_equipacion_general_frente.png" className="img-fluid" alt="Equipación visitante 20/21" />
-                  <h5 className="card-title">2ª Equipación 20/21</h5>
-                  <a href="#" className="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
+              )
+            }
+
           </div>
         </div>
       </section>
