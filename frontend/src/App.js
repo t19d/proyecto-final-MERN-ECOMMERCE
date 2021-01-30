@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 //import EquipacionesScreen from './screens/EquipacionesScreen';
@@ -51,9 +51,11 @@ function App() {
         <div id="header_inferior" className="container-fluid">
           <div className="container">
             <div id="header_inferior_izquierda">
-              <a href="/">
+              <Link to="/">
+                {/*<a href="/">*/}
                 <img id="header_escudo" src="/images/recursos/vector_escudo_nombre.svg" alt="Icono inicio" />
-              </a>
+                {/*</a>*/}
+              </Link>
             </div>
             <nav className="navbar navbar-expand-lg justify-content-end">
               <div id="header_inferior_derecha">
@@ -65,13 +67,22 @@ function App() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul className="navbar-nav">
                     <li className="nav-item active">
-                      <a className="nav-link" href="/equipaciones">EQUIPACIONES 20/21</a>
+                      {/*<a className="nav-link" href="/equipaciones">EQUIPACIONES 20/21</a>*/}
+                      <Link to="/equipaciones" className="nav-link">
+                        <span >EQUIPACIONES 20/21</span>
+                      </Link>
                     </li>
                     <li className="nav-item active">
-                      <a className="nav-link" href="/entrenamiento">ENTRENAMIENTO 20/21</a>
+                      {/*<a className="nav-link" href="/entrenamiento">ENTRENAMIENTO 20/21</a>*/}
+                      <Link to="/entrenamiento" className="nav-link">
+                        <span>ENTRENAMIENTO 20/21</span>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/moda">MODA</a>
+                      {/*<a className="nav-link" href="/moda">MODA</a>*/}
+                      <Link to="/moda" className="nav-link">
+                        <span>MODA</span>
+                      </Link>
                     </li>
                     <li className="nav-item dropdown">
                       <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -79,13 +90,25 @@ function App() {
                         AFICIÓN
                                     </a>
                       <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a className="dropdown-item" href="/bufandas">BUFANDAS</a>
-                        <a className="dropdown-item" href="/accesorios">ACCESORIOS</a>
-                        <a className="dropdown-item" href="/regalos">REGALOS</a>
+                        {/*<a className="dropdown-item" href="/bufandas">BUFANDAS</a>*/}
+                        <Link to="/bufandas" className="dropdown-item">
+                          <span>BUFANDAS</span>
+                        </Link>
+                        {/*<a className="dropdown-item" href="/accesorios">ACCESORIOS</a>*/}
+                        <Link to="/accesorios" className="dropdown-item">
+                          <span>ACCESORIOS</span>
+                        </Link>
+                        {/*<a className="dropdown-item" href="/regalos">REGALOS</a>*/}
+                        <Link to="/regalos" className="dropdown-item">
+                          <span>REGALOS</span>
+                        </Link>
                       </div>
                     </li>
                     <li className="nav-item">
-                      <a className="nav-link" href="/outlet">OUTLET</a>
+                      {/*<a className="nav-link" href="/outlet">OUTLET</a>*/}
+                      <Link to="/outlet" className="nav-link">
+                        <span>OUTLET</span>
+                      </Link>
                     </li>
 
                   </ul>
@@ -118,22 +141,16 @@ function App() {
               <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
               <ul className="list-unstyled">
                 <li>
-                  <a href="#!">Link 1</a>
+                  {/*<a href="#!">Link 1</a>*/}
+                  <Link to="/">
+                    <span>Link 1</span>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#!">Link 2</a>
-                </li>
-              </ul>
-            </div>
-            <hr className="clearfix w-100 d-md-none" />
-            <div className="col-md-2 mx-auto">
-              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-              <ul className="list-unstyled">
-                <li>
-                  <a href="#!">Link 1</a>
-                </li>
-                <li>
-                  <a href="#!">Link 2</a>
+                  {/*<a href="#!">Link 2</a>*/}
+                  <Link to="/">
+                    <span>Link 2</span>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -142,16 +159,40 @@ function App() {
               <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
               <ul className="list-unstyled">
                 <li>
-                  <a href="#!">Link 1</a>
+                  {/*<a href="#!">Link 1</a>*/}
+                  <Link to="/">
+                    <span>Link 1</span>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#!">Link 2</a>
+                  {/*<a href="#!">Link 2</a>*/}
+                  <Link to="/">
+                    <span>Link 2</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <hr className="clearfix w-100 d-md-none" />
+            <div className="col-md-2 mx-auto">
+              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+              <ul className="list-unstyled">
+                <li>
+                  {/*<a href="#!">Link 1</a>*/}
+                  <Link to="/">
+                    <span>Link 1</span>
+                  </Link>
+                </li>
+                <li>
+                  {/*<a href="#!">Link 2</a>*/}
+                  <Link to="/">
+                    <span>Link 2</span>
+                  </Link>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <ul className="list-unstyled list-inline text-center">
+        {/*<ul className="list-unstyled list-inline text-center">
           <li className="list-inline-item">
             <a className="btn-floating btn-fb mx-1">
               <i className="fab fa-facebook-f"> </i>
@@ -177,7 +218,7 @@ function App() {
               <i className="fab fa-dribbble"> </i>
             </a>
           </li>
-        </ul>
+        </ul>*/}
       </footer>
 
     </BrowserRouter>
