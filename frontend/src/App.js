@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
-//import EquipacionesScreen from './screens/EquipacionesScreen';
+import EquipacionesScreen from './screens/EquipacionesScreen';
 import ProductoScreen from './screens/ProductoScreen';
 
 function App() {
@@ -122,7 +122,7 @@ function App() {
       <div id="contenidoPrincipal">
         <Route path="/" exact={true} component={HomeScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
-        {/*<Route path="/equipaciones" component={EquipacionesScreen} />*/}
+        <Route path="/equipaciones" component={EquipacionesScreen} />
       </div>
 
 
