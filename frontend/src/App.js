@@ -98,10 +98,6 @@ function App() {
                         <Link to="/accesorios" className="dropdown-item">
                           <span>ACCESORIOS</span>
                         </Link>
-                        {/*<a className="dropdown-item" href="/regalos">REGALOS</a>*/}
-                        <Link to="/regalos" className="dropdown-item">
-                          <span>REGALOS</span>
-                        </Link>
                       </div>
                     </li>
                     <li className="nav-item">
