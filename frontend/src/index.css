@@ -137,6 +137,13 @@ ol.breadcrumb li a:hover {
   border-top: solid 1px #0a97b0;
   padding: .25rem 1rem;
 }
+
+/* OUT OF STOCK */
+.sinStockAvisoDetalles{
+  color: rgb(236, 57, 57);
+  font-size: 2rem;
+  font-weight: bold;
+}
 /* -------------------------------------------------------------------------------------- */
 
 @media screen and (max-width: 1024px) {
