@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { hacerListaProductos } from '../actions/productoAcciones'
 
 function EquipacionesScreen(props) {
-
-    const [productos, setProducto] = useState([]);
+    
+    const listaProductos = useSelector(state => state.listaProductos);
+    const { productos, loading, error } = listaProductos;
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await axios.get("/api/productos");
-            setProducto(data);
-        }
-        fetchData();
+        dispatch(hacerListaProductos());
         return () => {
             //
         }
     }, []);
 
     return (
+        loading ? <div>Loading...</div> :
+        error ? <div>{error}</div> :
         <section>
             <img src="/images/recursos_web/cabecera_camiseta_blanca_grande.png" width="100%" alt="Cabecera camiseta blanca" />
             <div className="container">
