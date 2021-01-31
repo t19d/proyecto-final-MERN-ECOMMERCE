@@ -2,10 +2,22 @@ import express from 'express';
 import data from './data.js';
 
 const app = express();
-const port = 50000;
+const port = 4000;
 
-app.get("/api/productos", (req, res)=>{
+{/* API todos los productos */ }
+app.get("/api/productos", (req, res) => {
     res.send(data.productos);
+});
+
+{/* API detalle producto */ }
+app.get("/api/productos/:id", (req, res) => {
+    const productoId = req.params.id;
+    const producto = data.productos.find(x=>x._id === productoId);
+    if (producto) {
+        res.send(producto);
+    } else {
+        res.status(404).send({ msg: "Producto no encontrado." });
+    }
 });
 
 app.listen(port, () => {
