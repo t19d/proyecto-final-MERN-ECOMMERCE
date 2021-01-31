@@ -1,10 +1,11 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from "redux-thunk";
-import { listaProductosReducer } from './reducers/productoReducers';
+import { listaProductosReducer, productoDetallesReducer } from './reducers/productoReducers';
 
 const initialState = {};
 const reducer = combineReducers({
     listaProductos: listaProductosReducer,
+    productoDetalles: productoDetallesReducer,
 });
 
 {/* Usar herramienta de Chrome de Redux. */}
