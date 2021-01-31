@@ -1,3 +1,4 @@
+import { LISTA_PRODUCTOS_FAIL, LISTA_PRODUCTOS_REQUEST, LISTA_PRODUCTOS_SUCCESS } from "../constants/productoConstantes";
 
 function listaProductosReducer(state = { productos: [] }, action) {
     switch (action.type) {
