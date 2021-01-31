@@ -53,7 +53,7 @@ function App() {
             <div id="header_inferior_izquierda">
               <Link to="/">
                 {/*<a href="/">*/}
-                <img id="header_escudo" src="/images/recursos/vector_escudo_nombre.svg" alt="Icono inicio" />
+                <img id="header_escudo" src="/images/escudos/vector_escudo_nombre.svg" alt="Icono inicio" />
                 {/*</a>*/}
               </Link>
             </div>
