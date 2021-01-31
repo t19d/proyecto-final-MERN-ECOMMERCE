@@ -95,36 +95,22 @@ code {
 
 /* Style the list */
 
-ul.breadcrumb {
+ol.breadcrumb {
   list-style: none;
   background-color: white;
   margin-bottom: 0;
 }
 
-/* Display list items side by side */
-
-ul.breadcrumb li {
-  display: inline;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-
-ul.breadcrumb li+li:before {
-  padding: 8px;
-  color: black;
-  content: "/\00a0";
-}
-
 /* Add a color to all links inside the list */
 
-ul.breadcrumb li a {
+ol.breadcrumb li a {
   color: #a8a8a8;
   text-decoration: none;
 }
 
 /* Add a color on mouse-over */
 
-ul.breadcrumb li a:hover {
+ol.breadcrumb li a:hover {
   color: #4b4b4b;
   text-decoration: underline;
 }
