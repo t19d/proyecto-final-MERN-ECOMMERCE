@@ -7,7 +7,7 @@ function HomeScreen(props) {
     const equipacionVisitante = data.productos.find(p => p._id === '2-equipacion-adulto-20-21-club-pastoriza-balompie');
     return (
         <section>
-            <a href="/equipaciones"><img src="/images/recursos/Cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra"/></a>
+            <a href="/equipaciones"><img src="/images/recursos_web/Cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra"/></a>
             <div className="container">
                 <h1 className="text-center text-uppercase font-weight-bold">Equipaciones Oficiales</h1>
                 <div className="row listaProductos">

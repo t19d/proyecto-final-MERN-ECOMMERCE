@@ -19,7 +19,7 @@ function EquipacionesScreen(props) {
 
     return (
         <section>
-            <img src="/images/recursos/Cabecera_camiseta_blanca_grande.png" width="100%" alt="Cabecera camiseta blanca" />
+            <img src="/images/recursos_web/cabecera_camiseta_blanca_grande.png" width="100%" alt="Cabecera camiseta blanca" />
             <div className="container">
                 <div className="row listaProductos">
                     {
