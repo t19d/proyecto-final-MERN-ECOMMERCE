@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { anhadirAlCarrito, eliminarDelCarrito } from '../actions/carritoAcciones';
 
 function CarritoScreen(props) {
-    const { gastosEnvio } = 6.99;
+    const gastosEnvio = 6.99;
     const carrito = useSelector(state => state.carrito);
     const { carritoItems } = carrito;
 
