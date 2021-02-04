@@ -1,5 +1,11 @@
 import express from 'express';
-import data from './data.js';
+import data from './data';
+import config from './config';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const mongodbUrl = config.MONGODB_URL;
 
 const app = express();
 const port = 4000;
