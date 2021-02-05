@@ -3,7 +3,7 @@ import Usuario from '../models/usuarioModelo'
 
 const router = express.Router();
 
-router.post('/signin', async (req, res) => {
+router.post('/login', async (req, res) => {
     {/* Obtener usuario */ }
     const signinUsuario = await Usuario.findOne({
         email: req.body.email,

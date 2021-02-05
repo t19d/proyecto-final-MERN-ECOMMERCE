@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import EquipacionesScreen from './screens/EquipacionesScreen';
 import ProductoScreen from './screens/ProductoScreen';
 import CarritoScreen from './screens/CarritoScreen';
+import SignInScreen from './screens/SignInScreen';
 
 function App() {
   return (
@@ -36,7 +37,9 @@ function App() {
                       <path fillRule="evenodd"
                         d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
                     </svg>
-                    <a className="navbar-link text-white" href="#"> Iniciar sesión / Registrarse</a>
+                    <Link to="/login" className="navbar-link text-white">
+                      <span> Iniciar sesión / Registrarse</span>
+                    </Link>
                   </div>
                   <form className="form-inline">
                     <input className="form-control mr-sm-2" type="search" placeholder="Buscar..."
@@ -127,6 +130,7 @@ function App() {
       <div id="contenidoPrincipal">
         <Route path="/" exact={true} component={HomeScreen} />
         <Route path="/carrito/:id?" component={CarritoScreen} />
+        <Route path="/login" component={SignInScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
         <Route path="/equipaciones" component={EquipacionesScreen} />
       </div>
