@@ -5,7 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import EquipacionesScreen from './screens/EquipacionesScreen';
 import ProductoScreen from './screens/ProductoScreen';
 import CarritoScreen from './screens/CarritoScreen';
-import SignInScreen from './screens/SignInScreen';
+import InicioSesionScreen from './screens/InicioSesionScreen';
 
 function App() {
   return (
@@ -130,7 +130,7 @@ function App() {
       <div id="contenidoPrincipal">
         <Route path="/" exact={true} component={HomeScreen} />
         <Route path="/carrito/:id?" component={CarritoScreen} />
-        <Route path="/login" component={SignInScreen} />
+        <Route path="/login" component={InicioSesionScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
         <Route path="/equipaciones" component={EquipacionesScreen} />
       </div>
