@@ -3,6 +3,25 @@ import Usuario from '../models/usuarioModelo'
 
 const router = express.Router();
 
+router.post('/signin', async (req, res) => {
+    {/* Obtener usuario */ }
+    const signinUsuario = await Usuario.findOne({
+        email: req.body.email,
+        password: req.body.password
+    });
+    if (signinUsuario) {
+        res.send({
+            _id: signinUsuario.id,
+            nombre: signinUsuario.nombre,
+            email: signinUsuario.email,
+            isAdmin: signinUsuario.isAdmin,
+            toke: getToken(usuario)
+        });
+    } else {
+        res.status(401).send({msg: 'El email o la contraseña no coinciden.'});
+    }
+});
+
 router.get("/crearadmin", async (req, res) => {
     try {
         const usuario = new Usuario({
