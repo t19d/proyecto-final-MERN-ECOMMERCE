@@ -2,6 +2,7 @@ import express from 'express';
 import data from './data';
 import config from './config';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import usuarioRoute from './routes/usuarioRoute';
 
@@ -14,8 +15,10 @@ mongoose.connect(mongodbUrl, {
     useCreateIndex: true
 }).catch(err => console.log(err.reason));
 
-const app = express();
 const port = 4000;
+const app = express();
+
+app.use(bodyParser.json());
 
 {/* Usuarios */ }
 app.use("/api/usuarios", usuarioRoute);
