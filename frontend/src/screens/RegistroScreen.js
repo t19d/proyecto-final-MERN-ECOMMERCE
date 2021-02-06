@@ -31,8 +31,8 @@ function RegistroScreen(props) {
             <h1>Registrarse</h1>
             {loading && <div>Cargando...</div>}
             {error && <div>{error}</div>}
-            <form className="form-lognin">
-                <input id="inputNombre" className="form-control" type="name" name="name" placeholder="Nombre" required="" autoFocus="" onChange={(e) => setNombre(e.target.value)} />
+            <form className="formRegistro">
+                <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required="" autoFocus="" onChange={(e) => setNombre(e.target.value)} />
                 <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required="" autoFocus="" onChange={(e) => setEmail(e.target.value)} />
                 <input id="inputPassword" className="form-control" type="password" name="password" placeholder="Contraseña" required="" onChange={(e) => setPassword(e.target.value)} />
                 <input id="inputRePassword" className="form-control" type="password" name="repassword" placeholder="Repita la contraseña" required="" onChange={(e) => setRePassword(e.target.value)} />

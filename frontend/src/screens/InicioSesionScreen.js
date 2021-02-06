@@ -29,7 +29,7 @@ function InicioSesionScreen(props) {
             <h1>Iniciar sesión</h1>
             {loading && <div>Cargando...</div>}
             {error && <div>{error}</div>}
-            <form className="form-lognin">
+            <form className="formInicioSesion">
                 <label htmlFor="inputEmail" className="sr-only">Email address</label>
                 <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required="" autoFocus="" onChange={(e) => setEmail(e.target.value)} />
                 <label htmlFor="inputPassword" className="sr-only">Password</label>
