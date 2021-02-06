@@ -1,9 +1,10 @@
 import express from 'express';
 import Usuario from '../models/usuarioModelo'
+import { getToken } from '../util';
 
 const router = express.Router();
 
-router.post('/login', async (req, res) => {
+router.post('/iniciosesion', async (req, res) => {
     {/* Obtener usuario */ }
     const signinUsuario = await Usuario.findOne({
         email: req.body.email,
@@ -15,7 +16,7 @@ router.post('/login', async (req, res) => {
             nombre: signinUsuario.nombre,
             email: signinUsuario.email,
             isAdmin: signinUsuario.isAdmin,
-            toke: getToken(usuario)
+            token: getToken(signinUsuario)
         });
     } else {
         res.status(401).send({msg: 'El email o la contraseña no coinciden.'});
