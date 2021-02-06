@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import Cookie from "js-cookie";
 import { carritoReducer } from './reducers/carritoReducers';
 import { listaProductosReducer, productoDetallesReducer } from './reducers/productoReducers';
-import { usuarioInicioSesionReducer } from './reducers/usuarioReducers';
+import { usuarioInicioSesionReducer, usuarioRegistroReducer } from './reducers/usuarioReducers';
 
 const carritoItems = Cookie.getJSON("carritoItems") || [];
 const usuarioInfo = Cookie.getJSON("usuarioInfo") || null;
@@ -14,6 +14,7 @@ const reducer = combineReducers({
     productoDetalles: productoDetallesReducer,
     carrito: carritoReducer,
     usuarioInicioSesion: usuarioInicioSesionReducer,
+    usuarioRegistro: usuarioRegistroReducer,
 });
 
 {/* Usar herramienta de Chrome de Redux. */ }
