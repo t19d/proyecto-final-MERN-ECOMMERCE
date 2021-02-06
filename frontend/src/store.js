@@ -2,7 +2,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from "redux-thunk";
 import Cookie from "js-cookie";
 import { carritoReducer } from './reducers/carritoReducers';
-import { listaProductosReducer, productoDetallesReducer } from './reducers/productoReducers';
+import { listaProductosReducer, productoDetallesReducer, productoGuardadoReducer } from './reducers/productoReducers';
 import { usuarioInicioSesionReducer, usuarioRegistroReducer } from './reducers/usuarioReducers';
 
 const carritoItems = Cookie.getJSON("carritoItems") || [];
@@ -12,6 +12,7 @@ const initialState = { carrito: { carritoItems }, usuarioInicioSesion: { usuario
 const reducer = combineReducers({
     listaProductos: listaProductosReducer,
     productoDetalles: productoDetallesReducer,
+    productoGuardado: productoGuardadoReducer,
     carrito: carritoReducer,
     usuarioInicioSesion: usuarioInicioSesionReducer,
     usuarioRegistro: usuarioRegistroReducer,
