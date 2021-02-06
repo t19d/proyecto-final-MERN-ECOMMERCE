@@ -31,7 +31,7 @@ function InicioSesionScreen(props) {
             {error && <div>{error}</div>}
             <form className="form-lognin">
                 <label htmlFor="inputEmail" className="sr-only">Email address</label>
-                <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required="" autofocus="" onChange={(e) => setEmail(e.target.value)} />
+                <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required="" autoFocus="" onChange={(e) => setEmail(e.target.value)} />
                 <label htmlFor="inputPassword" className="sr-only">Password</label>
                 <input id="inputPassword" className="form-control" type="password" name="password" placeholder="Contraseña" required="" onChange={(e) => setPassword(e.target.value)} />
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
