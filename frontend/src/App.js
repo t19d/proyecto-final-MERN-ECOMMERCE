@@ -8,6 +8,7 @@ import CarritoScreen from './screens/CarritoScreen';
 import InicioSesionScreen from './screens/InicioSesionScreen';
 import { useSelector } from 'react-redux';
 import RegistroScreen from './screens/RegistroScreen';
+import ManageProductosScreen from './screens/ManageProductosScreen';
 
 function App() {
 
@@ -45,7 +46,10 @@ function App() {
                     </svg>
                     {
                       usuarioInfo ?
-                        <Link to="/perfil" className="navbar-link text-white">{usuarioInfo.nombre}</Link>
+                        <span>
+                          <Link to="/perfil" className="navbar-link text-white">{usuarioInfo.nombre}</Link>
+                          {usuarioInfo.isAdmin === true && <Link to="/manageproductos">MANAGE</Link>}
+                        </span>
                         :
                         <Link to="/iniciosesion" className="navbar-link text-white">
                           <span>Iniciar sesión / Registrarse</span>
@@ -144,6 +148,7 @@ function App() {
         <Route path="/iniciosesion" component={InicioSesionScreen} />
         <Route path="/registro" component={RegistroScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
+        <Route path="/manageproductos" component={ManageProductosScreen} />
         <Route path="/equipaciones" component={EquipacionesScreen} />
       </div>
 
