@@ -6,8 +6,9 @@ import { listaProductosReducer, productoDetallesReducer } from './reducers/produ
 import { usuarioInicioSesionReducer } from './reducers/usuarioReducers';
 
 const carritoItems = Cookie.getJSON("carritoItems") || [];
+const usuarioInfo = Cookie.getJSON("usuarioInfo") || null;
 
-const initialState = { carrito: { carritoItems } };
+const initialState = { carrito: { carritoItems }, usuarioInicioSesion: { usuarioInfo } };
 const reducer = combineReducers({
     listaProductos: listaProductosReducer,
     productoDetalles: productoDetallesReducer,
