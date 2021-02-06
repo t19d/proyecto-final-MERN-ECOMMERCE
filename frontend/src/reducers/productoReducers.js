@@ -1,4 +1,4 @@
-import { LISTA_PRODUCTOS_FAIL, LISTA_PRODUCTOS_REQUEST, LISTA_PRODUCTOS_SUCCESS, PRODUCTO_DETALLES_FAIL, PRODUCTO_DETALLES_REQUEST, PRODUCTO_DETALLES_SUCCESS } from "../constants/productoConstantes";
+import { LISTA_PRODUCTOS_FAIL, LISTA_PRODUCTOS_REQUEST, LISTA_PRODUCTOS_SUCCESS, PRODUCTO_DETALLES_FAIL, PRODUCTO_DETALLES_REQUEST, PRODUCTO_DETALLES_SUCCESS, PRODUCTO_GUARDADO_FAIL, PRODUCTO_GUARDADO_REQUEST, PRODUCTO_GUARDADO_SUCCESS } from "../constants/productoConstantes";
 
 function listaProductosReducer(state = { productos: [] }, action) {
     switch (action.type) {
@@ -7,6 +7,19 @@ function listaProductosReducer(state = { productos: [] }, action) {
         case LISTA_PRODUCTOS_SUCCESS:
             return { loading: false, productos: action.payload };
         case LISTA_PRODUCTOS_FAIL:
+            return { loading: false, error: action.payload };
+        default:
+            return state;
+    }
+}
+
+function productoGuardadoReducer(state = { producto: {} }, action) {
+    switch (action.type) {
+        case PRODUCTO_GUARDADO_REQUEST:
+            return { loading: true };
+        case PRODUCTO_GUARDADO_SUCCESS:
+            return { loading: false, success: true, producto: action.payload };
+        case PRODUCTO_GUARDADO_FAIL:
             return { loading: false, error: action.payload };
         default:
             return state;
@@ -26,4 +39,4 @@ function productoDetallesReducer(state = { producto: {} }, action) {
     }
 }
 
-export { listaProductosReducer, productoDetallesReducer }
+export { listaProductosReducer, productoGuardadoReducer, productoDetallesReducer }
