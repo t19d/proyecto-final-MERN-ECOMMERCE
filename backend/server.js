@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import usuarioRoute from './routes/usuarioRoute';
+import productoRoute from './routes/productoRoute';
 
 dotenv.config();
 
@@ -23,12 +24,17 @@ app.use(bodyParser.json());
 {/* Usuarios */ }
 app.use("/api/usuarios", usuarioRoute);
 
-{/* API todos los productos */ }
+
+{/* Productos */ }
+app.use("/api/productos", productoRoute);
+
+/*
+// API todos los productos 
 app.get("/api/productos", (req, res) => {
     res.send(data.productos);
 });
 
-{/* API detalle producto */ }
+// API detalle producto
 app.get("/api/productos/:id", (req, res) => {
     const productoId = req.params.id;
     const producto = data.productos.find(x => x._id === productoId);
@@ -37,7 +43,7 @@ app.get("/api/productos/:id", (req, res) => {
     } else {
         res.status(404).send({ msg: "Producto no encontrado." });
     }
-});
+});*/
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
