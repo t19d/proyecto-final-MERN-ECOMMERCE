@@ -7,6 +7,7 @@ import ProductoScreen from './screens/ProductoScreen';
 import CarritoScreen from './screens/CarritoScreen';
 import InicioSesionScreen from './screens/InicioSesionScreen';
 import { useSelector } from 'react-redux';
+import RegistroScreen from './screens/RegistroScreen';
 
 function App() {
 
@@ -46,7 +47,7 @@ function App() {
                       usuarioInfo ?
                         <Link to="/perfil" className="navbar-link text-white">{usuarioInfo.nombre}</Link>
                         :
-                        <Link to="/login" className="navbar-link text-white">
+                        <Link to="/iniciosesion" className="navbar-link text-white">
                           <span>Iniciar sesión / Registrarse</span>
                         </Link>
                     }
@@ -140,7 +141,8 @@ function App() {
       <div id="contenidoPrincipal">
         <Route path="/" exact={true} component={HomeScreen} />
         <Route path="/carrito/:id?" component={CarritoScreen} />
-        <Route path="/login" component={InicioSesionScreen} />
+        <Route path="/iniciosesion" component={InicioSesionScreen} />
+        <Route path="/registro" component={RegistroScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
         <Route path="/equipaciones" component={EquipacionesScreen} />
       </div>
