@@ -86,8 +86,8 @@ function ManageProductosScreen(props) {
                         <input className="form-control" type="number" step="0.01" name="precio" placeholder="Precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         <textarea className="form-control" name="descripcion" placeholder="Descripción del producto" value={descripcion} autoFocus="" onChange={(e) => setDescripcion(e.target.value)} />
                         {/* Hacer un split de las imágenes y categorías con ! */}
-                        <textarea className="form-control" name="imagenes" placeholder="Rutas de las imágenes (separadas por '!')" value={imagenes} autoFocus="" onChange={(e) => setImagenes(e.target.value.split("!"))} />
-                        <textarea className="form-control" name="categorias" placeholder="Categorías (separadas por '!')" value={categorias} autoFocus="" onChange={(e) => setCategorias(e.target.value.split("!"))} />
+                        <textarea className="form-control" name="imagenes" placeholder="Rutas de las imágenes (separadas por ',')" value={imagenes} autoFocus="" onChange={(e) => setImagenes(e.target.value.split(","))} />
+                        <textarea className="form-control" name="categorias" placeholder="Categorías (separadas por ',')" value={categorias} autoFocus="" onChange={(e) => setCategorias(e.target.value.split(","))} />
                         <input className="form-control" type="number" name="cantidadStokXS" placeholder="Cantidad stok tallas XS" value={cantidadStokXS} autoFocus="" onChange={(e) => setCantidadStokXS(e.target.value)} />
                         <input className="form-control" type="number" name="cantidadStokS" placeholder="Cantidad stok tallas S" value={cantidadStokS} onChange={(e) => setCantidadStokS(e.target.value)} />
                         <input className="form-control" type="number" name="cantidadStokM" placeholder="Cantidad stok tallas M" value={cantidadStokM} onChange={(e) => setCantidadStokM(e.target.value)} />
