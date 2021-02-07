@@ -20,7 +20,7 @@ function productoGuardadoReducer(state = { producto: {} }, action) {
         case PRODUCTO_GUARDADO_SUCCESS:
             return { loading: false, success: true, producto: action.payload };
         case PRODUCTO_GUARDADO_FAIL:
-            return { loading: false, success: false, error: action.payload };
+            return { loading: false, error: action.payload };
         default:
             return state;
     }
@@ -46,7 +46,7 @@ function productoEliminadoReducer(state = { producto: {} }, action) {
         case PRODUCTO_ELIMINADO_SUCCESS:
             return { loading: false, success: true, producto: action.payload };
         case PRODUCTO_ELIMINADO_FAIL:
-            return { loading: false, success: false, error: action.payload };
+            return { loading: false, error: action.payload };
         default:
             return state;
     }
