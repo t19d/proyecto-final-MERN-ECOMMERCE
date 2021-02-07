@@ -144,6 +144,26 @@ ol.breadcrumb li a:hover {
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* Checkout Pasos */
+.checkoutPasos {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.checkoutPasos > div {
+  text-align: center;
+  border-bottom: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  font-weight: bold;
+}
+.checkoutPasos > div.active {
+  border-bottom-color: #0e7e92;
+  color: #0e7e92;
+}
+
 /* -------------------------------------------------------------------------------------- */
 
 @media screen and (max-width: 1024px) {
