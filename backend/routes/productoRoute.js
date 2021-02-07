@@ -9,6 +9,15 @@ router.get("/", async (req, res) => {
     res.send(productos);
 });
 
+router.get("/:id", async (req, res) => {
+    const producto = await Producto.findOne({ _id: req.params.id })
+    if (producto) {
+        res.send(producto);
+    } else {
+        res.status(404).send({ message: 'Producto no encontrado' });
+    }
+});
+
 {/*TODO: isAuth e isAdmin son para que solo los administradores logeados puedan hacer las acciones de creación, edición y eliminación*/ }
 
 router.post("/", isAdmin, isAuth, async (req, res) => {
