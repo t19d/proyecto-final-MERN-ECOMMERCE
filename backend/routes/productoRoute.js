@@ -9,9 +9,9 @@ router.get("/", async (req, res) => {
     res.send(productos);
 });
 
-{/*TODO: isAuth e isAdmin son para que solo los administradores logeados puedan hacer las acciones de creación, edición y eliminación*/}
+{/*TODO: isAuth e isAdmin son para que solo los administradores logeados puedan hacer las acciones de creación, edición y eliminación*/ }
 
-router.post("/", async (req, res) => {
+router.post("/", isAdmin, isAuth, async (req, res) => {
     const producto = new Producto({
         nombre: req.body.nombre,
         miniatura: req.body.miniatura,
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", isAdmin, isAuth, async (req, res) => {
     const productoId = req.params.id;
     const producto = await Producto.findOne({ _id: productoId });
     if (producto) {
@@ -61,14 +61,14 @@ router.put("/:id", async (req, res) => {
 
 
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", isAdmin, isAuth, async (req, res) => {
     const deletedProducto = await Producto.findById(req.params.id);
     if (deletedProducto) {
         await deletedProducto.remove();
         res.send({ msg: 'Producto eliminado.' });
     } else {
         res.send({ msg: 'Error eliminando producto.' });
-    }        
+    }
 });
 
 export default router
