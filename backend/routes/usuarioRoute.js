@@ -19,7 +19,7 @@ router.post('/iniciosesion', async (req, res) => {
             token: getToken(signinUsuario)
         });
     } else {
-        res.status(401).send({msg: 'El email o la contraseña no coinciden.'});
+        res.status(401).send({message: 'El email o la contraseña no coinciden.'});
     }
 });
 
@@ -39,7 +39,7 @@ router.post('/registro', async (req, res) => {
             token: getToken(newUsuario)
         });
     } else {
-        res.status(401).send({msg: 'Datos de usuario no válidos.'});
+        res.status(401).send({message: 'Datos de usuario no válidos.'});
     }
 });
 
@@ -55,7 +55,7 @@ router.get("/crearadmin", async (req, res) => {
         const newUsuario = await usuario.save();
         res.send(newUsuario);
     } catch (error) {
-        res.send({ msg: error.message });
+        res.send({ message: error.message });
     }
 })
 

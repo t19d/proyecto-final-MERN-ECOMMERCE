@@ -18,14 +18,14 @@ const isAuth = (req, res, next) => {
         const token = authorization.slice(7, authorization.length); // Bearer XXXXXX
         jwt.verify(token, config.JWT_SECRET, (error, decode) => {
             if (error) {
-                res.status(401).send({ msg: 'Token inválido.' });
+                res.status(401).send({ message: 'Token inválido.' });
             } else {
                 req.usuario = decode;
                 next();
             }
         });
     } else {
-        res.status.send({ msg: 'No se ha proporcionado el token.' });
+        res.status.send({ message: 'No se ha proporcionado el token.' });
     }
 }
 
@@ -33,7 +33,7 @@ const isAdmin = (req, res, next) => {
     if (req.usuario && req.usuario.isAdmin) {
         next();
     } else {
-        res.status(401).send({ msg: 'Admin token no es válido' });
+        res.status(401).send({ message: 'Admin token no es válido' });
     }
 }
 
