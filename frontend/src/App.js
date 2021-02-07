@@ -9,6 +9,7 @@ import InicioSesionScreen from './screens/InicioSesionScreen';
 import { useSelector } from 'react-redux';
 import RegistroScreen from './screens/RegistroScreen';
 import ManageProductosScreen from './screens/ManageProductosScreen';
+import EnvioScreen from './screens/EnvioScreen';
 
 function App() {
 
@@ -145,6 +146,7 @@ function App() {
       <div id="contenidoPrincipal">
         <Route path="/" exact={true} component={HomeScreen} />
         <Route path="/carrito/:id?" component={CarritoScreen} />
+        <Route path="/envio" component={EnvioScreen} />
         <Route path="/iniciosesion" component={InicioSesionScreen} />
         <Route path="/registro" component={RegistroScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
