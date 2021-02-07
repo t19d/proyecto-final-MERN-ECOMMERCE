@@ -24,7 +24,7 @@ function CarritoScreen(props) {
     }, []);
 
     const checkoutHandler = () => {
-        props.history.push("/iniciosesion?redirect=shipping");
+        props.history.push("/iniciosesion?redirect=envio");
     }
 
     return (
