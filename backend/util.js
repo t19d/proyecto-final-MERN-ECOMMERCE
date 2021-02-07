@@ -8,32 +8,32 @@ const getToken = (usuario) => {
         email: usuario.email,
         isAdmin: usuario.isAdmin
     }, config.JWT_SECRET, {
-        expiresIn: '48h'
+        expiresIn: 30 * 24 * 60 * 60 // '30d'
     });
 }
 
-const isAuth = (req, rest, next) => {
-    const token = req.headers.authorization;
-    if (token) {
-        const onlyToken = token.slice(7, token.length);
-        jwt.verify(onlyToken, config.JWT_SECRET, (error, decode) => {
+const isAuth = (req, res, next) => {
+    const authorization = req.headers.authorization;
+    if (authorization) {
+        const token = authorization.slice(7, authorization.length); // Bearer XXXXXX
+        jwt.verify(token, config.JWT_SECRET, (error, decode) => {
             if (error) {
-                return rest.status(401).send({ msg: 'Token inválido.' });
+                res.status(401).send({ msg: 'Token inválido.' });
             } else {
-                req.usuario = token;
+                req.usuario = decode;
                 next();
-                return
             }
         });
+    } else {
+        res.status.send({ msg: 'No se ha proporcionado el token.' });
     }
-    return rest.status.send({ msg: 'No se ha proporcionado el token.' });
 }
 
-const isAdmin = (req, rest, next) => {
-    if (req.user && req.user.isAdmin) {
-        return next();
+const isAdmin = (req, res, next) => {
+    if (req.usuario && req.usuario.isAdmin) {
+        next();
     } else {
-        return rest.status(401).send({ msg: 'Admin token no es válido' });
+        res.status(401).send({ msg: 'Admin token no es válido' });
     }
 }
 
