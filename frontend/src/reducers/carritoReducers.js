@@ -1,4 +1,4 @@
-import { ANHADIR_ITEM_AL_CARRITO, ELIMINAR_ITEM_DEL_CARRITO } from "../constants/carritoConstantes";
+import { ANHADIR_ITEM_AL_CARRITO, CARRITO_GUARDAR_ENVIO, ELIMINAR_ITEM_DEL_CARRITO } from "../constants/carritoConstantes";
 
 function carritoReducer(state = { carritoItems: [] }, action) {
     switch (action.type) {
@@ -14,6 +14,8 @@ function carritoReducer(state = { carritoItems: [] }, action) {
             return { carritoItems: [...state.carritoItems, item] };
         case ELIMINAR_ITEM_DEL_CARRITO:
             return { carritoItems: state.carritoItems.filter(x => x.producto !== action.payload) }
+        case CARRITO_GUARDAR_ENVIO:
+            return {...state, envio: action.payload}
         default:
             return state;
     }
