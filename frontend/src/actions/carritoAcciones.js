@@ -1,6 +1,6 @@
 import axios from "axios"
 import Cookie from "js-cookie";
-import { ANHADIR_ITEM_AL_CARRITO, ELIMINAR_ITEM_DEL_CARRITO } from "../constants/carritoConstantes";
+import { ANHADIR_ITEM_AL_CARRITO, ELIMINAR_ITEM_DEL_CARRITO, CARRITO_GUARDAR_ENVIO } from "../constants/carritoConstantes";
 
 const anhadirAlCarrito = (productoId, cantidad) => async (dispatch, getState) => {
     try {
@@ -32,4 +32,8 @@ const eliminarDelCarrito = (productoId) => (dispatch, getState) => {
     Cookie.set("carritoItems", JSON.stringify(carritoItems));
 }
 
-export { anhadirAlCarrito, eliminarDelCarrito }
+const guardarEnvio = (data) => (dispatch) => {
+    dispatch({ type: CARRITO_GUARDAR_ENVIO, payload: data });
+}
+
+export { anhadirAlCarrito, eliminarDelCarrito, guardarEnvio }
