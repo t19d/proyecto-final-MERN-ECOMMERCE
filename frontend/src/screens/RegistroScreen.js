@@ -14,12 +14,18 @@ function RegistroScreen(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(registrar(nombre, email, password));
+
+        if (password !== rePassword) {
+            alert('Las contraseñas no coinciden.');
+        } else {
+            dispatch(registrar(nombre, email, password));
+        }
+
     };
 
     useEffect(() => {
         if (usuarioInfo) {
-            props.history.push("/iniciosesion");
+            props.history.push("/");
         }
         return () => {
             //
