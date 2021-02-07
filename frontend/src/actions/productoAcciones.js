@@ -19,14 +19,14 @@ const guardarProducto = (producto) => async (dispatch, getState) => {
         if (!producto._id) {
             const { data } = await axios.post("/api/productos", producto, {
                 headers: {
-                    'Authorization': 'Bearer' + usuarioInfo.token
+                    Authorization: 'Bearer' + usuarioInfo.token
                 }
             });
             dispatch({ type: PRODUCTO_GUARDADO_SUCCESS, payload: data });
         } else {
             const { data } = await axios.put("/api/productos/" + producto._id, producto, {
                 headers: {
-                    'Authorization': 'Bearer' + usuarioInfo.token
+                    Authorization: 'Bearer' + usuarioInfo.token
                 }
             });
             dispatch({ type: PRODUCTO_GUARDADO_SUCCESS, payload: data });
@@ -53,7 +53,7 @@ const eliminarProducto = (productoId) => async (dispatch, getState) => {
         dispatch({ type: PRODUCTO_ELIMINADO_REQUEST, payload: productoId });
         const { data } = await axios.delete("/api/productos/" + productoId, {
             headers: {
-                'Authorization': 'Bearer' + usuarioInfo.token
+                Authorization: 'Bearer' + usuarioInfo.token
             }
         });
         dispatch({ type: PRODUCTO_ELIMINADO_SUCCESS, payload: data, success: true });
