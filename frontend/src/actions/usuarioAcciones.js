@@ -7,7 +7,7 @@ const iniciarSesion = (email, password) => async (dispatch) => {
     try {
         const { data } = await axios.post("/api/usuarios/iniciosesion", { email, password });
         dispatch({ type: USUARIO_INICIOSESION_SUCCESS, payload: data });
-        Cookie.set('userInfo', JSON.stringify(data));
+        Cookie.set('usuarioInfo', JSON.stringify(data));
     } catch (error) {
         dispatch({ type: USUARIO_INICIOSESION_FAIL, payload: error.message });
     }
@@ -18,7 +18,7 @@ const registrar = (nombre, email, password) => async (dispatch) => {
     try {
         const { data } = await axios.post("/api/usuarios/registro", { nombre, email, password });
         dispatch({ type: USUARIO_REGISTRO_SUCCESS, payload: data });
-        Cookie.set('userInfo', JSON.stringify(data));
+        Cookie.set('usuarioInfo', JSON.stringify(data));
     } catch (error) {
         dispatch({ type: USUARIO_REGISTRO_FAIL, payload: error.message });
     }
