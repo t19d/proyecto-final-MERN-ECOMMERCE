@@ -10,6 +10,8 @@ function InicioSesionScreen(props) {
     const { loading, usuarioInfo, error } = usuarioInicioSesion;
     const dispatch = useDispatch();
 
+    const redirect = props.location.search ? props.location.search.split("=")[1] : "/";
+
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(iniciarSesion(email, password));
@@ -17,7 +19,7 @@ function InicioSesionScreen(props) {
 
     useEffect(() => {
         if (usuarioInfo) {
-            props.history.push("/");
+            props.history.push(redirect);
         }
         return () => {
             //
@@ -37,7 +39,7 @@ function InicioSesionScreen(props) {
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Acceder</button>
                 <div>
                     <div>¿No tienes usuario?</div>
-                    <Link to="/registro">Crear nueva cuenta de usuario</Link>
+                    <Link to={redirect === "/" ? "registro" : "registro?redirect=" + redirect}>Crear nueva cuenta de usuario</Link>
                 </div>
             </form>
         </div>

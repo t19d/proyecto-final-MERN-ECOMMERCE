@@ -12,6 +12,8 @@ function RegistroScreen(props) {
     const { loading, usuarioInfo, error } = usuarioRegistro;
     const dispatch = useDispatch();
 
+    const redirect = props.location.search ? props.location.search.split("=")[1] : "/";
+
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -25,7 +27,7 @@ function RegistroScreen(props) {
 
     useEffect(() => {
         if (usuarioInfo) {
-            props.history.push("/");
+            props.history.push(redirect);
         }
         return () => {
             //
@@ -45,7 +47,7 @@ function RegistroScreen(props) {
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Crear usuario</button>
                 <div>
                     <div>¿Ya tienes usuario?</div>
-                    <Link to="/iniciosesion">Iniciar sesión</Link>
+                    <Link to={redirect === "/" ? "iniciosesion" : "registro?iniciosesion=" + redirect}>Iniciar sesión</Link>
                 </div>
             </form>
         </div>
