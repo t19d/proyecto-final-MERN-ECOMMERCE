@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { guardarEnvio } from '../actions/carritoAcciones';
+import CheckoutPasos from '../components/CheckoutPasos';
 
 function EnvioScreen(props) {
     const [nombre, setNombre] = useState('');
@@ -19,9 +20,12 @@ function EnvioScreen(props) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(guardarEnvio(nombre, apellidos, dni, telefono, direccion, codigoPostal, pais, provincia, email));
+        props.history.push('pago');
     };
 
     return (
+        <div>
+            <CheckoutPasos paso1 paso2></CheckoutPasos>
         <div className="text-center container-sm" onSubmit={submitHandler}>
             <h1>Envío</h1>
             <form className="formRegistro">
@@ -36,6 +40,7 @@ function EnvioScreen(props) {
                 <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required="" autoFocus="" onChange={(e) => setEmail(e.target.value)} />
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
             </form>
+        </div>
         </div>
     );
 }
