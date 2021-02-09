@@ -11,7 +11,7 @@ function PagoScreen(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(guardarPago(metodoPago));
+        dispatch(guardarPago({ metodoPago }));
         props.history.push('finalizarpedido');
     };
 
@@ -21,7 +21,7 @@ function PagoScreen(props) {
             <div className="text-center container-sm" onSubmit={submitHandler}>
                 <h1>Pago</h1>
                 <form className="formRegistro">
-                    <input type="radio" name="metodoPago" id="metodoPago" value="paypal" onChange={(e) => setMetodoPago(e.target.value)}></input>
+                    <input type="radio" name="metodoPago" id="metodoPago" value="Paypal" onChange={(e) => setMetodoPago(e.target.value)}></input>
                     <label htmlFor="metodoPago">Paypal</label>
 
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
