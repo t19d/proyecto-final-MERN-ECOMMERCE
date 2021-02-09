@@ -59,7 +59,7 @@ function CarritoScreen(props) {
 
                                             {
                                                 carritoItems.map(item =>
-                                                    <tr>
+                                                    <tr key={item._id}>
                                                         <td><img className="img-thumbnail" src={item.miniatura} /> </td>
                                                         <td>
                                                             <Link to={"/productos/" + item.producto}>
