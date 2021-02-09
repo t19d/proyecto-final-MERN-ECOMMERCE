@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
 
 {/*TODO: isAuth e isAdmin son para que solo los administradores logeados puedan hacer las acciones de creación, edición y eliminación*/ }
 
-router.post("/", isAdmin, isAuth, async (req, res) => {
+router.post("/", isAuth, isAdmin, async (req, res) => {
     const producto = new Producto({
         nombre: req.body.nombre,
         miniatura: req.body.miniatura,
@@ -43,7 +43,7 @@ router.post("/", isAdmin, isAuth, async (req, res) => {
     }
 });
 
-router.put("/:id", isAdmin, isAuth, async (req, res) => {
+router.put("/:id", isAuth, isAdmin, async (req, res) => {
     const productoId = req.params.id;
     const producto = await Producto.findOne({ _id: productoId });
     if (producto) {
@@ -70,7 +70,7 @@ router.put("/:id", isAdmin, isAuth, async (req, res) => {
 
 
 
-router.delete("/:id", isAdmin, isAuth, async (req, res) => {
+router.delete("/:id", isAuth, isAdmin, async (req, res) => {
     const deletedProducto = await Producto.findById(req.params.id);
     if (deletedProducto) {
         await deletedProducto.remove();
