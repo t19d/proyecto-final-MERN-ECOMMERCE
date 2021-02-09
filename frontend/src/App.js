@@ -11,6 +11,7 @@ import RegistroScreen from './screens/RegistroScreen';
 import ManageProductosScreen from './screens/ManageProductosScreen';
 import EnvioScreen from './screens/EnvioScreen';
 import PagoScreen from './screens/PagoScreen';
+import FinalizarPedidoScreen from './screens/FinalizarPedidoScreen';
 
 function App() {
 
@@ -149,6 +150,7 @@ function App() {
         <Route path="/carrito/:id?" component={CarritoScreen} />
         <Route path="/envio" component={EnvioScreen} />
         <Route path="/pago" component={PagoScreen} />
+        <Route path="/finalizarpedido" component={FinalizarPedidoScreen} />
         <Route path="/iniciosesion" component={InicioSesionScreen} />
         <Route path="/registro" component={RegistroScreen} />
         <Route path="/productos/:id" component={ProductoScreen} />
