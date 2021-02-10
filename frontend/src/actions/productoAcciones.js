@@ -39,7 +39,7 @@ const guardarProducto = (producto) => async (dispatch, getState) => {
 const hacerProductoDetalles = (productoId) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCTO_DETALLES_REQUEST, payload: productoId });
-        console.log("/api/productos/" + productoId)
+        //console.log("/api/productos/" + productoId)
         const { data } = await axios.get("/api/productos/" + productoId);
         dispatch({ type: PRODUCTO_DETALLES_SUCCESS, payload: data });
     } catch (error) {

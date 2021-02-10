@@ -11,7 +11,7 @@ function HomeScreen(props) {
 
     const isPortada = (categorias) => {
         var respuesta = false;
-        console.log(categorias)
+        //console.log(categorias)
         categorias.forEach(element => {
             if (element.toLowerCase() === "portada") {
                 respuesta = true;

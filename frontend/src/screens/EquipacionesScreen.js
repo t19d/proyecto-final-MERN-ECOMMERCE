@@ -11,7 +11,7 @@ function EquipacionesScreen(props) {
 
     const isEquipacion = (categorias) => {
         var respuesta = false;
-        console.log(categorias)
+        //console.log(categorias)
         categorias.forEach(element => {
             if (element.toLowerCase() === "equipacion") {
                 respuesta = true;
