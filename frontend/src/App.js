@@ -12,6 +12,7 @@ import ManageProductosScreen from './screens/ManageProductosScreen';
 import EnvioScreen from './screens/EnvioScreen';
 import PagoScreen from './screens/PagoScreen';
 import FinalizarPedidoScreen from './screens/FinalizarPedidoScreen';
+import EntrenamientoScreen from './screens/EntrenamientoScreen';
 
 function App() {
 
@@ -156,6 +157,7 @@ function App() {
         <Route path="/productos/:id" component={ProductoScreen} />
         <Route path="/manageproductos" component={ManageProductosScreen} />
         <Route path="/equipaciones" component={EquipacionesScreen} />
+        <Route path="/entrenamiento" component={EntrenamientoScreen} />
       </div>
 
 
