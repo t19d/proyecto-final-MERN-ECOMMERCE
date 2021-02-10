@@ -1,5 +1,4 @@
 import express from 'express';
-import data from './data';
 import config from './config';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';

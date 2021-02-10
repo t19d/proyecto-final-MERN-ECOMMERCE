@@ -1,10 +1,9 @@
 import React from 'react';
-import data from '../data';
 import { Link } from 'react-router-dom';
 
 function HomeScreen(props) {
-    const equipacionLocal = data.productos.find(p => p._id === '1-equipacion-adulto-20-21-club-pastoriza-balompie');
-    const equipacionVisitante = data.productos.find(p => p._id === '2-equipacion-adulto-20-21-club-pastoriza-balompie');
+    /*const equipacionLocal = data.productos.find(p => p._id === '1-equipacion-adulto-20-21-club-pastoriza-balompie');
+    const equipacionVisitante = data.productos.find(p => p._id === '2-equipacion-adulto-20-21-club-pastoriza-balompie');*/
     return (
         <section>
             <a href="/equipaciones"><img src="/images/recursos_web/Cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra"/></a>
