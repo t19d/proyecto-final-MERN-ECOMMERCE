@@ -28,7 +28,7 @@ function ProductoScreen(props) {
     }
 
     return (
-        loading ? <div>Cargando...</div> :
+        loading ? <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div> :
             error ? <div>{error}</div> :
                 <section>
                     <div className="container">

@@ -37,7 +37,7 @@ function RegistroScreen(props) {
     return (
         <div className="text-center container-sm" onSubmit={submitHandler}>
             <h1>Registrarse</h1>
-            {loading && <div>Cargando...</div>}
+            {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div>{error}</div>}
             <form className="formRegistro">
                 <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required="" autoFocus="" onChange={(e) => setNombre(e.target.value)} />

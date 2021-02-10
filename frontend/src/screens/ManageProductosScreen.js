@@ -77,7 +77,7 @@ function ManageProductosScreen(props) {
             {modalVisible &&
                 <div className="formularioCrearProducto text-center container-sm" onSubmit={submitHandler}>
                     <h1>{id ? "Editar producto" : "Crear producto"}</h1>
-                    {loadingGuardado && <div>Cargando...</div>}
+                    {loadingGuardado && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
                     {errorGuardado && <div>{errorGuardado}</div>}
                     <form className="formCrearProducto">
                         <input className="form-control" type="text" name="nombre" placeholder="Nombre" value={nombre} autoFocus="" onChange={(e) => setNombre(e.target.value)} />

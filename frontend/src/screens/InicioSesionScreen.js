@@ -29,7 +29,7 @@ function InicioSesionScreen(props) {
     return (
         <div className="text-center container-sm" onSubmit={submitHandler}>
             <h1>Iniciar sesión</h1>
-            {loading && <div>Cargando...</div>}
+            {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div>{error}</div>}
             <form className="formInicioSesion">
                 <label htmlFor="inputEmail" className="sr-only">Email address</label>
