@@ -14,6 +14,7 @@ import PagoScreen from './screens/PagoScreen';
 import FinalizarPedidoScreen from './screens/FinalizarPedidoScreen';
 import EntrenamientoScreen from './screens/EntrenamientoScreen';
 import ModaScreen from './screens/ModaScreen';
+import BufandasScreen from './screens/BufandasScreen';
 
 function App() {
 
@@ -160,6 +161,7 @@ function App() {
         <Route path="/equipaciones" component={EquipacionesScreen} />
         <Route path="/entrenamiento" component={EntrenamientoScreen} />
         <Route path="/moda" component={ModaScreen} />
+        <Route path="/bufandas" component={BufandasScreen} />
       </div>
 
 
