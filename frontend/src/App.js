@@ -16,6 +16,7 @@ import EntrenamientoScreen from './screens/EntrenamientoScreen';
 import ModaScreen from './screens/ModaScreen';
 import BufandasScreen from './screens/BufandasScreen';
 import AccesoriosScreen from './screens/AccesoriosScreen';
+import OutletScreen from './screens/OutletScreen';
 
 function App() {
 
@@ -164,6 +165,7 @@ function App() {
         <Route path="/moda" component={ModaScreen} />
         <Route path="/bufandas" component={BufandasScreen} />
         <Route path="/accesorios" component={AccesoriosScreen} />
+        <Route path="/outlet" component={OutletScreen} />
       </div>
 
 
