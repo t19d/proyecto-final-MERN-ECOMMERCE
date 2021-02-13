@@ -50,6 +50,11 @@ code {
 
 /* PRODUCTO */
 
+ul.listaProductos{
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
 .itemProductos {
   color: black;
 }

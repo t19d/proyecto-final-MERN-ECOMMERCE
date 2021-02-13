@@ -33,22 +33,26 @@ function EquipacionesScreen(props) {
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div>{error}</div>}
             <div className="container">
-                <div className="row listaProductos">
+                <ul className="row listaProductos">
                     {
                         productos.map(
                             producto =>
-                            isEquipacion(producto.categorias) && (<Link to={'/productos/' + producto._id} className="col-sm itemProductos" key={producto._id}>
-                                <div className="card text-center">
-                                    <div className="card-body">
-                                        <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
-                                        <h5 className="card-title">{producto.nombre}</h5>
-                                        <h5 className="card-title precioItem">{producto.precio} €</h5>
-                                    </div>
-                                </div>
-                            </Link>)
+                                isEquipacion(producto.categorias) && (
+                                    <li class="col-md-4 col-sm-6 col-xs-12">
+                                        <Link to={'/productos/' + producto._id} className="col-sm itemProductos" key={producto._id}>
+                                            <div className="card text-center">
+                                                <div className="card-body">
+                                                    <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
+                                                    <h5 className="card-title">{producto.nombre}</h5>
+                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                )
                         )
                     }
-                </div>
+                </ul>
             </div>
         </section>);
 }
