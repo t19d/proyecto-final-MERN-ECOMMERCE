@@ -15,6 +15,9 @@ function FinalizarPedidoScreen(props) {
         props.history.push("/pago");
     }
 
+    const subtotal = Number.parseFloat(carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0).toFixed(2));
+    const total = Number.parseFloat((subtotal + gastosEnvio).toFixed(2));
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -36,12 +39,12 @@ function FinalizarPedidoScreen(props) {
             </section>
             <div>
                 <h2>Datos de envío envío</h2>
-                <div>{carrito.envio.nombre} {carrito.envio.apellidos}</div>
-                <div>{carrito.envio.dni}</div>
-                <div>{carrito.envio.email}</div>
-                <div>{carrito.envio.telefono}</div>
-                <div>{carrito.envio.direccion}, {carrito.envio.codigoPostal}</div>
-                <div>{carrito.envio.provincia}, {carrito.envio.pais}</div>
+                <div>Nombre: {carrito.envio.nombre} {carrito.envio.apellidos}</div>
+                <div>DNI: {carrito.envio.dni}</div>
+                <div>email: {carrito.envio.email}</div>
+                <div>Teléfono: {carrito.envio.telefono}</div>
+                <div>Dirección 1: {carrito.envio.direccion}, {carrito.envio.codigoPostal}</div>
+                <div>Dirección 2: {carrito.envio.provincia}, {carrito.envio.pais}</div>
             </div>
             <div>
                 <h2>Datos de pago</h2>
@@ -100,7 +103,7 @@ function FinalizarPedidoScreen(props) {
                                                 <td></td>
                                                 <td></td>
                                                 <td>SUBTOTAL ({carritoItems.reduce((a, c) => a + c.cantidad, 0)} productos)</td>
-                                                <td className="text-right">{carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0)} €</td>
+                                                <td className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
                                                 <td></td>
@@ -116,7 +119,7 @@ function FinalizarPedidoScreen(props) {
                                                 <td></td>
                                                 <td></td>
                                                 <td>TOTAL</td>
-                                                <td className="text-right">{carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0) + gastosEnvio} €</td>
+                                                <td className="text-right">{total} €</td>
                                             </tr>
                                         </tbody>
                                     </table>

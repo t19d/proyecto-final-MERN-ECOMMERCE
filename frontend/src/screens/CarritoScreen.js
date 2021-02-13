@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { anhadirAlCarrito, eliminarDelCarrito } from '../actions/carritoAcciones';
 
 function CarritoScreen(props) {
-    const gastosEnvio = 6.99;
+    const gastosEnvio = Number.parseFloat(6.99);
     const carrito = useSelector(state => state.carrito);
     const { carritoItems } = carrito;
+    const subtotal = Number.parseFloat(carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0).toFixed(2));
+    const total = Number.parseFloat((subtotal + gastosEnvio).toFixed(2));
 
     const productoId = props.match.params.id;
     const cantidad = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
@@ -56,9 +58,9 @@ function CarritoScreen(props) {
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                             {
                                                 carritoItems.map(item =>
+
                                                     <tr key={item._id}>
                                                         <td><img className="img-thumbnail" src={item.miniatura} /> </td>
                                                         <td>
@@ -103,7 +105,7 @@ function CarritoScreen(props) {
                                                 <td></td>
                                                 <td></td>
                                                 <td>SUBTOTAL ({carritoItems.reduce((a, c) => a + c.cantidad, 0)} productos)</td>
-                                                <td className="text-right">{carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0)} €</td>
+                                                <td className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
                                                 <td></td>
@@ -119,7 +121,7 @@ function CarritoScreen(props) {
                                                 <td></td>
                                                 <td></td>
                                                 <td>TOTAL</td>
-                                                <td className="text-right">{carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0) + gastosEnvio} €</td>
+                                                <td className="text-right">{total} €</td>
                                             </tr>
                                         </tbody>
                                     </table>
