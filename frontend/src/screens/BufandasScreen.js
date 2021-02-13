@@ -23,9 +23,9 @@ function BufandasScreen(props) {
     const ordenarPor = (order) => {
         switch (order) {
             case "menMey":
-                return productos.sort((productoA, productoB) => productoA.precio - productoB.precio);
+                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
             case "mayMen":
-                return productos.sort((productoA, productoB) => productoA.precio - productoB.precio).reverse();
+                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
         }
     }
 
@@ -56,9 +56,11 @@ function BufandasScreen(props) {
                                         <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
                                             <div className="card text-center">
                                                 <div className="card-body">
+                                                    {(producto.precioOferta < producto.precio) && <h4 className="descuentoPrecioOferta">{(((producto.precioOferta * (-100)) / producto.precio) + 100).toFixed(0)}%</h4>}
                                                     <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
                                                     <h5 className="card-title">{producto.nombre}</h5>
-                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>
+                                                    {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
+                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>}
                                                 </div>
                                             </div>
                                         </Link>
