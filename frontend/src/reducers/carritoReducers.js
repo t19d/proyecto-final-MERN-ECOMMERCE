@@ -19,7 +19,7 @@ function carritoReducer(state = { carritoItems: [], envio: {}, pago: {} }, actio
         case CARRITO_GUARDAR_PAGO:
             return { ...state, pago: action.payload }
         case VACIAR_CARRITO:
-            return { ...state }
+            return { carritoItems: [] };
         default:
             return state;
     }

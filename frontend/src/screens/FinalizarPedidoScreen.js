@@ -24,7 +24,7 @@ function FinalizarPedidoScreen(props) {
     useEffect(() => {
         return () => {
         }
-    }, []);
+    }, [carritoItems]);
 
     const realizarPedidoHandler = () => {
         dispatch(vaciarCarrito());

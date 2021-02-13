@@ -38,11 +38,12 @@ const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getSt
     }
 }
 
-const vaciarCarrito = () => (dispatch, getState) => {
+const vaciarCarrito = () => (dispatch) => {
     dispatch({ type: VACIAR_CARRITO });
 
     /* COOKIES */
-    Cookie.remove("carritoItems");
+    //Cookie.remove("carritoItems");
+    Cookie.set("carritoItems", JSON.stringify(""));
 }
 
 const eliminarDelCarrito = (productoId) => (dispatch, getState) => {
