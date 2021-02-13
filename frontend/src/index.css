@@ -26,7 +26,7 @@ code {
   padding-right: 1em;
 }
 
-ul.menuUsuario{
+ul.menuUsuario {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -57,7 +57,7 @@ ul.menuUsuario{
 
 /* PRODUCTO */
 
-ul.listaProductos{
+ul.listaProductos {
   list-style-type: none;
   padding-inline-start: 0;
 }
@@ -71,7 +71,7 @@ ul.listaProductos{
   color: black;
 }
 
-.descuentoPrecioOferta{
+.descuentoPrecioOferta {
   position: absolute;
   top: 0;
   right: 0;
@@ -79,14 +79,14 @@ ul.listaProductos{
   margin-right: .5em;
   padding: .2em;
   border-radius: 3px;
-  background-color:  #0a97b0;
+  background-color: #0a97b0;
   font-weight: bold;
   font-size: 1.5em;
   color: rgb(240, 240, 240);
 }
 
-.precioAntiguoOfertaLista{
-  text-decoration:line-through;
+.precioAntiguoOfertaLista {
+  text-decoration: line-through;
   color: rgb(0, 0, 0);
   font-size: .8em;
 }
@@ -147,23 +147,25 @@ ol.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
-.separacionBreadcrumb{
+.separacionBreadcrumb {
   margin-top: 0;
 }
 
-.precioAntiguoOferta{
-  text-decoration:line-through;
+.precioAntiguoOferta {
+  text-decoration: line-through;
   color: rgb(236, 57, 57);
   font-size: .8em;
 }
 
 /* AÑADIR CONTRATO */
-.botonAnhadirCarrito{
+
+.botonAnhadirCarrito {
   background-color: #0a97b0;
 }
 
 /* DESCRIPCIÓN */
-.tituloDescripcionProducto{
+
+.tituloDescripcionProducto {
   border-bottom: solid .2rem #0a97b0;
   font-size: 1.75rem;
   padding: 0 1.75rem;
@@ -171,13 +173,14 @@ ol.breadcrumb li a:hover {
   font-weight: bold;
 }
 
-.cuerpoDescripcionProducto{
+.cuerpoDescripcionProducto {
   border-top: solid 1px #0a97b0;
   padding: .25rem 1rem;
 }
 
 /* OUT OF STOCK */
-.sinStockAvisoDetalles{
+
+.sinStockAvisoDetalles {
   color: rgb(236, 57, 57);
   font-size: 2rem;
   font-weight: bold;
@@ -185,21 +188,76 @@ ol.breadcrumb li a:hover {
 
 /* -------------------------------------------------------------------------------------- */
 
+/* PERFIL */
+
+ul.panelOpcionesPerfil {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+/* Para que tengan la misma height */
+ul.panelOpcionesPerfil>li {
+  padding: 2em;
+  display: flex;
+}
+
+/* Card de opciones */
+ul.panelOpcionesPerfil>li>div {
+  border: black 1px solid;
+  width: 100%;
+  /*background-color: #1bb4cf60;*/
+}
+
+ul.panelOpcionesPerfil>li>div>* {
+  padding-right: 2rem;
+}
+ul.panelOpcionesPerfil>li>div>*:first-child {
+  padding-top: 1rem;
+  padding-left: 2rem;
+  /*background-color: #0a97b0;
+  color: #f8f8f8;*/
+  font-weight: bold;
+}
+ul.panelOpcionesPerfil>li>div>*:last-child {
+  padding-bottom: 1rem;
+  padding-left: 3rem;
+}
+
+ul.panelOpcionesPerfil>li>div>ul {
+  list-style-type: none;
+}
+
+ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
+  color: #4b4b4b;
+}
+/* -------------------------------------------------------------------------------------- */
+
+/* TITULO PÁGINA */
+.tituloPagina{
+  margin: 1em;
+}
+
+
+/* -------------------------------------------------------------------------------------- */
+
 /* Checkout Pasos */
+
 .checkoutPasos {
   display: flex;
   justify-content: space-between;
   margin-top: 1em;
   margin-bottom: 1em;
 }
-.checkoutPasos > div {
+
+.checkoutPasos>div {
   text-align: center;
   border-bottom: 0.3rem #c0c0c0 solid;
   color: #c0c0c0;
   flex: 1;
   font-weight: bold;
 }
-.checkoutPasos > div.active {
+
+.checkoutPasos>div.active {
   border-bottom-color: #0e7e92;
   color: #0e7e92;
 }
