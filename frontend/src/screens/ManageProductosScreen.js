@@ -11,6 +11,7 @@ function ManageProductosScreen(props) {
     const [nombre, setNombre] = useState('');
     const [miniatura, setMiniatura] = useState('');
     const [precio, setPrecio] = useState('');
+    const [precioOferta, setPrecioOferta] = useState('');
     const [imgDescripcion, setImgDescripcion] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [imagenes, setImagenes] = useState('');
@@ -30,6 +31,7 @@ function ManageProductosScreen(props) {
         setNombre(producto.nombre);
         setMiniatura(producto.miniatura);
         setPrecio(producto.precio);
+        setPrecioOferta(producto.precioOferta);
         setImgDescripcion(producto.imgDescripcion);
         setDescripcion(producto.descripcion);
         setImagenes(producto.imagenes);
@@ -47,7 +49,7 @@ function ManageProductosScreen(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(guardarProducto({ _id: id, nombre, miniatura, precio, imgDescripcion, descripcion, imagenes, categorias, cantidadStockXS, cantidadStockS, cantidadStockM, cantidadStockL, cantidadStockXL }));
+        dispatch(guardarProducto({ _id: id, nombre, miniatura, precio, precioOferta, imgDescripcion, descripcion, imagenes, categorias, cantidadStockXS, cantidadStockS, cantidadStockM, cantidadStockL, cantidadStockXL }));
     };
 
 
@@ -84,6 +86,7 @@ function ManageProductosScreen(props) {
                         <input className="form-control" type="text" name="miniatura" placeholder="Ruta miniatura" value={miniatura} autoFocus="" onChange={(e) => setMiniatura(e.target.value)} />
                         <input className="form-control" type="text" name="imgDescripcion" placeholder="Descripción de la imagen" value={imgDescripcion} autoFocus="" onChange={(e) => setImgDescripcion(e.target.value)} />
                         <input className="form-control" type="number" step="0.01" name="precio" placeholder="Precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
+                        <input className="form-control" type="number" step="0.01" name="precioOferta" placeholder="Precio oferta (poner el mismo si no está de oferta)" value={precioOferta} onChange={(e) => setPrecioOferta(e.target.value)} />
                         <textarea className="form-control" name="descripcion" placeholder="Descripción del producto" value={descripcion} autoFocus="" onChange={(e) => setDescripcion(e.target.value)} />
                         {/* Hacer un split de las imágenes y categorías con ! */}
                         <textarea className="form-control" name="imagenes" placeholder="Rutas de las imágenes (separadas por ',')" value={imagenes} autoFocus="" onChange={(e) => setImagenes(e.target.value.split(","))} />
@@ -111,6 +114,7 @@ function ManageProductosScreen(props) {
                                 <th scope="col">NOMBRE</th>
                                 <th scope="col">MINIATURA</th>
                                 <th scope="col">PRECIO (€)</th>
+                                <th scope="col">PRECIO OFERTA (€)</th>
                                 <th scope="col">TALLAS XS</th>
                                 <th scope="col">TALLAS S</th>
                                 <th scope="col">TALLAS M</th>
@@ -125,6 +129,7 @@ function ManageProductosScreen(props) {
                                     <td>{producto.nombre}</td>
                                     <td><img className="img-thumbnail" src={producto.miniatura} /></td>
                                     <td>{producto.precio}</td>
+                                    <td>{producto.precioOferta}</td>
                                     <td>{producto.cantidadStockXS}</td>
                                     <td>{producto.cantidadStockS}</td>
                                     <td>{producto.cantidadStockM}</td>
