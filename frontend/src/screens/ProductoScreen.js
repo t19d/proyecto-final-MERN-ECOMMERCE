@@ -50,7 +50,7 @@ function ProductoScreen(props) {
     */}
 
     const handleAnhadirCarrito = () => {
-        props.history.push("/carrito/" + props.match.params.id + "?cantidad=" + cantidad);
+        props.history.push("/carrito/" + props.match.params.id + "?cantidad=" + cantidad + "-talla=" + talla);
     }
 
     return (

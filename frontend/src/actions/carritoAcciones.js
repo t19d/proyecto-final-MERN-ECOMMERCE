@@ -2,9 +2,22 @@ import axios from "axios"
 import Cookie from "js-cookie";
 import { ANHADIR_ITEM_AL_CARRITO, ELIMINAR_ITEM_DEL_CARRITO, CARRITO_GUARDAR_ENVIO, CARRITO_GUARDAR_PAGO } from "../constants/carritoConstantes";
 
-const anhadirAlCarrito = (productoId, cantidad) => async (dispatch, getState) => {
+const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getState) => {
     try {
         const { data } = await axios.get("/api/productos/" + productoId);
+        var cantidadStock = 0;
+        switch (talla) {
+            case "XS":
+                cantidadStock = data.cantidadStockXS;
+            case "S":
+                cantidadStock = data.cantidadStockS;
+            case "M":
+                cantidadStock = data.cantidadStockM;
+            case "L":
+                cantidadStock = data.cantidadStockL;
+            case "XL":
+                cantidadStock = data.cantidadStockXL;
+        }
         dispatch({
             type: ANHADIR_ITEM_AL_CARRITO,
             payload: {
@@ -12,8 +25,9 @@ const anhadirAlCarrito = (productoId, cantidad) => async (dispatch, getState) =>
                 nombre: data.nombre,
                 miniatura: data.miniatura,
                 precio: data.precio,
-                cantidadStockL: data.cantidadStockL,
-                cantidad
+                cantidadStock: cantidadStock,
+                cantidad: cantidad,
+                talla: talla
             }
         });
         /* COOKIES */

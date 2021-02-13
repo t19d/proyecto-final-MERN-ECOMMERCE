@@ -11,15 +11,18 @@ function CarritoScreen(props) {
     const total = Number.parseFloat((subtotal + gastosEnvio).toFixed(2));
 
     const productoId = props.match.params.id;
-    const cantidad = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
+    const variablesProducto = props.location.search ? props.location.search.split("?")[1] : "cantidad=1-talla=XL";
+    const cantidad = props.location.search ? Number(variablesProducto.split("-")[0].split("=")[1]) : 1;
+    const talla = props.location.search ? variablesProducto.split("-")[1].split("=")[1] : "XL";
     const dispatch = useDispatch();
     const eliminarDelCarritoHandler = (porductoEliminarId) => {
         dispatch(eliminarDelCarrito(porductoEliminarId));
     }
+    console.log(carritoItems);
 
     useEffect(() => {
         if (productoId) {
-            dispatch(anhadirAlCarrito(productoId, cantidad));
+            dispatch(anhadirAlCarrito(productoId, cantidad, talla));
         }
         return () => {
         }
@@ -52,6 +55,7 @@ function CarritoScreen(props) {
                                                 <th scope="col"> </th>
                                                 <th scope="col">Producto</th>
                                                 <th scope="col">Disponibilidad</th>
+                                                <th scope="col">Talla</th>
                                                 <th scope="col" className="text-center">Cantidad</th>
                                                 <th scope="col" className="text-right">Precio</th>
                                                 <th> </th>
@@ -74,10 +78,11 @@ function CarritoScreen(props) {
                                                                 :
                                                                 <td>Disponible</td>
                                                         }
+                                                        <td className="text-right">{item.talla}</td>
                                                         {/* Cantidad */}
                                                         <td>
                                                             <select value={item.cantidad} onChange={(event) => dispatch(anhadirAlCarrito(item.producto, event.target.value))}>
-                                                                {[...Array(item.cantidadStockL).keys()].map(
+                                                                {[...Array(item.cantidadStock).keys()].map(
                                                                     (x) => (
                                                                         <option key={x + 1} value={x + 1}>
                                                                             {x + 1}
@@ -86,7 +91,6 @@ function CarritoScreen(props) {
                                                                 )}
                                                             </select>
                                                         </td>
-
                                                         <td className="text-right">{item.precio}€</td>
                                                         <td className="text-right">
                                                             <button className="btn btn-sm btn-outline-danger" onClick={() => eliminarDelCarritoHandler(item.producto)}>
