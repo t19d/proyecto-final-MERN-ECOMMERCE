@@ -124,6 +124,12 @@ ol.breadcrumb li a:hover {
   margin-top: 0;
 }
 
+.precioAntiguoOferta{
+  text-decoration:line-through;
+  color: rgb(236, 57, 57);
+  font-size: .8em;
+}
+
 /* AÑADIR CONTRATO */
 .botonAnhadirCarrito{
   background-color: #0a97b0;
@@ -149,6 +155,8 @@ ol.breadcrumb li a:hover {
   font-size: 2rem;
   font-weight: bold;
 }
+
+/* -------------------------------------------------------------------------------------- */
 
 /* Checkout Pasos */
 .checkoutPasos {
