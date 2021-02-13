@@ -73,7 +73,7 @@ function CarritoScreen(props) {
                                                             </Link>
                                                         </td>
                                                         {
-                                                            item.cantidadStockL === 0 ?
+                                                            item.cantidadStock === 0 ?
                                                                 <td>Sin stock</td>
                                                                 :
                                                                 <td>Disponible</td>

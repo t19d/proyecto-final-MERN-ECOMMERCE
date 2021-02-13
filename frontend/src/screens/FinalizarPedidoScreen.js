@@ -66,6 +66,7 @@ function FinalizarPedidoScreen(props) {
                                                 <th scope="col"> </th>
                                                 <th scope="col">Producto</th>
                                                 <th scope="col">Disponibilidad</th>
+                                                <th scope="col">Talla</th>
                                                 <th scope="col" className="text-center">Cantidad</th>
                                                 <th scope="col" className="text-right">Precio</th>
                                             </tr>
@@ -74,24 +75,19 @@ function FinalizarPedidoScreen(props) {
 
                                             {
                                                 carritoItems.map(item =>
+
                                                     <tr key={item._id}>
                                                         <td><img className="img-thumbnail" src={item.miniatura} /> </td>
-                                                        <td>
-                                                            <Link to={"/productos/" + item.producto}>
-                                                                {item.nombre}
-                                                            </Link>
-                                                        </td>
+                                                        <td>{item.nombre}</td>
                                                         {
-                                                            item.cantidadStockL === 0 ?
+                                                            item.cantidadStock === 0 ?
                                                                 <td>Sin stock</td>
                                                                 :
                                                                 <td>Disponible</td>
                                                         }
+                                                        <td className="text-right">{item.talla}</td>
                                                         {/* Cantidad */}
-                                                        <td>
-                                                            {item.cantidad}
-                                                        </td>
-
+                                                        <td>{item.cantidad}</td>
                                                         <td className="text-right">{item.precio}€</td>
                                                     </tr>
                                                 )
@@ -102,7 +98,7 @@ function FinalizarPedidoScreen(props) {
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>SUBTOTAL ({carritoItems.reduce((a, c) => a + c.cantidad, 0)} productos)</td>
+                                                <td>SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
                                                 <td className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
