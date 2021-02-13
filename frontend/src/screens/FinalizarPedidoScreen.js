@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import CheckoutPasos from '../components/CheckoutPasos';
 
 function FinalizarPedidoScreen(props) {
-    const gastosEnvio = 6.99;
     const carrito = useSelector(state => state.carrito);
     const { carritoItems, envio, pago } = carrito;
     if (!envio.direccion) {
@@ -16,6 +15,7 @@ function FinalizarPedidoScreen(props) {
     }
 
     const subtotal = Number.parseFloat(carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0).toFixed(2));
+    const gastosEnvio = (subtotal >= 100) ? Number.parseFloat(0) : Number.parseFloat(6.99);
     const total = Number.parseFloat((subtotal + gastosEnvio).toFixed(2));
 
     const dispatch = useDispatch();
