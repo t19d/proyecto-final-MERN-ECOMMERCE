@@ -7,6 +7,7 @@ function ProductoScreen(props) {
     const [cantidad, setCantidad] = useState(1);
     const productoDetalles = useSelector(state => state.productoDetalles);
     const { producto, loading, error } = productoDetalles;
+    const [talla, setTalla] = useState("XS");
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -15,6 +16,31 @@ function ProductoScreen(props) {
             //
         };
     }, []);
+
+    const getStock = (producto) => {
+        var cantidadStock = 0;
+        switch (talla) {
+            case "XS":
+                cantidadStock = producto.cantidadStokXS;
+                break;
+            case "S":
+                cantidadStock = producto.cantidadStokS;
+                break;
+            case "M":
+                cantidadStock = producto.cantidadStokM;
+                break;
+            case "L":
+                cantidadStock = producto.cantidadStokL;
+                break;
+            case "XL":
+                cantidadStock = producto.cantidadStokXL;
+                break;
+
+            default:
+                break;
+        }
+        return cantidadStock;
+    };
 
     {/*
         //TODO:
@@ -61,45 +87,52 @@ function ProductoScreen(props) {
                                 <div className="form-group row filaTallas">
                                     <div className="col-sm">
                                         <label className="form-check-label">
-                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasXS" value="XS" />
+                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasXS" value="XS"
+                                                checked={talla === 'XS'}
+                                                onChange={(e) => setTalla(e.target.value)} />
                                 XS</label>
                                     </div>
                                     <div className="col-sm">
                                         <label className="form-check-label">
-                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasS" value="S" />
+                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasS" value="S"
+                                                checked={talla === 'S'}
+                                                onChange={(e) => setTalla(e.target.value)} />
                                 S</label>
                                     </div>
                                     <div className="col-sm">
                                         <label className="form-check-label">
-                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasM" value="M" />
+                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasM" value="M"
+                                                checked={talla === 'M'}
+                                                onChange={(e) => setTalla(e.target.value)} />
                                 M</label>
                                     </div>
                                     <div className="col-sm">
                                         <label className="form-check-label">
-                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasL" value="L" />
+                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasL" value="L"
+                                                checked={talla === 'L'}
+                                                onChange={(e) => setTalla(e.target.value)} />
                                 L</label>
                                     </div>
                                     <div className="col-sm">
                                         <label className="form-check-label">
-                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasXL" value="XL" />
+                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasXL" value="XL"
+                                                checked={talla === 'XL'}
+                                                onChange={(e) => setTalla(e.target.value)} />
                                 XL</label>
-                                    </div>
-                                    <div className="col-sm">
-                                        <label className="form-check-label">
-                                            <input className="form-check-input radio-inline" type="radio" name="radioTallas" id="radioTallasXXL" value="XXL" />
-                                XXL</label>
                                     </div>
                                 </div>
                                 {producto.cantidadStokL > 0 && <div className="cantidadProducto">
                                     <span>Cantidad:</span>
                                     <select value={cantidad} onChange={(event) => setCantidad(event.target.value)}>
-                                        {[...Array(producto.cantidadStokL).keys()].map(
-                                            (x) => (
-                                                <option key={x + 1} value={x + 1}>
-                                                    {x + 1}
-                                                </option>
+                                        {
+                                            [...Array(getStock(producto)).keys()].map(
+                                                (x) => (
+                                                    <option key={x + 1} value={x + 1}>
+                                                        {x + 1}
+                                                    </option>
+                                                )
                                             )
-                                        )}
+                                        }
                                     </select>
                                 </div>
                                 }
