@@ -1,6 +1,6 @@
 import axios from "axios"
 import Cookie from "js-cookie";
-import { ANHADIR_ITEM_AL_CARRITO, ELIMINAR_ITEM_DEL_CARRITO, CARRITO_GUARDAR_ENVIO, CARRITO_GUARDAR_PAGO } from "../constants/carritoConstantes";
+import { ANHADIR_ITEM_AL_CARRITO, ELIMINAR_ITEM_DEL_CARRITO, CARRITO_GUARDAR_ENVIO, CARRITO_GUARDAR_PAGO, VACIAR_CARRITO } from "../constants/carritoConstantes";
 
 const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getState) => {
     try {
@@ -38,6 +38,13 @@ const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getSt
     }
 }
 
+const vaciarCarrito = () => (dispatch, getState) => {
+    dispatch({ type: VACIAR_CARRITO });
+
+    /* COOKIES */
+    Cookie.remove("carritoItems");
+}
+
 const eliminarDelCarrito = (productoId) => (dispatch, getState) => {
     dispatch({ type: ELIMINAR_ITEM_DEL_CARRITO, payload: productoId });
 
@@ -54,4 +61,4 @@ const guardarPago = (data) => (dispatch) => {
     dispatch({ type: CARRITO_GUARDAR_PAGO, payload: data });
 }
 
-export { anhadirAlCarrito, eliminarDelCarrito, guardarEnvio, guardarPago }
+export { anhadirAlCarrito, eliminarDelCarrito, guardarEnvio, guardarPago, vaciarCarrito }

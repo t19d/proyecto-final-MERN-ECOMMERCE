@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutPasos from '../components/CheckoutPasos';
+import { vaciarCarrito } from '../actions/carritoAcciones';
 
 function FinalizarPedidoScreen(props) {
     const carrito = useSelector(state => state.carrito);
@@ -26,6 +27,7 @@ function FinalizarPedidoScreen(props) {
     }, []);
 
     const realizarPedidoHandler = () => {
+        dispatch(vaciarCarrito());
         props.history.push("/perfil/pedidos");
     }
 

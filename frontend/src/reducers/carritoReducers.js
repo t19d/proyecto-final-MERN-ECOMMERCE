@@ -1,4 +1,4 @@
-import { ANHADIR_ITEM_AL_CARRITO, CARRITO_GUARDAR_ENVIO, CARRITO_GUARDAR_PAGO, ELIMINAR_ITEM_DEL_CARRITO } from "../constants/carritoConstantes";
+import { ANHADIR_ITEM_AL_CARRITO, CARRITO_GUARDAR_ENVIO, CARRITO_GUARDAR_PAGO, ELIMINAR_ITEM_DEL_CARRITO, VACIAR_CARRITO } from "../constants/carritoConstantes";
 
 function carritoReducer(state = { carritoItems: [], envio: {}, pago: {} }, action) {
     switch (action.type) {
@@ -18,6 +18,8 @@ function carritoReducer(state = { carritoItems: [], envio: {}, pago: {} }, actio
             return { ...state, envio: action.payload }
         case CARRITO_GUARDAR_PAGO:
             return { ...state, pago: action.payload }
+        case VACIAR_CARRITO:
+            return { ...state }
         default:
             return state;
     }
