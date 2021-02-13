@@ -65,7 +65,7 @@ function App() {
                               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 {usuarioInfo.isAdmin === true && <Link to="/manageproductos" className="dropdown-item"><span>MANAGE</span></Link>}
                                 <Link to="/perfil" className="dropdown-item"><span>PERFIL</span></Link>
-                                <Link to="/perfil/pedidos" className="dropdown-item"><span>PEDIDOS</span></Link>
+                                <Link to="/pedidos" className="dropdown-item"><span>PEDIDOS</span></Link>
                                 <Link to="#cerrarsesion" className="dropdown-item" onClick={cerrarSesionHandler}>CERRAR SESIÓN</Link>
                               </div>
                             </li>

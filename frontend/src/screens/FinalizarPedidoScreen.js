@@ -28,7 +28,7 @@ function FinalizarPedidoScreen(props) {
 
     const realizarPedidoHandler = () => {
         dispatch(vaciarCarrito());
-        props.history.push("/perfil/pedidos");
+        props.history.push("/pedidos");
     }
 
     return (
