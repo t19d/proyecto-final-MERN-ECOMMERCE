@@ -24,7 +24,7 @@ function InicioSesionScreen(props) {
         return () => {
             //
         };
-    }, [usuarioInfo]);
+    }, [props.history, redirect, usuarioInfo]);
 
     return (
         <div className="text-center container-sm" onSubmit={submitHandler}>
