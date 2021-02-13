@@ -12,7 +12,7 @@ const anhadirAlCarrito = (productoId, cantidad) => async (dispatch, getState) =>
                 nombre: data.nombre,
                 miniatura: data.miniatura,
                 precio: data.precio,
-                cantidadStokL: data.cantidadStokL,
+                cantidadStockL: data.cantidadStockL,
                 cantidad
             }
         });

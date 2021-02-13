@@ -8,11 +8,11 @@ const productoSchema = new mongoose.Schema({
     descripcion: { type: String, required: true},
     imagenes: { type: Array, required: true},
     categorias: { type: Array, required: true},
-    cantidadStokXS: { type: Number, required: true},
-    cantidadStokS: { type: Number, required: true},
-    cantidadStokM: { type: Number, required: true},
-    cantidadStokL: { type: Number, required: true},
-    cantidadStokXL: { type: Number, required: true},
+    cantidadStockXS: { type: Number, required: true},
+    cantidadStockS: { type: Number, required: true},
+    cantidadStockM: { type: Number, required: true},
+    cantidadStockL: { type: Number, required: true},
+    cantidadStockXL: { type: Number, required: true},
 });
 
 const productoModelo = mongoose.model("Producto", productoSchema);

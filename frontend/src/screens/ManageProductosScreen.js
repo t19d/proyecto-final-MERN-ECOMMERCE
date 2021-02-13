@@ -15,11 +15,11 @@ function ManageProductosScreen(props) {
     const [descripcion, setDescripcion] = useState('');
     const [imagenes, setImagenes] = useState('');
     const [categorias, setCategorias] = useState('');
-    const [cantidadStokXS, setCantidadStokXS] = useState('');
-    const [cantidadStokS, setCantidadStokS] = useState('');
-    const [cantidadStokM, setCantidadStokM] = useState('');
-    const [cantidadStokL, setCantidadStokL] = useState('');
-    const [cantidadStokXL, setCantidadStokXL] = useState('');
+    const [cantidadStockXS, setCantidadStockXS] = useState('');
+    const [cantidadStockS, setCantidadStockS] = useState('');
+    const [cantidadStockM, setCantidadStockM] = useState('');
+    const [cantidadStockL, setCantidadStockL] = useState('');
+    const [cantidadStockXL, setCantidadStockXL] = useState('');
 
     const listaProductos = useSelector(state => state.listaProductos);
     const { loading, productos, error } = listaProductos;
@@ -34,11 +34,11 @@ function ManageProductosScreen(props) {
         setDescripcion(producto.descripcion);
         setImagenes(producto.imagenes);
         setCategorias(producto.categorias);
-        setCantidadStokXS(producto.cantidadStokXS);
-        setCantidadStokS(producto.cantidadStokS);
-        setCantidadStokM(producto.cantidadStokM);
-        setCantidadStokL(producto.cantidadStokL);
-        setCantidadStokXL(producto.cantidadStokXL);
+        setCantidadStockXS(producto.cantidadStockXS);
+        setCantidadStockS(producto.cantidadStockS);
+        setCantidadStockM(producto.cantidadStockM);
+        setCantidadStockL(producto.cantidadStockL);
+        setCantidadStockXL(producto.cantidadStockXL);
     }
 
     const productoGuardado = useSelector(state => state.productoGuardado);
@@ -47,7 +47,7 @@ function ManageProductosScreen(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(guardarProducto({ _id: id, nombre, miniatura, precio, imgDescripcion, descripcion, imagenes, categorias, cantidadStokXS, cantidadStokS, cantidadStokM, cantidadStokL, cantidadStokXL }));
+        dispatch(guardarProducto({ _id: id, nombre, miniatura, precio, imgDescripcion, descripcion, imagenes, categorias, cantidadStockXS, cantidadStockS, cantidadStockM, cantidadStockL, cantidadStockXL }));
     };
 
 
@@ -88,11 +88,11 @@ function ManageProductosScreen(props) {
                         {/* Hacer un split de las imágenes y categorías con ! */}
                         <textarea className="form-control" name="imagenes" placeholder="Rutas de las imágenes (separadas por ',')" value={imagenes} autoFocus="" onChange={(e) => setImagenes(e.target.value.split(","))} />
                         <textarea className="form-control" name="categorias" placeholder="Categorías (separadas por ',')" value={categorias} autoFocus="" onChange={(e) => setCategorias(e.target.value.split(","))} />
-                        <input className="form-control" type="number" name="cantidadStokXS" placeholder="Cantidad stok tallas XS" value={cantidadStokXS} autoFocus="" onChange={(e) => setCantidadStokXS(e.target.value)} />
-                        <input className="form-control" type="number" name="cantidadStokS" placeholder="Cantidad stok tallas S" value={cantidadStokS} onChange={(e) => setCantidadStokS(e.target.value)} />
-                        <input className="form-control" type="number" name="cantidadStokM" placeholder="Cantidad stok tallas M" value={cantidadStokM} onChange={(e) => setCantidadStokM(e.target.value)} />
-                        <input className="form-control" type="number" name="cantidadStokL" placeholder="Cantidad stok tallas L" value={cantidadStokL} onChange={(e) => setCantidadStokL(e.target.value)} />
-                        <input className="form-control" type="number" name="cantidadStokXL" placeholder="Cantidad stok tallas XL" value={cantidadStokXL} onChange={(e) => setCantidadStokXL(e.target.value)} />
+                        <input className="form-control" type="number" name="cantidadStockXS" placeholder="Cantidad stok tallas XS" value={cantidadStockXS} autoFocus="" onChange={(e) => setCantidadStockXS(e.target.value)} />
+                        <input className="form-control" type="number" name="cantidadStockS" placeholder="Cantidad stok tallas S" value={cantidadStockS} onChange={(e) => setCantidadStockS(e.target.value)} />
+                        <input className="form-control" type="number" name="cantidadStockM" placeholder="Cantidad stok tallas M" value={cantidadStockM} onChange={(e) => setCantidadStockM(e.target.value)} />
+                        <input className="form-control" type="number" name="cantidadStockL" placeholder="Cantidad stok tallas L" value={cantidadStockL} onChange={(e) => setCantidadStockL(e.target.value)} />
+                        <input className="form-control" type="number" name="cantidadStockXL" placeholder="Cantidad stok tallas XL" value={cantidadStockXL} onChange={(e) => setCantidadStockXL(e.target.value)} />
 
                         <button className="btn btn-lg btn-primary btn-block" type="submit">{id ? "Editar" : "Crear"}</button>
                         <button className="btn btn-lg btn-secondary btn-block" onClick={() => setModalVisible(false)} type="submit">Cerrar</button>
@@ -125,11 +125,11 @@ function ManageProductosScreen(props) {
                                     <td>{producto.nombre}</td>
                                     <td><img className="img-thumbnail" src={producto.miniatura} /></td>
                                     <td>{producto.precio}</td>
-                                    <td>{producto.cantidadStokXS}</td>
-                                    <td>{producto.cantidadStokS}</td>
-                                    <td>{producto.cantidadStokM}</td>
-                                    <td>{producto.cantidadStokL}</td>
-                                    <td>{producto.cantidadStokXL}</td>
+                                    <td>{producto.cantidadStockXS}</td>
+                                    <td>{producto.cantidadStockS}</td>
+                                    <td>{producto.cantidadStockM}</td>
+                                    <td>{producto.cantidadStockL}</td>
+                                    <td>{producto.cantidadStockXL}</td>
                                     <td>
                                         <button
                                             type="button"

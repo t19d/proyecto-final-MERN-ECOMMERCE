@@ -82,7 +82,7 @@ function FinalizarPedidoScreen(props) {
                                                             </Link>
                                                         </td>
                                                         {
-                                                            item.cantidadStokL === 0 ?
+                                                            item.cantidadStockL === 0 ?
                                                                 <td>Sin stock</td>
                                                                 :
                                                                 <td>Disponible</td>

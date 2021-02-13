@@ -9,11 +9,11 @@ export default {
             descripcion: "Equipación oficial del Club Pastoriza Balompié. Lleva tus colores siempre con esta equipación local de la temporada 2020/2021. 100% polyester reciclado. Transpirable 80%. Se puede usar para practicar tus deportes favoritos e, incluso, para llevarla en tu día a día. Es una réplica idéntica al la camiseta usada por los jugadores y las jugadoras del Club Pastoriza Balompié.",
             imagenes: [],
             categorias: ["equipacion", "2021", "primera"],
-            cantidadStokXS: 60,
-            cantidadStokS: 34,
-            cantidadStokM: 67,
-            cantidadStokL: 50,
-            cantidadStokXL: 5
+            cantidadStockXS: 60,
+            cantidadStockS: 34,
+            cantidadStockM: 67,
+            cantidadStockL: 50,
+            cantidadStockXL: 5
         },
         {
             _id: "2-equipacion-adulto-20-21-club-pastoriza-balompie",
@@ -24,11 +24,11 @@ export default {
             descripcion: "Equipación oficial del Club Pastoriza Balompié. Lleva tus colores siempre con esta equipación local de la temporada 2020/2021. 100% polyester reciclado. Transpirable 80%. Se puede usar para practicar tus deportes favoritos e, incluso, para llevarla en tu día a día. Es una réplica idéntica al la camiseta usada por los jugadores y las jugadoras del Club Pastoriza Balompié.",
             imagenes: [],
             categorias: ["equipacion", "2021", "segunda"],
-            cantidadStokXS: 32,
-            cantidadStokS: 35,
-            cantidadStokM: 65,
-            cantidadStokL: 75,
-            cantidadStokXL: 76
+            cantidadStockXS: 32,
+            cantidadStockS: 35,
+            cantidadStockM: 65,
+            cantidadStockL: 75,
+            cantidadStockXL: 76
         },
         {
             _id: "prepartido-equipacion-adulto-20-21-club-pastoriza-balompie",
@@ -39,11 +39,11 @@ export default {
             descripcion: "Equipación oficial del Club Pastoriza Balompié. Lleva tus colores siempre con esta equipación local de la temporada 2020/2021. 100% polyester reciclado. Transpirable 80%. Se puede usar para practicar tus deportes favoritos e, incluso, para llevarla en tu día a día. Es una réplica idéntica al la camiseta usada por los jugadores y las jugadoras del Club Pastoriza Balompié.",
             imagenes: [],
             categorias: ["equipacion", "2021", "calentamiento", "oferta"],
-            cantidadStokXS: 4,
-            cantidadStokS: 3,
-            cantidadStokM: 7,
-            cantidadStokL: 9,
-            cantidadStokXL: 5
+            cantidadStockXS: 4,
+            cantidadStockS: 3,
+            cantidadStockM: 7,
+            cantidadStockL: 9,
+            cantidadStockXL: 5
         }
     ]
 };

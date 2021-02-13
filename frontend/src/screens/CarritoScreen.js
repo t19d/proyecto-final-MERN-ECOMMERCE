@@ -69,7 +69,7 @@ function CarritoScreen(props) {
                                                             </Link>
                                                         </td>
                                                         {
-                                                            item.cantidadStokL === 0 ?
+                                                            item.cantidadStockL === 0 ?
                                                                 <td>Sin stock</td>
                                                                 :
                                                                 <td>Disponible</td>
@@ -77,7 +77,7 @@ function CarritoScreen(props) {
                                                         {/* Cantidad */}
                                                         <td>
                                                             <select value={item.cantidad} onChange={(event) => dispatch(anhadirAlCarrito(item.producto, event.target.value))}>
-                                                                {[...Array(item.cantidadStokL).keys()].map(
+                                                                {[...Array(item.cantidadStockL).keys()].map(
                                                                     (x) => (
                                                                         <option key={x + 1} value={x + 1}>
                                                                             {x + 1}

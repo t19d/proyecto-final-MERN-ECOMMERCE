@@ -29,11 +29,11 @@ router.post("/", isAuth, isAdmin, async (req, res) => {
         descripcion: req.body.descripcion,
         imagenes: req.body.imagenes,
         categorias: req.body.categorias,
-        cantidadStokXS: req.body.cantidadStokXS,
-        cantidadStokS: req.body.cantidadStokS,
-        cantidadStokM: req.body.cantidadStokM,
-        cantidadStokL: req.body.cantidadStokL,
-        cantidadStokXL: req.body.cantidadStokXL,
+        cantidadStockXS: req.body.cantidadStockXS,
+        cantidadStockS: req.body.cantidadStockS,
+        cantidadStockM: req.body.cantidadStockM,
+        cantidadStockL: req.body.cantidadStockL,
+        cantidadStockXL: req.body.cantidadStockXL,
     });
     const newProducto = await producto.save();
     if (newProducto) {
@@ -54,11 +54,11 @@ router.put("/:id", isAuth, isAdmin, async (req, res) => {
         producto.descripcion = req.body.descripcion;
         producto.imagenes = req.body.imagenes;
         producto.categorias = req.body.categorias;
-        producto.cantidadStokXS = req.body.cantidadStokXS;
-        producto.cantidadStokS = req.body.cantidadStokS;
-        producto.cantidadStokM = req.body.cantidadStokM;
-        producto.cantidadStokL = req.body.cantidadStokL;
-        producto.cantidadStokXL = req.body.cantidadStokXL;
+        producto.cantidadStockXS = req.body.cantidadStockXS;
+        producto.cantidadStockS = req.body.cantidadStockS;
+        producto.cantidadStockM = req.body.cantidadStockM;
+        producto.cantidadStockL = req.body.cantidadStockL;
+        producto.cantidadStockXL = req.body.cantidadStockXL;
 
         const updatedProducto = await producto.save();
         if (updatedProducto) {

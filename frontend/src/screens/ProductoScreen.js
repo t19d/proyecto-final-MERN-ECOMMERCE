@@ -21,19 +21,19 @@ function ProductoScreen(props) {
         var cantidadStock = 0;
         switch (talla) {
             case "XS":
-                cantidadStock = producto.cantidadStokXS;
+                cantidadStock = producto.cantidadStockXS;
                 break;
             case "S":
-                cantidadStock = producto.cantidadStokS;
+                cantidadStock = producto.cantidadStockS;
                 break;
             case "M":
-                cantidadStock = producto.cantidadStokM;
+                cantidadStock = producto.cantidadStockM;
                 break;
             case "L":
-                cantidadStock = producto.cantidadStokL;
+                cantidadStock = producto.cantidadStockL;
                 break;
             case "XL":
-                cantidadStock = producto.cantidadStokXL;
+                cantidadStock = producto.cantidadStockXL;
                 break;
 
             default:
@@ -121,7 +121,7 @@ function ProductoScreen(props) {
                                 XL</label>
                                     </div>
                                 </div>
-                                {producto.cantidadStokL > 0 && <div className="cantidadProducto">
+                                {getStock(producto) > 0 && <div className="cantidadProducto">
                                     <span>Cantidad:</span>
                                     <select value={cantidad} onChange={(event) => setCantidad(event.target.value)}>
                                         {
@@ -136,7 +136,7 @@ function ProductoScreen(props) {
                                     </select>
                                 </div>
                                 }
-                                {producto.cantidadStokL > 0 ?
+                                {getStock(producto) > 0 ?
                                     <button onClick={handleAnhadirCarrito} type="button" className="btn btn-primary btn-lg btn-block botonAnhadirCarrito">
                                         <span>
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-cart-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
