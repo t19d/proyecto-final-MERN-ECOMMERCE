@@ -9,7 +9,6 @@ function ModaScreen(props) {
     const { productos, loading, error } = listaProductos;
     const dispatch = useDispatch();
     const [orden, setOrden] = useState('mayMen');
-    const listaOrdenadaProductos = productos;
 
     const isRopa = (categorias) => {
         var respuesta = false;
@@ -24,9 +23,9 @@ function ModaScreen(props) {
     const ordenarPor = (order) => {
         switch (order) {
             case "menMey":
-                return listaOrdenadaProductos.sort((productoA, productoB) => productoA.precio - productoB.precio);
+                return productos.sort((productoA, productoB) => productoA.precio - productoB.precio);
             case "mayMen":
-                return listaOrdenadaProductos.sort((productoA, productoB) => productoA.precio - productoB.precio).reverse();
+                return productos.sort((productoA, productoB) => productoA.precio - productoB.precio).reverse();
         }
     }
 
