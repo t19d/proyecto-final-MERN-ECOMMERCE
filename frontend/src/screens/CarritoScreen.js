@@ -10,10 +10,10 @@ function CarritoScreen(props) {
     const gastosEnvio = (subtotal >= 100) ? Number.parseFloat(0) : Number.parseFloat(6.99);
     const total = Number.parseFloat((subtotal + gastosEnvio).toFixed(2));
 
-    const productoId = props.match.params.id;
+    /*const productoId = props.match.params.id;
     const variablesProducto = props.location.search ? props.location.search.split("?")[1] : "cantidad=1-talla=XL";
     const cantidad = props.location.search ? Number(variablesProducto.split("-")[0].split("=")[1]) : 1;
-    const talla = props.location.search ? variablesProducto.split("-")[1].split("=")[1] : "XL";
+    const talla = props.location.search ? variablesProducto.split("-")[1].split("=")[1] : "XL";*/
     const dispatch = useDispatch();
     const eliminarDelCarritoHandler = (porductoEliminarId) => {
         dispatch(eliminarDelCarrito(porductoEliminarId));
@@ -21,9 +21,9 @@ function CarritoScreen(props) {
     console.log(carritoItems);
 
     useEffect(() => {
-        if (productoId) {
+        /*if (productoId) {
             dispatch(anhadirAlCarrito(productoId, cantidad, talla));
-        }
+        }*/
         return () => {
         }
     }, []);
@@ -81,7 +81,7 @@ function CarritoScreen(props) {
                                                         <td className="text-right">{item.talla}</td>
                                                         {/* Cantidad */}
                                                         <td>
-                                                            <select value={item.cantidad} onChange={(event) => dispatch(anhadirAlCarrito(item.producto, event.target.value))}>
+                                                            <select value={item.cantidad} onChange={(event) => dispatch(anhadirAlCarrito(item.producto, event.target.value, item.talla))}>
                                                                 {[...Array(item.cantidadStock).keys()].map(
                                                                     (x) => (
                                                                         <option key={x + 1} value={x + 1}>
@@ -108,10 +108,12 @@ function CarritoScreen(props) {
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td>SUBTOTAL ({carritoItems.reduce((a, c) => a + c.cantidad, 0)} productos)</td>
+                                                <td></td>
+                                                <td>SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
                                                 <td className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -120,6 +122,7 @@ function CarritoScreen(props) {
                                                 <td className="text-right">{gastosEnvio} €</td>
                                             </tr>
                                             <tr>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

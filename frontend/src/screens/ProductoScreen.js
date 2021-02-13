@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { anhadirAlCarrito } from '../actions/carritoAcciones';
 import { hacerProductoDetalles } from '../actions/productoAcciones';
 
 function ProductoScreen(props) {
@@ -50,7 +51,9 @@ function ProductoScreen(props) {
     */}
 
     const handleAnhadirCarrito = () => {
-        props.history.push("/carrito/" + props.match.params.id + "?cantidad=" + cantidad + "-talla=" + talla);
+        dispatch(anhadirAlCarrito(producto._id, cantidad, talla));
+        //props.history.push("/carrito/" + props.match.params.id + "?cantidad=" + cantidad + "-talla=" + talla);
+        props.history.push("/carrito");
     }
 
     return (
