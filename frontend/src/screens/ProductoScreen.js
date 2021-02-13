@@ -86,7 +86,7 @@ function ProductoScreen(props) {
                             </div>
                             <div className="col-md">
                                 <h2>{producto.nombre}</h2>
-                                {(producto.precioOferta < producto.precio) ? <h2 className="font-weight-bold">{producto.precioOferta} <span className="precioAntiguoOferta">{producto.precio}</span></h2> : <h2 className="font-weight-bold">{producto.precio}</h2>}
+                                {(producto.precioOferta < producto.precio) ? <h2 className="font-weight-bold">{producto.precioOferta}€ <span className="precioAntiguoOferta">{producto.precio}€</span></h2> : <h2 className="font-weight-bold">{producto.precio}</h2>}
                                 <div className="form-group row filaTallas">
                                     <div className="col-sm">
                                         <label className="form-check-label">
