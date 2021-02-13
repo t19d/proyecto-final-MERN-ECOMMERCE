@@ -38,7 +38,7 @@ function EquipacionesScreen(props) {
                         productos.map(
                             producto =>
                                 isEquipacion(producto.categorias) && (
-                                    <li class="col-md-4 col-sm-6 col-xs-12">
+                                    <li className="col-md-4 col-sm-6 col-xs-12">
                                         <Link to={'/productos/' + producto._id} className="col-sm itemProductos" key={producto._id}>
                                             <div className="card text-center">
                                                 <div className="card-body">
