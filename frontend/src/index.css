@@ -26,6 +26,13 @@ code {
   padding-right: 1em;
 }
 
+ul.menuUsuario{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: aliceblue 1px solid;
+}
+
 /* BUSCADOR CABECERA */
 
 #header_escudo {

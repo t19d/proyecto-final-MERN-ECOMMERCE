@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import HomeScreen from './screens/HomeScreen';
 import EquipacionesScreen from './screens/EquipacionesScreen';
 import ProductoScreen from './screens/ProductoScreen';
 import CarritoScreen from './screens/CarritoScreen';
 import InicioSesionScreen from './screens/InicioSesionScreen';
-import { useSelector } from 'react-redux';
 import RegistroScreen from './screens/RegistroScreen';
 import ManageProductosScreen from './screens/ManageProductosScreen';
 import EnvioScreen from './screens/EnvioScreen';
@@ -18,11 +18,16 @@ import BufandasScreen from './screens/BufandasScreen';
 import AccesoriosScreen from './screens/AccesoriosScreen';
 import OutletScreen from './screens/OutletScreen';
 import PerfilScreen from './screens/PerfilScreen';
+import { cerrarSesion } from './actions/usuarioAcciones';
 
 function App() {
 
   const usuarioInicioSesion = useSelector(state => state.usuarioInicioSesion);
   const { usuarioInfo } = usuarioInicioSesion;
+  const dispatch = useDispatch();
+  const cerrarSesionHandler = () => {
+    dispatch(cerrarSesion());
+  };
 
   return (
     <BrowserRouter>
@@ -45,24 +50,40 @@ function App() {
               <div className="col-6">
                 <div className="row float-right align-items-center">
                   <div id="header_superior_iniciar_sesion" className="text-white">
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" className="bi bi-person-circle"
-                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                      <path fillRule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                      <path fillRule="evenodd"
-                        d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-                    </svg>
+
                     {
                       usuarioInfo ?
-                        <span>
-                          <Link to="/perfil" className="navbar-link text-white">{usuarioInfo.nombre}</Link>
-                          {usuarioInfo.isAdmin === true && <Link to="/manageproductos">MANAGE</Link>}
-                        </span>
+                        (
+                          <ul className="menuUsuario">
+                            <li className="nav-item dropdown">
+                              <span className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span>
+                                  {usuarioInfo.nombre}
+                                </span>
+                              </span>
+                              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                {usuarioInfo.isAdmin === true && <Link to="/manageproductos" className="dropdown-item"><span>MANAGE</span></Link>}
+                                <Link to="/perfil" className="dropdown-item"><span>PERFIL</span></Link>
+                                <Link to="/perfil/pedidos" className="dropdown-item"><span>PEDIDOS</span></Link>
+                                <Link to="#cerrarsesion" className="dropdown-item" onClick={cerrarSesionHandler}>CERRAR SESIÓN</Link>
+                              </div>
+                            </li>
+                          </ul>
+                        )
                         :
-                        <Link to="/iniciosesion" className="navbar-link text-white">
-                          <span>Iniciar sesión / Registrarse</span>
-                        </Link>
+                        (<Link to="/iniciosesion" className="navbar-link text-white">
+                          <span>
+                            <svg width="1.5em" height="1em" viewBox="0 0 16 16" className="bi bi-person-circle"
+                              fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                              <path fillRule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                              <path fillRule="evenodd"
+                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                            </svg>Iniciar sesión / Registrarse
+                            </span>
+                        </Link>)
                     }
                   </div>
                   <form className="form-inline">
