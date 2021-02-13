@@ -25,6 +25,7 @@ const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getSt
                 nombre: data.nombre,
                 miniatura: data.miniatura,
                 precio: data.precio,
+                precioOferta: data.precioOferta,
                 cantidadStock: cantidadStock,
                 cantidad: cantidad,
                 talla: talla

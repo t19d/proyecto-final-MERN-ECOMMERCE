@@ -54,8 +54,8 @@ function EquipacionesScreen(props) {
                         ordenarPor(orden).map(
                             producto =>
                                 isEquipacion(producto.categorias) && (
-                                    <li className="col-md-4 col-sm-6 col-xs-12">
-                                        <Link to={'/productos/' + producto._id} className="col-sm itemProductos" key={producto._id}>
+                                    <li className="col-md-4 col-sm-6 col-xs-12" key={producto._id}>
+                                        <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
                                             <div className="card text-center">
                                                 <div className="card-body">
                                                     <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />

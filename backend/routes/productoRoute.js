@@ -25,6 +25,7 @@ router.post("/", isAuth, isAdmin, async (req, res) => {
         nombre: req.body.nombre,
         miniatura: req.body.miniatura,
         precio: req.body.precio,
+        precioOferta: req.body.precioOferta,
         imgDescripcion: req.body.imgDescripcion,
         descripcion: req.body.descripcion,
         imagenes: req.body.imagenes,
@@ -50,6 +51,7 @@ router.put("/:id", isAuth, isAdmin, async (req, res) => {
         producto.nombre = req.body.nombre;
         producto.miniatura = req.body.miniatura;
         producto.precio = req.body.precio;
+        producto.precioOferta = req.body.precioOferta;
         producto.imgDescripcion = req.body.imgDescripcion;
         producto.descripcion = req.body.descripcion;
         producto.imagenes = req.body.imagenes;
