@@ -196,12 +196,14 @@ ul.panelOpcionesPerfil {
 }
 
 /* Para que tengan la misma height */
+
 ul.panelOpcionesPerfil>li {
   padding: 2em;
   display: flex;
 }
 
 /* Card de opciones */
+
 ul.panelOpcionesPerfil>li>div {
   border: black 1px solid;
   width: 100%;
@@ -211,6 +213,7 @@ ul.panelOpcionesPerfil>li>div {
 ul.panelOpcionesPerfil>li>div>* {
   padding-right: 2rem;
 }
+
 ul.panelOpcionesPerfil>li>div>*:first-child {
   padding-top: 1rem;
   padding-left: 2rem;
@@ -218,6 +221,7 @@ ul.panelOpcionesPerfil>li>div>*:first-child {
   color: #f8f8f8;*/
   font-weight: bold;
 }
+
 ul.panelOpcionesPerfil>li>div>*:last-child {
   padding-bottom: 1rem;
   padding-left: 3rem;
@@ -230,13 +234,47 @@ ul.panelOpcionesPerfil>li>div>ul {
 ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
   color: #4b4b4b;
 }
+
+/* -------------------------------------------------------------------------------------- */
+
+/* PEDIDOS */
+
+.listaPedidos {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
+.itemPedidos {
+  color: black;
+}
+
+.itemPedidos:hover {
+  text-decoration: none;
+  color: black;
+}
+
+
+.itemPedidos:hover>div {
+  box-shadow: 0px 15px 26px #00000010;
+  -webkit-transition: all .9s ease-in;
+  -moz-transition: all .9s ease-in;
+  -o-transition: all .9s ease-in;
+  -ms-transition: all .9s ease-in;
+  transition: all .9s ease-in;
+}
+
+.itemPedidosListaProductos{
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
 /* -------------------------------------------------------------------------------------- */
 
 /* TITULO PÁGINA */
-.tituloPagina{
+
+.tituloPagina {
   margin: 1em;
 }
-
 
 /* -------------------------------------------------------------------------------------- */
 
