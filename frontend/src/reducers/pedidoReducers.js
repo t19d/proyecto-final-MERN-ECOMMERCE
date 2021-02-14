@@ -42,24 +42,24 @@ export const pedidoDetallesReducer = (state = { loading: true }, action) => {
     }
 };
 
-export const listaPedidosUsuarioReducer = (state = { orders: [] }, action) => {
+export const listaPedidosUsuarioReducer = (state = { pedidos: [] }, action) => {
     switch (action.type) {
         case LISTA_PEDIDOS_USUARIO_REQUEST:
             return { loading: true };
         case LISTA_PEDIDOS_USUARIO_SUCCESS:
-            return { loading: false, orders: action.payload };
+            return { loading: false, pedidos: action.payload };
         case LISTA_PEDIDOS_USUARIO_FAIL:
             return { loading: false, error: action.payload };
         default:
             return state;
     }
 };
-export const listaPedidosReducer = (state = { orders: [] }, action) => {
+export const listaPedidosReducer = (state = { pedidos: [] }, action) => {
     switch (action.type) {
         case LISTA_PEDIDOS_REQUEST:
             return { loading: true };
         case LISTA_PEDIDOS_SUCCESS:
-            return { loading: false, orders: action.payload };
+            return { loading: false, pedidos: action.payload };
         case LISTA_PEDIDOS_FAIL:
             return { loading: false, error: action.payload };
         default:
