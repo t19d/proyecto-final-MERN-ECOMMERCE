@@ -19,7 +19,7 @@ export const pedidoCreadoReducer = (state = {}, action) => {
         case PEDIDO_CREADO_REQUEST:
             return { loading: true };
         case PEDIDO_CREADO_SUCCESS:
-            return { loading: false, success: true, order: action.payload };
+            return { loading: false, success: true, pedido: action.payload };
         case PEDIDO_CREADO_FAIL:
             return { loading: false, error: action.payload };
         case PEDIDO_CREADO_RESET:
@@ -34,7 +34,7 @@ export const pedidoDetallesReducer = (state = { loading: true }, action) => {
         case PEDIDO_DETALLES_REQUEST:
             return { loading: true };
         case PEDIDO_DETALLES_SUCCESS:
-            return { loading: false, order: action.payload };
+            return { loading: false, pedido: action.payload };
         case PEDIDO_DETALLES_FAIL:
             return { loading: false, error: action.payload };
         default:

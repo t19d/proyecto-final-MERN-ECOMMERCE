@@ -52,20 +52,20 @@ router.get('/:id', isAuth, async (req, res) => {
     '/:id/pay',
     isAuth,
     expressAsyncHandler(async (req, res) => {
-        const order = await Order.findById(req.params.id);
-        if (order) {
-            order.isPaid = true;
-            order.paidAt = Date.now();
-            order.paymentResult = {
+        const pedido = await pedido.findById(req.params.id);
+        if (pedido) {
+            pedido.isPaid = true;
+            pedido.paidAt = Date.now();
+            pedido.paymentResult = {
                 id: req.body.id,
                 status: req.body.status,
                 update_time: req.body.update_time,
                 email_address: req.body.email_address,
             };
-            const updatedOrder = await order.save();
-            res.send({ message: 'Order Paid', order: updatedOrder });
+            const updatedpedido = await pedido.save();
+            res.send({ message: 'pedido Paid', pedido: updatedpedido });
         } else {
-            res.status(404).send({ message: 'Order Not Found' });
+            res.status(404).send({ message: 'pedido Not Found' });
         }
     })
 );
@@ -75,12 +75,12 @@ router.delete(
     isAuth,
     isAdmin,
     expressAsyncHandler(async (req, res) => {
-        const order = await Order.findById(req.params.id);
-        if (order) {
-            const deleteOrder = await order.remove();
-            res.send({ message: 'Order Deleted', order: deleteOrder });
+        const pedido = await pedido.findById(req.params.id);
+        if (pedido) {
+            const deletepedido = await pedido.remove();
+            res.send({ message: 'pedido Deleted', pedido: deletepedido });
         } else {
-            res.status(404).send({ message: 'Order Not Found' });
+            res.status(404).send({ message: 'pedido Not Found' });
         }
     })
 );
@@ -90,15 +90,15 @@ router.put(
     isAuth,
     isAdmin,
     expressAsyncHandler(async (req, res) => {
-        const order = await Order.findById(req.params.id);
-        if (order) {
-            order.isDelivered = true;
-            order.deliveredAt = Date.now();
+        const pedido = await pedido.findById(req.params.id);
+        if (pedido) {
+            pedido.isDelivered = true;
+            pedido.deliveredAt = Date.now();
 
-            const updatedOrder = await order.save();
-            res.send({ message: 'Order Delivered', order: updatedOrder });
+            const updatedpedido = await pedido.save();
+            res.send({ message: 'pedido Delivered', pedido: updatedpedido });
         } else {
-            res.status(404).send({ message: 'Order Not Found' });
+            res.status(404).send({ message: 'pedido Not Found' });
         }
     })
 );*/
