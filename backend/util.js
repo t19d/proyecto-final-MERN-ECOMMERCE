@@ -25,7 +25,7 @@ const isAuth = (req, res, next) => {
             }
         });
     } else {
-        res.status.send({ message: 'No se ha proporcionado el token.' });
+        res.status(401).send({ message: 'No se ha proporcionado el token.' });
     }
 }
 
