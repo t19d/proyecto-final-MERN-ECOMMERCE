@@ -40,16 +40,6 @@ const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getSt
     }
 }
 
-const vaciarCarrito = () => (dispatch) => {
-    dispatch({ type: VACIAR_CARRITO });
-
-    /* COOKIES */
-    //Cookie.remove("carritoItems");
-    //Cookie.set("carritoItems", JSON.stringify(""));
-    /* localstorage */
-    localStorage.removeItem('carritoItems');
-}
-
 const eliminarDelCarrito = (productoId) => (dispatch, getState) => {
     dispatch({ type: ELIMINAR_ITEM_DEL_CARRITO, payload: productoId });
 
@@ -62,10 +52,12 @@ const eliminarDelCarrito = (productoId) => (dispatch, getState) => {
 
 const guardarEnvio = (data) => (dispatch) => {
     dispatch({ type: CARRITO_GUARDAR_ENVIO, payload: data });
+    /* localstorage */
+    localStorage.setItem('envio', JSON.stringify(data));
 }
 
 const guardarPago = (data) => (dispatch) => {
     dispatch({ type: CARRITO_GUARDAR_PAGO, payload: data });
 }
 
-export { anhadirAlCarrito, eliminarDelCarrito, guardarEnvio, guardarPago, vaciarCarrito }
+export { anhadirAlCarrito, eliminarDelCarrito, guardarEnvio, guardarPago }
