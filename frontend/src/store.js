@@ -1,20 +1,24 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
-import thunk from "redux-thunk";
-import Cookie from "js-cookie";
+import thunk from 'redux-thunk';
+import Cookie from 'js-cookie';
 import { carritoReducer } from './reducers/carritoReducers';
 import { listaProductosReducer, productoDetallesReducer, productoEliminadoReducer, productoGuardadoReducer } from './reducers/productoReducers';
 import { usuarioInicioSesionReducer, usuarioRegistroReducer } from './reducers/usuarioReducers';
+import { listaPedidosReducer, listaPedidosUsuarioReducer, pedidoCreadoReducer, pedidoDetallesReducer } from './reducers/pedidoReducers';
 
 /* COOKIES */
-//const carritoItems = Cookie.getJSON("carritoItems") || [];
-//const usuarioInfo = Cookie.getJSON("usuarioInfo") || null;
+//const carritoItems = Cookie.getJSON('carritoItems') || [];
+//const usuarioInfo = Cookie.getJSON('usuarioInfo') || null;
 
 /* localStorage */
-const usuarioInfo = JSON.parse(localStorage.getItem("usuarioInfo")) || null;
-const carritoItems = JSON.parse(localStorage.getItem("carritoItems")) || [];
+const usuarioInfo = JSON.parse(localStorage.getItem('usuarioInfo')) || null;
+const carrito = {
+    carritoItems: localStorage.getItem('carritoItems') ? JSON.parse(localStorage.getItem('carritoItems')) : [],
+    envio: localStorage.getItem('envio') ? JSON.parse(localStorage.getItem('envio')) : {},
+    pago: { metodoPago: 'PayPal' },
+};
 
-
-const initialState = { carrito: { carritoItems }, usuarioInicioSesion: { usuarioInfo } };
+const initialState = { carrito: carrito, usuarioInicioSesion: { usuarioInfo } };
 const reducer = combineReducers({
     listaProductos: listaProductosReducer,
     productoDetalles: productoDetallesReducer,
@@ -23,6 +27,10 @@ const reducer = combineReducers({
     carrito: carritoReducer,
     usuarioInicioSesion: usuarioInicioSesionReducer,
     usuarioRegistro: usuarioRegistroReducer,
+    pedidoCreado: pedidoCreadoReducer,
+    pedidoDetalles: pedidoDetallesReducer,
+    listaPedidosUsuario: listaPedidosUsuarioReducer,
+    listaPedidos: listaPedidosReducer,
 });
 
 {/* Usar herramienta de Chrome de Redux. */ }
