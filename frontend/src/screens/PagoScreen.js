@@ -19,7 +19,7 @@ function PagoScreen(props) {
         <div>
             <CheckoutPasos paso1 paso2 paso3></CheckoutPasos>
             <div className="text-center container-sm" onSubmit={submitHandler}>
-                <h1>Pago</h1>
+                <h1 className="text-center tituloPagina">Pago</h1>
                 <form className="formRegistro">
                     <input type="radio" name="metodoPago" id="metodoPago" value="Paypal" onChange={(e) => setMetodoPago(e.target.value)}></input>
                     <label htmlFor="metodoPago">Paypal</label>

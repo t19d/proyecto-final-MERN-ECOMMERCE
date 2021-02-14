@@ -27,8 +27,8 @@ function InicioSesionScreen(props) {
     }, [props.history, redirect, usuarioInfo]);
 
     return (
-        <div className="text-center container-sm" onSubmit={submitHandler}>
-            <h1>Iniciar sesión</h1>
+        <div className="text-center container" onSubmit={submitHandler}>
+            <h1 className="text-center tituloPagina">Iniciar sesión</h1>
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div>{error}</div>}
             <form className="formInicioSesion">

@@ -27,7 +27,7 @@ function EnvioScreen(props) {
         <div>
             <CheckoutPasos paso1 paso2></CheckoutPasos>
             <div className="text-center container-sm" onSubmit={submitHandler}>
-                <h1>Envío</h1>
+                <h1 className="text-center tituloPagina">Envío</h1>
                 <form className="formRegistro">
                     <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required="" autoFocus="" onChange={(e) => setNombre(e.target.value)} />
                     <input id="inputApellidos" className="form-control" type="text" name="apellidos" placeholder="Apellidos" required="" autoFocus="" onChange={(e) => setApellidos(e.target.value)} />

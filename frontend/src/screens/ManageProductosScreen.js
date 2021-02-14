@@ -70,10 +70,9 @@ function ManageProductosScreen(props) {
     }, [successGuardado, successEliminado]);
 
     return (
-        <div>
-
-            <div>
-                <h1>Manage Productos</h1>
+        <div className="container">
+            <div className="text-center">
+                <h1 className="tituloPagina">Editar productos</h1>
                 <button onClick={() => abrirModal({})}>Crear producto</button>
             </div>
             {modalVisible &&
@@ -147,8 +146,9 @@ function ManageProductosScreen(props) {
                                         <button
                                             type="button"
                                             className="small"
-                                            onClick={() => {eliminarHandler(producto)
-                                        }}
+                                            onClick={() => {
+                                                eliminarHandler(producto)
+                                            }}
                                         >Eliminar</button>
                                     </td>
                                 </tr>

@@ -29,10 +29,10 @@ function HomeScreen(props) {
     return (
         <section>
             <a href="/equipaciones"><img src="/images/recursos_web/Cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra" /></a>
-            {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-            {error && <div>{error}</div>}
             <div className="container">
-                <h1 className="text-center text-uppercase font-weight-bold">Equipaciones Oficiales</h1>
+                <h1 className="text-center tituloPagina">Equipaciones oficiales</h1>
+                {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
+                {error && <div>{error}</div>}
                 <ul className="row listaProductos">
                     {
                         productos.map(
@@ -46,7 +46,7 @@ function HomeScreen(props) {
                                                     <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
                                                     <h5 className="card-title">{producto.nombre}</h5>
                                                     {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
-                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>}
+                                                        <h5 className="card-title precioItem">{producto.precio} €</h5>}
                                                 </div>
                                             </div>
                                         </Link>

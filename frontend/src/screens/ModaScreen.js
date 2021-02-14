@@ -38,9 +38,10 @@ function ModaScreen(props) {
 
     return (
         <section>
+            <div className="container">
+            <h1 className="text-center tituloPagina">Moda</h1>
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div>{error}</div>}
-            <div className="container">
                 <div className="ordenarPorListaProductos">
                     <select id="ordenarPorProductos" value={orden} onChange={(e) => setOrden(e.target.value)}>
                         <option value="mayMen">Ordenar por precio: mayor a menor</option>

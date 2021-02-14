@@ -38,9 +38,10 @@ function EntrenamientoScreen(props) {
 
     return (
         <section>
-            {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-            {error && <div>{error}</div>}
             <div className="container">
+                <h1 className="text-center tituloPagina">Entrenamiento</h1>
+                {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
+                {error && <div>{error}</div>}
                 <div className="ordenarPorListaProductos">
                     <select id="ordenarPorProductos" value={orden} onChange={(e) => setOrden(e.target.value)}>
                         <option value="mayMen">Ordenar por precio: mayor a menor</option>
@@ -60,7 +61,7 @@ function EntrenamientoScreen(props) {
                                                     <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
                                                     <h5 className="card-title">{producto.nombre}</h5>
                                                     {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
-                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>}
+                                                        <h5 className="card-title precioItem">{producto.precio} €</h5>}
                                                 </div>
                                             </div>
                                         </Link>
