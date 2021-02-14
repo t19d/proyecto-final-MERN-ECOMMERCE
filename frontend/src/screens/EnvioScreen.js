@@ -1,26 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { guardarEnvio } from '../actions/carritoAcciones';
 import CheckoutPasos from '../components/CheckoutPasos';
 
 function EnvioScreen(props) {
-    const [nombre, setNombre] = useState('');
-    const [apellidos, setApellidos] = useState('');
-    const [dni, setDni] = useState('');
-    const [telefono, setTelefono] = useState('');
-    const [direccion, setDireccion] = useState('');
-    const [codigoPostal, setCodigoPostal] = useState('');
-    const [pais, setPais] = useState('');
-    const [provincia, setProvincia] = useState('');
-    const [email, setEmail] = useState('');
+
+    const usuarioInicioSesion = useSelector(state => state.usuarioInicioSesion);
+    const { usuarioInfo } = usuarioInicioSesion;
+
+    // Si no ha iniciado sesión, se envía
+    if (!usuarioInfo) {
+        props.history.push('/iniciosesion');
+    }
+
+    const carrito = useSelector(state => state.carrito);
+    const { carritoItems, envio } = carrito;
+
+    // Si el carrito está vacío, se envía
+    if (carritoItems.length === 0) {
+        props.history.push('/carrito');
+    }
+
+    const [nombre, setNombre] = useState((envio) ? envio.nombre : "");
+    const [apellidos, setApellidos] = useState((envio) ? envio.apellidos : "");
+    const [dni, setDni] = useState((envio) ? envio.dni : "");
+    const [telefono, setTelefono] = useState((envio) ? envio.telefono : "");
+    const [direccion, setDireccion] = useState((envio) ? envio.direccion : "");
+    const [codigoPostal, setCodigoPostal] = useState((envio) ? envio.codigoPostal : "");
+    const [pais, setPais] = useState((envio) ? envio.pais : "");
+    const [provincia, setProvincia] = useState((envio) ? envio.provincia : "");
+    const [email, setEmail] = useState((envio) ? envio.email : "");
 
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(guardarEnvio({ nombre, apellidos, dni, telefono, direccion, codigoPostal, pais, provincia, email }));
-        props.history.push('pago');
+        props.history.push('/pago');
     };
 
     return (
@@ -29,15 +45,15 @@ function EnvioScreen(props) {
             <div className="text-center container-sm" onSubmit={submitHandler}>
                 <h1 className="text-center tituloPagina">Envío</h1>
                 <form className="formRegistro">
-                    <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required="" autoFocus="" onChange={(e) => setNombre(e.target.value)} />
-                    <input id="inputApellidos" className="form-control" type="text" name="apellidos" placeholder="Apellidos" required="" autoFocus="" onChange={(e) => setApellidos(e.target.value)} />
-                    <input id="inputDni" className="form-control" type="text" name="dni" placeholder="Dni - Nif - Cif - Pasaporte" required="" autoFocus="" onChange={(e) => setDni(e.target.value)} />
-                    <input id="inputTelefono" className="form-control" type="text" name="telefono" placeholder="Teléfono" required="" autoFocus="" onChange={(e) => setTelefono(e.target.value)} />
-                    <input id="inputDirección" className="form-control" type="text" name="direccion" placeholder="Dirección" required="" autoFocus="" onChange={(e) => setDireccion(e.target.value)} />
-                    <input id="inputCodigoPostal" className="form-control" type="text" name="codigoPostal" placeholder="Código postal" required="" autoFocus="" onChange={(e) => setCodigoPostal(e.target.value)} />
-                    <input id="inputPais" className="form-control" type="text" name="pais" placeholder="País" required="" autoFocus="" onChange={(e) => setPais(e.target.value)} />
-                    <input id="inputProvincia" className="form-control" type="text" name="provincia" placeholder="Provincia" required="" autoFocus="" onChange={(e) => setProvincia(e.target.value)} />
-                    <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required="" autoFocus="" onChange={(e) => setEmail(e.target.value)} />
+                    <input id="inputNombre" className="form-control" type="text" value={nombre} placeholder="Nombre" required autoFocus="" onChange={(e) => setNombre(e.target.value)} />
+                    <input id="inputApellidos" className="form-control" type="text" value={apellidos} placeholder="Apellidos" required autoFocus="" onChange={(e) => setApellidos(e.target.value)} />
+                    <input id="inputDni" className="form-control" type="text" value={dni} placeholder="Dni - Nif - Cif - Pasaporte" required autoFocus="" onChange={(e) => setDni(e.target.value)} />
+                    <input id="inputTelefono" className="form-control" type="text" value={telefono} placeholder="Teléfono" required autoFocus="" onChange={(e) => setTelefono(e.target.value)} />
+                    <input id="inputDirección" className="form-control" type="text" value={direccion} placeholder="Dirección" required autoFocus="" onChange={(e) => setDireccion(e.target.value)} />
+                    <input id="inputCodigoPostal" className="form-control" type="text" value={codigoPostal} placeholder="Código postal" required autoFocus="" onChange={(e) => setCodigoPostal(e.target.value)} />
+                    <input id="inputPais" className="form-control" type="text" value={pais} placeholder="País" required autoFocus="" onChange={(e) => setPais(e.target.value)} />
+                    <input id="inputProvincia" className="form-control" type="text" value={provincia} placeholder="Provincia" required autoFocus="" onChange={(e) => setProvincia(e.target.value)} />
+                    <input id="inputEmail" className="form-control" type="email" value={email} placeholder="Email" required autoFocus="" onChange={(e) => setEmail(e.target.value)} />
                     <button className="btn btn-lg btn-primary btn-block" type="submit">Continuar</button>
                 </form>
             </div>
