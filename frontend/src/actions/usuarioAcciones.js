@@ -37,6 +37,7 @@ const cerrarSesion = () => (dispatch) => {
     /* localStorage */
     localStorage.removeItem('usuarioInfo');
     localStorage.removeItem('carritoItems');
+    localStorage.removeItem('envio');
     dispatch({ type: USUARIO_CIERRESESION_SUCCESS });
     document.location.href = '/';
 };
