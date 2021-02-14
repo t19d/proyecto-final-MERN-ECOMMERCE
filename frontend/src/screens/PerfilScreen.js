@@ -16,7 +16,7 @@ function PerfilScreen(props) {
 
     return (
         <div className="container">
-            <h1 className="text-center tituloPagina">Mi perfil</h1>
+            <h1 className="text-center tituloPagina">Perfil de {usuarioInfo.nombre}</h1>
             <ul className="panelOpcionesPerfil row">
                 <li className="col-md-6 col-sm-12 col-xs-12 opcionDatosUsuario">
                     <div>
