@@ -2,9 +2,13 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import CheckoutPasos from '../components/CheckoutPasos';
-import { vaciarCarrito } from '../actions/carritoAcciones';
+import { crearPedido } from '../actions/pedidoAcciones';
+import { PEDIDO_CREADO_RESET } from '../constants/pedidoConstantes';
 
 function FinalizarPedidoScreen(props) {
+    const usuarioInicioSesion = useSelector(state => state.usuarioInicioSesion);
+    const { usuarioInfo } = usuarioInicioSesion;
+
     const carrito = useSelector(state => state.carrito);
     const { carritoItems, envio, pago } = carrito;
     if (!envio.direccion) {
@@ -15,21 +19,37 @@ function FinalizarPedidoScreen(props) {
         props.history.push("/pago");
     }
 
+    const pedidoCreado = useSelector((state) => state.pedidoCreado);
+    const { loading, success, error, pedido } = pedidoCreado;
+
     const subtotal = Number.parseFloat(carritoItems.reduce((a, c) => a + c.precio * c.cantidad, 0).toFixed(2));
     const gastosEnvio = (subtotal >= 100) ? Number.parseFloat(0) : Number.parseFloat(6.99);
     const total = Number.parseFloat((subtotal + gastosEnvio).toFixed(2));
 
+    const realizarPedidoHandler = () => {
+        dispatch(crearPedido({
+            pedidoItems: carrito.carritoItems,
+            direccion: carrito.envio,
+            metodoPago: carrito.pago.metodoPago,
+            subtotal: subtotal,
+            gastosEnvio: gastosEnvio,
+            total: total,
+            usuario: usuarioInfo._id,
+            pagadoDia: new Date(),
+            llegadaEnvioDia: new Date().setDate(new Date().getDate() + 7),
+        }));
+    }
+
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if (success) {
+            props.history.push("/pedidos");
+            dispatch({ type: PEDIDO_CREADO_RESET });
+        }
         return () => {
         }
-    }, [carritoItems]);
-
-    const realizarPedidoHandler = () => {
-        dispatch(vaciarCarrito());
-        props.history.push("/pedidos");
-    }
+    }, [dispatch, pedido, props.history, error]);
 
     return (
         <div>
