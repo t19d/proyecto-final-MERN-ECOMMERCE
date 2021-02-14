@@ -19,6 +19,7 @@ import AccesoriosScreen from './screens/AccesoriosScreen';
 import OutletScreen from './screens/OutletScreen';
 import PerfilScreen from './screens/PerfilScreen';
 import { cerrarSesion } from './actions/usuarioAcciones';
+import ListaPedidosScreen from './screens/ListaPedidosScreen';
 
 function App() {
 
@@ -189,6 +190,7 @@ function App() {
         <Route path="/accesorios" component={AccesoriosScreen} />
         <Route path="/outlet" component={OutletScreen} />
         <Route path="/perfil" component={PerfilScreen} />
+        <Route path="/pedidos" component={ListaPedidosScreen} />
       </div>
 
 
