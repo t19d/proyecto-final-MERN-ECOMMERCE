@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import usuarioRoute from './routes/usuarioRoute';
 import productoRoute from './routes/productoRoute';
+import pedidoRoute from './routes/pedidoRoute';
 
 dotenv.config();
 
@@ -26,6 +27,10 @@ app.use("/api/usuarios", usuarioRoute);
 
 {/* Productos */ }
 app.use("/api/productos", productoRoute);
+
+
+{/* Pedidos */ }
+app.use("/api/pedidos", pedidoRoute);
 
 /*
 // API todos los productos 
