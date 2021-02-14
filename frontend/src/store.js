@@ -5,8 +5,14 @@ import { carritoReducer } from './reducers/carritoReducers';
 import { listaProductosReducer, productoDetallesReducer, productoEliminadoReducer, productoGuardadoReducer } from './reducers/productoReducers';
 import { usuarioInicioSesionReducer, usuarioRegistroReducer } from './reducers/usuarioReducers';
 
-const carritoItems = Cookie.getJSON("carritoItems") || [];
-const usuarioInfo = Cookie.getJSON("usuarioInfo") || null;
+/* COOKIES */
+//const carritoItems = Cookie.getJSON("carritoItems") || [];
+//const usuarioInfo = Cookie.getJSON("usuarioInfo") || null;
+
+/* localStorage */
+const usuarioInfo = JSON.parse(localStorage.getItem("usuarioInfo")) || null;
+const carritoItems = JSON.parse(localStorage.getItem("carritoItems")) || [];
+
 
 const initialState = { carrito: { carritoItems }, usuarioInicioSesion: { usuarioInfo } };
 const reducer = combineReducers({
