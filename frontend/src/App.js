@@ -20,6 +20,7 @@ import OutletScreen from './screens/OutletScreen';
 import PerfilScreen from './screens/PerfilScreen';
 import { cerrarSesion } from './actions/usuarioAcciones';
 import ListaPedidosScreen from './screens/ListaPedidosScreen';
+import PedidoDetalleScreen from './screens/PedidoDetalleScreen';
 
 function App() {
 
@@ -191,6 +192,7 @@ function App() {
         <Route path="/outlet" component={OutletScreen} />
         <Route path="/perfil" component={PerfilScreen} />
         <Route path="/pedidos" component={ListaPedidosScreen} />
+        <Route path="/mispedidos/:id" component={PedidoDetalleScreen} />
       </div>
 
 
