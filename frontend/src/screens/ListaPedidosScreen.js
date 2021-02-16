@@ -48,7 +48,7 @@ function ListaPedidosScreen(props) {
                     {pedidos && ordenarPor(orden).map(
                         pedido => (
                             <li className="col-md-12 col-sm-12 col-xs-12" key={pedido._id}>
-                                <Link to={'/pedidos/' + pedido._id} className="col-sm itemPedidos">
+                                <Link to={'/mispedidos/' + pedido._id} className="col-sm itemPedidos">
                                     <div className="card">
                                         <div className="card-body row">
                                             <div className="col-lg-5 col-md-12 col-sm-12 col-xs-12">
