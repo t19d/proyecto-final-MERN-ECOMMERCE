@@ -45,7 +45,7 @@ function App() {
             <div className="row align-items-center">
               <div className="col-6">
                 <div className="text-white">
-                  <svg width="2em" height="1em" viewBox="0 0 16 16" className="bi bi-arrow-left"
+                  <svg width="2em" height="1em" viewBox="0 0 16 20" className="bi bi-arrow-left"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd"
                       d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z" />
@@ -82,7 +82,7 @@ function App() {
                         :
                         (<Link to="/iniciosesion" className="navbar-link text-white">
                           <span>
-                            <svg width="1.5em" height="1em" viewBox="0 0 16 16" className="bi bi-person-circle"
+                            <svg width="1.5em" height="1em" viewBox="0 0 16 20" className="bi bi-person-circle"
                               fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                               <path
                                 d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
@@ -166,7 +166,7 @@ function App() {
                     <li className="nav-item">
                       <Link to="/carrito" className="nav-link">
                         <span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 22">
                             <path fillRule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                           </svg>
                         </span>
