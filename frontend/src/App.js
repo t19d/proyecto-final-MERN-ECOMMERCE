@@ -22,6 +22,7 @@ import { cerrarSesion } from './actions/usuarioAcciones';
 import ListaPedidosScreen from './screens/ListaPedidosScreen';
 import PedidoDetalleScreen from './screens/PedidoDetalleScreen';
 import ModificarDatosUsuarioScreen from './screens/ModificarDatosUsuarioScreen';
+import ModificarContrasenhaUsuarioScreen from './screens/ModificarContrasenhaUsuarioScreen';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
 
   const usuarioDetalles = useSelector((state) => state.usuarioDetalles);
   const { loading, error, usuario } = usuarioDetalles;
-  
+
   const dispatch = useDispatch();
   const cerrarSesionHandler = () => {
     dispatch(cerrarSesion());
@@ -197,6 +198,7 @@ function App() {
         <Route path="/outlet" component={OutletScreen} />
         <Route path="/perfil" component={PerfilScreen} />
         <Route path="/editarusuario/:id" component={ModificarDatosUsuarioScreen} />
+        <Route path="/cambiarcontrasenha/:id" component={ModificarContrasenhaUsuarioScreen} />
         <Route path="/pedidos" component={ListaPedidosScreen} />
         <Route path="/mispedidos/:id" component={PedidoDetalleScreen} />
       </div>
