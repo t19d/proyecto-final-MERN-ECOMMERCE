@@ -22,7 +22,7 @@ function PerfilScreen(props) {
                     <div>
                         <h3>Datos de usuario</h3>
                         <ul>
-                            <li><Link to="/editarperfil" className="enlaceOpcionesUsuario">Modificar mis datos</Link></li>
+                            <li><Link to="/editarusuario" className="enlaceOpcionesUsuario">Modificar mis datos</Link></li>
                             <li><Link to="/cambiarcontrasenha" className="enlaceOpcionesUsuario">Cambiar contraseña</Link></li>
                         </ul>
                     </div>
