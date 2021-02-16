@@ -1,9 +1,8 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import Cookie from 'js-cookie';
 import { carritoReducer } from './reducers/carritoReducers';
 import { listaProductosReducer, productoDetallesReducer, productoEliminadoReducer, productoGuardadoReducer } from './reducers/productoReducers';
-import { usuarioInicioSesionReducer, usuarioRegistroReducer } from './reducers/usuarioReducers';
+import { usuarioActualizacionReducer, usuarioInicioSesionReducer, usuarioRegistroReducer, usuarioDetallesReducer } from './reducers/usuarioReducers';
 import { listaPedidosReducer, listaPedidosUsuarioReducer, pedidoCreadoReducer, pedidoDetallesReducer } from './reducers/pedidoReducers';
 
 /* COOKIES */
@@ -31,9 +30,11 @@ const reducer = combineReducers({
     pedidoDetalles: pedidoDetallesReducer,
     listaPedidosUsuario: listaPedidosUsuarioReducer,
     listaPedidos: listaPedidosReducer,
+    usuarioActualizacion: usuarioActualizacionReducer,
+    usuarioDetalles: usuarioDetallesReducer
 });
 
-{/* Usar herramienta de Chrome de Redux. */ }
+/* Usar herramienta de Chrome de Redux. */ 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, initialState, composeEnhancer(applyMiddleware(thunk)));
