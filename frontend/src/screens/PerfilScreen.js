@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { iniciarSesion } from '../actions/usuarioAcciones';
 
 function PerfilScreen(props) {
     const usuarioInicioSesion = useSelector(state => state.usuarioInicioSesion);
     const { usuarioInfo } = usuarioInicioSesion;
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        return () => {
-            //
-        };
-    }, []);
 
     return (
         <div className="container">
@@ -22,7 +14,7 @@ function PerfilScreen(props) {
                     <div>
                         <h3>Datos de usuario</h3>
                         <ul>
-                            <li><Link to="/editarusuario" className="enlaceOpcionesUsuario">Modificar mis datos</Link></li>
+                            <li><Link to={"/editarusuario/" + usuarioInfo._id} className="enlaceOpcionesUsuario">Modificar mis datos</Link></li>
                             <li><Link to="/cambiarcontrasenha" className="enlaceOpcionesUsuario">Cambiar contraseña</Link></li>
                         </ul>
                     </div>
