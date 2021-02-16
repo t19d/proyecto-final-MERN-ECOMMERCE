@@ -6,9 +6,12 @@ function PerfilScreen(props) {
     const usuarioInicioSesion = useSelector(state => state.usuarioInicioSesion);
     const { usuarioInfo } = usuarioInicioSesion;
 
+    const usuarioDetalles = useSelector((state) => state.usuarioDetalles);
+    const { usuario } = usuarioDetalles;
+
     return (
         <div className="container">
-            <h1 className="text-center tituloPagina">Perfil de {usuarioInfo.nombre}</h1>
+            <h1 className="text-center tituloPagina">Perfil de {usuario ? usuario.nombre : usuarioInfo.nombre}</h1>
             <ul className="panelOpcionesPerfil row">
                 <li className="col-md-6 col-sm-12 col-xs-12 opcionDatosUsuario">
                     <div>
