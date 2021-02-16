@@ -1,6 +1,6 @@
 import express from 'express';
 import Usuario from '../models/usuarioModelo'
-import { getToken } from '../util';
+import { getToken, isAuth, isAdmin } from '../util';
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.post('/iniciosesion', async (req, res) => {
             token: getToken(signinUsuario)
         });
     } else {
-        res.status(401).send({message: 'El email o la contraseña no coinciden.'});
+        res.status(401).send({ message: 'El email o la contraseña no coinciden.' });
     }
 });
 
@@ -39,7 +39,7 @@ router.post('/registro', async (req, res) => {
             token: getToken(newUsuario)
         });
     } else {
-        res.status(401).send({message: 'Datos de usuario no válidos.'});
+        res.status(401).send({ message: 'Datos de usuario no válidos.' });
     }
 });
 
@@ -57,6 +57,62 @@ router.get("/crearadmin", async (req, res) => {
     } catch (error) {
         res.send({ message: error.message });
     }
-})
+});
+
+router.get('/:id', async (req, res) => {
+    const usuario = await Usuario.findById(req.params.id);
+    if (usuario) {
+        res.send(usuario);
+    } else {
+        res.status(404).send({ message: 'Usuario no encontrado' });
+    }
+});
+
+router.put('/perfil', isAuth, async (req, res) => {
+    const usuario = await usuario.findById(req.usuario._id);
+    if (usuario) {
+        // Recoger valores del documento y si no existen, de la bbdd
+        usuario.nombre = req.body.nombre || usuario.nombre;
+        usuario.email = req.body.email || usuario.email;
+        if (req.body.password) {
+            // TODO: Encriptar contraseña si la actualizo
+            usuario.password = req.body.password;
+        }
+        const updatedUsuario = await usuario.save();
+        res.send({
+            _id: updatedUsuario._id,
+            nombre: updatedUsuario.nombre,
+            email: updatedUsuario.email,
+            isAdmin: updatedUsuario.isAdmin,
+            token: getToken(updatedUsuario),
+        });
+    } else {
+        res.status(404).send({ message: 'Usuario no encontrado' });
+    }
+});
+
+router.put('/:id', isAuth, async (req, res) => {
+    const usuario = await usuario.findById(req.usuario._id);
+    if (usuario) {
+        // Recoger valores del documento y si no existen, de la bbdd
+        usuario.nombre = req.body.nombre || usuario.nombre;
+        usuario.email = req.body.email || usuario.email;
+        if (req.body.password) {
+            // TODO: Encriptar contraseña si la actualizo
+            usuario.password = req.body.password;
+        }
+        usuario.isAdmin = Boolean(req.body.isAdmin);
+        const updatedUsuario = await usuario.save();
+        res.send({ message: 'Usuario actualizado', usuario: updatedUser });
+    } else {
+        res.status(404).send({ message: 'Usuario no encontrado' });
+    }
+});
+
+router.get('/', isAuth, isAdmin, async (req, res) => {
+    const usuarios = await Usuario.find({});
+    res.send(usuarios);
+});
+
 
 export default router
