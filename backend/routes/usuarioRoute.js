@@ -69,7 +69,7 @@ router.get('/:id', async (req, res) => {
 });
 
 router.put('/perfil', isAuth, async (req, res) => {
-    const usuario = await usuario.findById(req.usuario._id);
+    const usuario = await Usuario.findById(req.usuario._id);
     if (usuario) {
         // Recoger valores del documento y si no existen, de la bbdd
         usuario.nombre = req.body.nombre || usuario.nombre;
@@ -92,7 +92,7 @@ router.put('/perfil', isAuth, async (req, res) => {
 });
 
 router.put('/:id', isAuth, async (req, res) => {
-    const usuario = await usuario.findById(req.usuario._id);
+    const usuario = await Usuario.findById(req.usuario._id);
     if (usuario) {
         // Recoger valores del documento y si no existen, de la bbdd
         usuario.nombre = req.body.nombre || usuario.nombre;
@@ -103,7 +103,7 @@ router.put('/:id', isAuth, async (req, res) => {
         }
         usuario.isAdmin = Boolean(req.body.isAdmin);
         const updatedUsuario = await usuario.save();
-        res.send({ message: 'Usuario actualizado', usuario: updatedUser });
+        res.send({ message: 'Usuario actualizado', usuario: updatedUsuario });
     } else {
         res.status(404).send({ message: 'Usuario no encontrado' });
     }
