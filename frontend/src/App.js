@@ -192,7 +192,7 @@ function App() {
         <Route path="/accesorios" component={AccesoriosScreen} />
         <Route path="/outlet" component={OutletScreen} />
         <Route path="/perfil" component={PerfilScreen} />
-        <Route path="/editarusuario" component={ModificarDatosUsuarioScreen} />
+        <Route path="/editarusuario/:id" component={ModificarDatosUsuarioScreen} />
         <Route path="/pedidos" component={ListaPedidosScreen} />
         <Route path="/mispedidos/:id" component={PedidoDetalleScreen} />
       </div>
