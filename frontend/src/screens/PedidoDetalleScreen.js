@@ -57,7 +57,7 @@ function PedidoDetalleScreen(props) {
                                             <tr key={producto._id}>
                                                 <td><img className="img-thumbnail" src={producto.miniatura} /> </td>
                                                 <td>
-                                                    <Link to={"/productos/" + producto._id}>
+                                                    <Link to={"/productos/" + producto.producto}>
                                                         {producto.nombre}
                                                     </Link>
                                                     </td>
