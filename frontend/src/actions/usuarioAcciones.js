@@ -47,7 +47,7 @@ const detallesUsuario = (usuarioId) => async (dispatch, getState) => {
     dispatch({ type: USUARIO_DETALLES_REQUEST, payload: usuarioId });
     const { usuarioInicioSesion: { usuarioInfo } } = getState();
     try {
-        const { data } = await axios.get('/api/usuarios/' + usuarioId, {
+        const { data } = await axios.get(`/api/usuarios/${usuarioId}`, {
             headers: {
                 Authorization: 'Bearer ' + usuarioInfo.token
             }
@@ -62,7 +62,7 @@ const actualizarUsuario = (usuario) => async (dispatch, getState) => {
     dispatch({ type: USUARIO_MODIFICARDATOS_REQUEST, payload: usuario });
     const { usuarioInicioSesion: { usuarioInfo }, } = getState();
     try {
-        const { data } = await axios.put('/api/usuarios/' + usuario._id, usuario, {
+        const { data } = await axios.put(`/api/usuarios/${usuario._id}`, usuario, {
             headers: {
                 Authorization: 'Bearer ' + usuarioInfo.token
             }
