@@ -81,16 +81,16 @@ function ManageProductosScreen(props) {
                     {loadingGuardado && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
                     {errorGuardado && <div>{errorGuardado}</div>}
                     <form className="formCrearProducto">
-                        <input className="form-control" type="text" name="nombre" placeholder="Nombre" value={nombre} autoFocus="" onChange={(e) => setNombre(e.target.value)} />
-                        <input className="form-control" type="text" name="miniatura" placeholder="Ruta miniatura" value={miniatura} autoFocus="" onChange={(e) => setMiniatura(e.target.value)} />
-                        <input className="form-control" type="text" name="imgDescripcion" placeholder="Descripción de la imagen" value={imgDescripcion} autoFocus="" onChange={(e) => setImgDescripcion(e.target.value)} />
+                        <input className="form-control" type="text" name="nombre" placeholder="Nombre" value={nombre} autoFocus onChange={(e) => setNombre(e.target.value)} />
+                        <input className="form-control" type="text" name="miniatura" placeholder="Ruta miniatura" value={miniatura} onChange={(e) => setMiniatura(e.target.value)} />
+                        <input className="form-control" type="text" name="imgDescripcion" placeholder="Descripción de la imagen" value={imgDescripcion} onChange={(e) => setImgDescripcion(e.target.value)} />
                         <input className="form-control" type="number" step="0.01" name="precio" placeholder="Precio" value={precio} onChange={(e) => setPrecio(e.target.value)} />
                         <input className="form-control" type="number" step="0.01" name="precioOferta" placeholder="Precio oferta (poner el mismo si no está de oferta)" value={precioOferta} onChange={(e) => setPrecioOferta(e.target.value)} />
-                        <textarea className="form-control" name="descripcion" placeholder="Descripción del producto" value={descripcion} autoFocus="" onChange={(e) => setDescripcion(e.target.value)} />
+                        <textarea className="form-control" name="descripcion" placeholder="Descripción del producto" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
                         {/* Hacer un split de las imágenes y categorías con ! */}
-                        <textarea className="form-control" name="imagenes" placeholder="Rutas de las imágenes (separadas por ',')" value={imagenes} autoFocus="" onChange={(e) => setImagenes(e.target.value.split(","))} />
-                        <textarea className="form-control" name="categorias" placeholder="Categorías (separadas por ',')" value={categorias} autoFocus="" onChange={(e) => setCategorias(e.target.value.split(","))} />
-                        <input className="form-control" type="number" name="cantidadStockXS" placeholder="Cantidad stok tallas XS" value={cantidadStockXS} autoFocus="" onChange={(e) => setCantidadStockXS(e.target.value)} />
+                        <textarea className="form-control" name="imagenes" placeholder="Rutas de las imágenes (separadas por ',')" value={imagenes} onChange={(e) => setImagenes(e.target.value.split(","))} />
+                        <textarea className="form-control" name="categorias" placeholder="Categorías (separadas por ',')" value={categorias} onChange={(e) => setCategorias(e.target.value.split(","))} />
+                        <input className="form-control" type="number" name="cantidadStockXS" placeholder="Cantidad stok tallas XS" value={cantidadStockXS} onChange={(e) => setCantidadStockXS(e.target.value)} />
                         <input className="form-control" type="number" name="cantidadStockS" placeholder="Cantidad stok tallas S" value={cantidadStockS} onChange={(e) => setCantidadStockS(e.target.value)} />
                         <input className="form-control" type="number" name="cantidadStockM" placeholder="Cantidad stok tallas M" value={cantidadStockM} onChange={(e) => setCantidadStockM(e.target.value)} />
                         <input className="form-control" type="number" name="cantidadStockL" placeholder="Cantidad stok tallas L" value={cantidadStockL} onChange={(e) => setCantidadStockL(e.target.value)} />

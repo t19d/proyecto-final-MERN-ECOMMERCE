@@ -40,8 +40,8 @@ function RegistroScreen(props) {
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div>{error}</div>}
             <form className="formRegistro">
-                <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required autoFocus="" onChange={(e) => setNombre(e.target.value)} />
-                <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required autoFocus="" onChange={(e) => setEmail(e.target.value)} />
+                <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required autoFocus onChange={(e) => setNombre(e.target.value)} />
+                <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
                 <input id="inputPassword" className="form-control" type="password" name="password" placeholder="Contraseña" required onChange={(e) => setPassword(e.target.value)} />
                 <input id="inputRePassword" className="form-control" type="password" name="repassword" placeholder="Repita la contraseña" required onChange={(e) => setRePassword(e.target.value)} />
                 <button className="btn btn-lg btn-primary btn-block" type="submit">Crear usuario</button>
