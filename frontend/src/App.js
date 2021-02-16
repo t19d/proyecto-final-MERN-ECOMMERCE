@@ -208,14 +208,14 @@ function App() {
         <hr />
         <div className="container text-center text-md-left">
           <div className="row">
-            <div className="col-md-4 mx-auto">
+            <div className="col-md-4 col-sm-12 col-xs-12 mx-auto">
               <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
               <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
               consectetur
   adipisicing elit.</p>
             </div>
             <hr className="clearfix w-100 d-md-none" />
-            <div className="col-md-2 mx-auto">
+            <div className="col-md-2 col-sm-12 col-xs-12 mx-auto">
               <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
               <ul className="list-unstyled">
                 <li>
@@ -233,7 +233,7 @@ function App() {
               </ul>
             </div>
             <hr className="clearfix w-100 d-md-none" />
-            <div className="col-md-2 mx-auto">
+            <div className="col-md-2 col-sm-12 col-xs-12 mx-auto">
               <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
               <ul className="list-unstyled">
                 <li>
@@ -251,7 +251,7 @@ function App() {
               </ul>
             </div>
             <hr className="clearfix w-100 d-md-none" />
-            <div className="col-md-2 mx-auto">
+            <div className="col-md-2 col-sm-12 col-xs-12 mx-auto">
               <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
               <ul className="list-unstyled">
                 <li>

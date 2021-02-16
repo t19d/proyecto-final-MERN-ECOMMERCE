@@ -136,10 +136,10 @@ function CarritoScreen(props) {
                             </div>
                             <div className="col mb-2">
                                 <div className="row">
-                                    <div className="col-sm-12  col-md-6">
+                                    <div className="col-sm-12 col-xs-12 col-md-6">
                                         <button className="btn btn-lg btn-block btn-secondary text-uppercase">Seguir comprando</button>
                                     </div>
-                                    <div className="col-sm-12 col-md-6 text-right">
+                                    <div className="col-sm-12 col-xs-12 col-md-6 text-right">
                                         <button onClick={checkoutHandler} className="btn btn-lg btn-block btn-primary text-uppercase" disabled={carritoItems.length === 0} >Tramitar pedido</button>
                                     </div>
                                 </div>
