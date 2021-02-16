@@ -27,6 +27,10 @@ function App() {
 
   const usuarioInicioSesion = useSelector(state => state.usuarioInicioSesion);
   const { usuarioInfo } = usuarioInicioSesion;
+
+  const usuarioDetalles = useSelector((state) => state.usuarioDetalles);
+  const { loading, error, usuario } = usuarioDetalles;
+  
   const dispatch = useDispatch();
   const cerrarSesionHandler = () => {
     dispatch(cerrarSesion());
@@ -62,7 +66,7 @@ function App() {
                               <span className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span>
-                                  {usuarioInfo.nombre}
+                                  {usuario ? usuario.nombre : usuarioInfo.nombre}
                                 </span>
                               </span>
                               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
