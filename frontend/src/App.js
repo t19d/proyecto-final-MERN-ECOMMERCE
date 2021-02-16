@@ -21,6 +21,7 @@ import PerfilScreen from './screens/PerfilScreen';
 import { cerrarSesion } from './actions/usuarioAcciones';
 import ListaPedidosScreen from './screens/ListaPedidosScreen';
 import PedidoDetalleScreen from './screens/PedidoDetalleScreen';
+import ModificarDatosUsuarioScreen from './screens/ModificarDatosUsuarioScreen';
 
 function App() {
 
@@ -191,6 +192,7 @@ function App() {
         <Route path="/accesorios" component={AccesoriosScreen} />
         <Route path="/outlet" component={OutletScreen} />
         <Route path="/perfil" component={PerfilScreen} />
+        <Route path="/editarusuario" component={ModificarDatosUsuarioScreen} />
         <Route path="/pedidos" component={ListaPedidosScreen} />
         <Route path="/mispedidos/:id" component={PedidoDetalleScreen} />
       </div>
