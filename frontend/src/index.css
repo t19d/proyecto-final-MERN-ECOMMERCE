@@ -157,24 +157,108 @@ ol.breadcrumb li a:hover {
   font-size: .8em;
 }
 
-/* AÑADIR CONTRATO */
+.filaTallas {
+  margin: 1em 0 1em 0;
+  padding: 0;
+  width: auto;
+  display: flex;
+}
+
+.filaTallas>label {
+  font-weight: bold;
+  flex: 1;
+  padding: 1em;
+  display: block;
+  text-align: center;
+  background-color: #a8a8a8;
+  color: #f3f3f3;
+}
+
+.filaTallas:last-child {
+  border-radius: 50px;
+}
+
+.filaTallas>input:checked+label {
+  background-color: #646464;
+}
+
+.filaTallas input {
+  opacity: 0;
+}
+
+.filaTallas label:hover {
+  cursor: pointer;
+  background-color: #969696;
+  transition: .4s all;
+}
+
+.cantidadProducto {
+  margin: 1em 0 1em 0;
+  display: flex;
+  align-items: center;
+}
+
+.cantidadProducto * {
+  padding: 0;
+}
+
+.selectCantidadProducto {
+  width: 100%;
+}
+
+.selectCantidadProducto {
+  text-align-last: center;
+  padding: .5em;
+  text-align: center;
+  border: none;
+  background: rgb(240, 240, 240);
+  /*appearance: none;*/
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+.selectCantidadProducto:hover {
+  background: rgb(226, 226, 226);
+  transition: .3s;
+}
+
+/* AÑADIR CARRITO */
+
+.contenedorBtnCarrito {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 
 .botonAnhadirCarrito {
+  font-size: 1.2em;
   background-color: #0a97b0;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: .8em;
+}
+
+.botonAnhadirCarrito:hover, .botonAnhadirCarrito:active {
+  border: none;
+  background-color: #0d7e92 !important;
 }
 
 /* DESCRIPCIÓN */
 
 .tituloDescripcionProducto {
-  border-bottom: solid .2rem #0a97b0;
+  /*border-bottom: solid .2rem #0a97b0;*/
+  /*text-decoration: underline  #0a97b0;*/
   font-size: 1.75rem;
-  padding: 0 1.75rem;
+  padding: 0 1rem;
   color: #0a97b0;
   font-weight: bold;
 }
 
 .cuerpoDescripcionProducto {
-  border-top: solid 1px #0a97b0;
+  text-align: justify;
+  border-top: solid 2px #0a97b0;
   padding: .25rem 1rem;
 }
 
@@ -253,7 +337,6 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
   color: black;
 }
 
-
 .itemPedidos:hover>div {
   box-shadow: 0px 15px 26px #00000010;
   -webkit-transition: all .9s ease-in;
@@ -263,12 +346,12 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
   transition: all .9s ease-in;
 }
 
-.itemPedidosListaProductos{
+.itemPedidosListaProductos {
   list-style-type: none;
   padding-inline-start: 0;
 }
 
-.itemPedidosDatosEnvio{
+.itemPedidosDatosEnvio {
   list-style-type: none;
   padding-inline-start: 0;
 }
