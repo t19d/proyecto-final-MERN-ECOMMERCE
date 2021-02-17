@@ -107,7 +107,8 @@ function ProductoScreen(props) {
 
 
                                 {/* Imágenes carrusel */}
-                                <div className="carousel slide carousel-multi-item v-2 product-carousel" data-ride="carousel">
+                                <div id="carousel-example-multi" className="carousel slide carousel-multi-item v-2 product-carousel" data-ride="carousel">
+
                                     {/*<!--Controls-->*/}
                                     <div className="controls-top my-3 text-center">
                                         <a className="btn-floating btn-sm" href="#carousel-example-multi" data-slide="prev">
