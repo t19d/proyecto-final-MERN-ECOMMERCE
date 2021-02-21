@@ -10,8 +10,29 @@ function ProductoScreen(props) {
     const { producto, loading, error } = productoDetalles;
     const [talla, setTalla] = useState("XS");
     const [imagenGrande, setImagenGrande] = useState(producto ? producto.miniatura : "");
-    const dispatch = useDispatch();
 
+    /* ZOOOM */
+    const [backgroundPosition, setBackgroundPosition] = useState('0% 0%');
+    const [zoomImagenStyle, setZoomImagenStyle] = useState({ backgroundImage: "none", backgroundPosition });
+
+    const handleMovimientoZoomRaton = (e) => {
+        const { left, top, width, height } = e.target.getBoundingClientRect();
+        const x = (e.pageX - left) / width * 100;
+        const y = (e.pageY - top) / height * 100;
+        setBackgroundPosition(`${x}% ${y}%`);
+        setZoomImagenStyle({ backgroundImage: `url(${imagenGrande})`, backgroundPosition });
+    }
+
+    const handleMovimientoLeaveRaton = (e) => {
+        const { left, top, width, height } = e.target.getBoundingClientRect();
+        const x = (e.pageX - left) / width * 100;
+        const y = (e.pageY - top) / height * 100;
+        setBackgroundPosition(`${x}% ${y}%`);
+        setZoomImagenStyle({ backgroundImage: "none", backgroundPosition });
+    }
+
+
+    const dispatch = useDispatch();
     useEffect(() => {
         if (!producto || !(producto._id === props.match.params.id)) {
             dispatch(hacerProductoDetalles(props.match.params.id));
@@ -48,10 +69,6 @@ function ProductoScreen(props) {
         return cantidadStock;
     };
 
-    const cambiarImagenGrande = (srcImg) => {
-
-    }
-
     const handleAnhadirCarrito = () => {
         dispatch(anhadirAlCarrito(producto._id, cantidad, talla));
         //props.history.push("/carrito/" + props.match.params.id + "?cantidad=" + cantidad + "-talla=" + talla);
@@ -85,7 +102,9 @@ function ProductoScreen(props) {
                         <div className="row">
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 {/* Imagen principal */}
-                                <img className="img-fluid" src={imagenGrande} alt={producto.imgDescripcion} />
+                                <div className="contenedorImagenGrande" onMouseLeave={(e) => handleMovimientoLeaveRaton(e)} onMouseMove={(e) => handleMovimientoZoomRaton(e)} style={zoomImagenStyle}>
+                                    <img className="img-fluid imagenGrande" src={imagenGrande} alt={producto.imgDescripcion} />
+                                </div>
 
 
 

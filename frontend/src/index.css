@@ -151,9 +151,28 @@ ol.breadcrumb li a:hover {
   margin-top: 0;
 }
 
+/* Imagen grande */
+.contenedorImagenGrande{
+  overflow: hidden; 
+  margin: 1em 0;
+  background-color: #f2f2f2;
+}
+
+.contenedorImagenGrande:hover .imagenGrande {
+  opacity: 0;
+}
+
+/*.imagenGrande{
+  transition: 0.5s all ease-in-out; 
+}
+.imagenGrande:hover{
+  transform: scale(1.5); 
+}*/
+
 /* IMÁGENES */
 
 .conjuntoImagenesProducto {
+  z-index: 0;
   display: flex;
   flex: 1;
   margin: 0;
