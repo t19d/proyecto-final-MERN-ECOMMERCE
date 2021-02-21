@@ -9,25 +9,6 @@ function ProductoScreen(props) {
     const productoDetalles = useSelector(state => state.productoDetalles);
     const { producto, loading, error } = productoDetalles;
     const [talla, setTalla] = useState("XS");
-
-    const ponerCarrusel = ()=>{
-        /*document.getElementBy('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
-            var next = $(this).next();
-            if (!next.length) {
-                next = $(this).siblings(':first');
-            }
-            next.children(':first-child').clone().appendTo($(this));
-
-            for (var i = 0; i < 3; i++) {
-                next = next.next();
-                if (!next.length) {
-                    next = $(this).siblings(':first');
-                }
-                next.children(':first-child').clone().appendTo($(this));
-            }
-        });*/
-    }
-    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -107,47 +88,24 @@ function ProductoScreen(props) {
 
 
                                 {/* Imágenes carrusel */}
-                                <div id="carousel-example-multi" className="carousel slide carousel-multi-item v-2 product-carousel" data-ride="carousel">
-
-                                    {/*<!--Controls-->*/}
-                                    <div className="controls-top my-3 text-center">
-                                        <a className="btn-floating btn-sm" href="#carousel-example-multi" data-slide="prev">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-caret-left-fill" viewBox="0 0 16 20">
-                                                    <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                                                </svg>
-                                            </span>
-                                        </a>
-                                        <a className="btn-floating btn-sm" href="#carousel-example-multi" data-slide="next">
-                                            <span>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" className="bi bi-caret-right-fill" viewBox="0 0 16 20">
-                                                    <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </div>
-                                    <div className="carousel-inner" role="listbox">
-                                        {
-                                            producto.imagenes ?
-                                                producto.imagenes.map((imagenProducto, i) =>
-                                                    i === 0 ?
-                                                        <div className="carousel-item active mx-auto">
-                                                            <div className="col-md-4 col-sm-12 mx-auto">
-                                                                <div className="card mb-2">
-                                                                    <img className="img-fluid" src={imagenProducto} alt={producto.imgDescripcion} />
-                                                                </div>
-                                                            </div>
-                                                        </div> :
-                                                        <div className="carousel-item mx-auto">
-                                                            <div className="col-md-4 col-sm-12 mx-auto">
-                                                                <div className="card mb-2">
-                                                                    <img className="img-fluid" src={imagenProducto} alt={producto.imgDescripcion} />
-                                                                </div>
-                                                            </div>
-                                                        </div>) : <div></div>
+                                {
+                                    producto.imagenes &&
+                                    <div className="conjuntoImagenesProducto">
+                                        {producto.imagenes.map((imagenProducto, i) =>
+                                            i === 0 ?
+                                                <div className="itemImagenesProducto col-md-4 col-sm-12 ">
+                                                    <div className="card">
+                                                        <img className="img-fluid" src={imagenProducto} alt={producto.imgDescripcion} />
+                                                    </div>
+                                                </div> :
+                                                <div className="itemImagenesProducto col-md-4 col-sm-12 ">
+                                                    <div className="card">
+                                                        <img className="img-fluid" src={imagenProducto} alt={producto.imgDescripcion} />
+                                                    </div>
+                                                </div>)
                                         }
                                     </div>
-                                </div>
+                                }
 
 
 
