@@ -159,8 +159,37 @@ ol.breadcrumb li a:hover {
   margin: 0;
 }
 
+.conjuntoImagenesProducto>div>label {
+  font-weight: bold;
+  flex: 1;
+  padding: 1em;
+  display: block;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+.conjuntoImagenesProducto>div:last-child {
+  border-radius: 50px;
+}
+
+.conjuntoImagenesProducto>div>input:checked+label {
+  background-color: #e2e2e2;
+  border: #9c9c9c 1px dotted;
+  width: fit-content;
+}
+
+.conjuntoImagenesProducto>div input {
+  display: none;
+}
+
+.conjuntoImagenesProducto>div label:hover {
+  cursor: pointer;
+  background-color: #e9e9e9;
+  transition: .4s all;
+}
+
 .itemImagenesProducto {
-  margin: 1em 0;
+  margin: 0 !important;
 }
 
 /* Precio */
@@ -186,10 +215,6 @@ ol.breadcrumb li a:hover {
   text-align: center;
   background-color: #a8a8a8;
   color: #f3f3f3;
-}
-
-.filaTallas:last-child {
-  border-radius: 50px;
 }
 
 .filaTallas>input:checked+label {

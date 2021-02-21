@@ -9,14 +9,19 @@ function ProductoScreen(props) {
     const productoDetalles = useSelector(state => state.productoDetalles);
     const { producto, loading, error } = productoDetalles;
     const [talla, setTalla] = useState("XS");
+    const [imagenGrande, setImagenGrande] = useState(producto ? producto.miniatura : "");
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(hacerProductoDetalles(props.match.params.id));
+        if (!producto || !(producto._id === props.match.params.id)) {
+            dispatch(hacerProductoDetalles(props.match.params.id));
+        } else {
+            setImagenGrande(producto.miniatura);
+        }
         return () => {
             //
         };
-    }, []);
+    }, [producto]);
 
     const getStock = (producto) => {
         var cantidadStock = 0;
@@ -43,12 +48,9 @@ function ProductoScreen(props) {
         return cantidadStock;
     };
 
-    {/*
-        //TODO:
-            - Hacer lo mismo con las tallas
-            - Dependiendo de la talla poner la cantidad relativa a la talla
-            - Ocultar cantidad o seleccionar una talla de manera predeterminada al iniciar
-    */}
+    const cambiarImagenGrande = (srcImg) => {
+
+    }
 
     const handleAnhadirCarrito = () => {
         dispatch(anhadirAlCarrito(producto._id, cantidad, talla));
@@ -83,26 +85,25 @@ function ProductoScreen(props) {
                         <div className="row">
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 {/* Imagen principal */}
-                                <img className="img-fluid" src={producto.miniatura} alt={producto.imgDescripcion} />
+                                <img className="img-fluid" src={imagenGrande} alt={producto.imgDescripcion} />
 
 
 
-                                {/* Imágenes carrusel */}
+                                {/* Imágenes */}
                                 {
                                     producto.imagenes &&
-                                    <div className="conjuntoImagenesProducto row">
-                                        {producto.imagenes.map((imagenProducto, i) =>
-                                            i === 0 ?
-                                                <div className="itemImagenesProducto col-md-4 col-sm-12 ">
-                                                    <div className="card">
+                                    <div className="conjuntoImagenesProducto row form-group">
+                                        {producto.imagenes.map((imagenProducto) =>
+                                            <div className="col-md-4 col-sm-6 col-xs-12">
+                                                <input className="" type="radio" name={imagenProducto} id={imagenProducto} value={imagenProducto}
+                                                    checked={imagenGrande === imagenProducto} onChange={(e) => setImagenGrande(e.target.value)} />
+                                                <label htmlFor={imagenProducto} className="">
+                                                    <div className="itemImagenesProducto">
                                                         <img className="img-fluid" src={imagenProducto} alt={producto.imgDescripcion} />
                                                     </div>
-                                                </div> :
-                                                <div className="itemImagenesProducto col-md-4 col-sm-12 ">
-                                                    <div className="card">
-                                                        <img className="img-fluid" src={imagenProducto} alt={producto.imgDescripcion} />
-                                                    </div>
-                                                </div>)
+                                                </label>
+                                            </div>
+                                        )
                                         }
                                     </div>
                                 }
