@@ -9,14 +9,25 @@ const anhadirAlCarrito = (productoId, cantidad, talla) => async (dispatch, getSt
         switch (talla) {
             case "XS":
                 cantidadStock = data.cantidadStockXS;
+                break;
             case "S":
                 cantidadStock = data.cantidadStockS;
+                break;
             case "M":
                 cantidadStock = data.cantidadStockM;
+                break;
             case "L":
                 cantidadStock = data.cantidadStockL;
+                break;
             case "XL":
                 cantidadStock = data.cantidadStockXL;
+                break;
+            case "-":
+                cantidadStock = data.cantidadStockXS;
+                break;
+            default:
+                cantidadStock = data.cantidadStockXS;
+                break;
         }
         dispatch({
             type: ANHADIR_ITEM_AL_CARRITO,

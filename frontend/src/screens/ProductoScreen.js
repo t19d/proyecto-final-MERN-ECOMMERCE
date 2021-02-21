@@ -70,7 +70,14 @@ function ProductoScreen(props) {
     };
 
     const handleAnhadirCarrito = () => {
-        dispatch(anhadirAlCarrito(producto._id, cantidad, talla));
+        if (!((producto.cantidadStockS === -1) &&
+            (producto.cantidadStockM === -1) &&
+            (producto.cantidadStockL === -1) && 
+            (producto.cantidadStockXL === -1))) {
+            dispatch(anhadirAlCarrito(producto._id, cantidad, talla));
+        } else {
+            dispatch(anhadirAlCarrito(producto._id, cantidad, "-"));
+        }
         //props.history.push("/carrito/" + props.match.params.id + "?cantidad=" + cantidad + "-talla=" + talla);
         props.history.push("/carrito");
     }
@@ -203,29 +210,33 @@ function ProductoScreen(props) {
                             <div className="col-md-6 col-sm-12 col-xs-12">
                                 <h2>{producto.nombre}</h2>
                                 {(producto.precioOferta < producto.precio) ? <h2 className="font-weight-bold">{producto.precioOferta}€ <span className="precioAntiguoOferta">{producto.precio}€</span></h2> : <h2 className="font-weight-bold">{producto.precio}€</h2>}
-                                <div className="form-group row filaTallas col-md-12 col-sm-12 col-xs-12">
-                                    <input className="form-check-input radio-inline" type="radio" name="radioTallasXS" id="radioTallasXS" value="XS"
-                                        checked={talla === 'XS'} onChange={(e) => setTalla(e.target.value)} />
-                                    <label htmlFor="radioTallasXS" className="form-check-label">XS</label>
+                                {!((producto.cantidadStockS === -1) &&
+                                    (producto.cantidadStockM === -1) &&
+                                    (producto.cantidadStockL === -1) && (producto.cantidadStockXL === -1)) &&
+                                    <div className="form-group row filaTallas col-md-12 col-sm-12 col-xs-12">
+                                        <input className="form-check-input radio-inline" type="radio" name="radioTallasXS" id="radioTallasXS" value="XS"
+                                            checked={talla === 'XS'} onChange={(e) => setTalla(e.target.value)} />
+                                        <label htmlFor="radioTallasXS" className="form-check-label">XS</label>
 
-                                    <input className="form-check-input radio-inline" type="radio" name="radioTallasS" id="radioTallasS" value="S"
-                                        checked={talla === 'S'} onChange={(e) => setTalla(e.target.value)} />
-                                    <label htmlFor="radioTallasS" className="form-check-label">S</label>
+                                        <input className="form-check-input radio-inline" type="radio" name="radioTallasS" id="radioTallasS" value="S"
+                                            checked={talla === 'S'} onChange={(e) => setTalla(e.target.value)} />
+                                        <label htmlFor="radioTallasS" className="form-check-label">S</label>
 
-                                    <input className="form-check-input radio-inline" type="radio" name="radioTallasM" id="radioTallasM" value="M"
-                                        checked={talla === 'M'} onChange={(e) => setTalla(e.target.value)} />
-                                    <label htmlFor="radioTallasM" className="form-check-label">M</label>
-
-
-                                    <input className="form-check-input radio-inline" type="radio" name="radioTallasL" id="radioTallasL" value="L"
-                                        checked={talla === 'L'} onChange={(e) => setTalla(e.target.value)} />
-                                    <label htmlFor="radioTallasL" className="form-check-label">L</label>
+                                        <input className="form-check-input radio-inline" type="radio" name="radioTallasM" id="radioTallasM" value="M"
+                                            checked={talla === 'M'} onChange={(e) => setTalla(e.target.value)} />
+                                        <label htmlFor="radioTallasM" className="form-check-label">M</label>
 
 
-                                    <input className="form-check-input radio-inline" type="radio" name="radioTallasXL" id="radioTallasXL" value="XL"
-                                        checked={talla === 'XL'} onChange={(e) => setTalla(e.target.value)} />
-                                    <label htmlFor="radioTallasXL" className="form-check-label">XL</label>
-                                </div>
+                                        <input className="form-check-input radio-inline" type="radio" name="radioTallasL" id="radioTallasL" value="L"
+                                            checked={talla === 'L'} onChange={(e) => setTalla(e.target.value)} />
+                                        <label htmlFor="radioTallasL" className="form-check-label">L</label>
+
+
+                                        <input className="form-check-input radio-inline" type="radio" name="radioTallasXL" id="radioTallasXL" value="XL"
+                                            checked={talla === 'XL'} onChange={(e) => setTalla(e.target.value)} />
+                                        <label htmlFor="radioTallasXL" className="form-check-label">XL</label>
+                                    </div>
+                                }
 
                                 {getStock(producto) > 0 && <div className="cantidadProducto row">
                                     <div className="col-md-3 col-sm-12 col-xs-12 text-center">Cantidad:</div>
