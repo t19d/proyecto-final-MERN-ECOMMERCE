@@ -154,8 +154,13 @@ ol.breadcrumb li a:hover {
 /* IMÁGENES */
 
 .conjuntoImagenesProducto {
-  display: inline-block;
+  display: flex;
+  flex: 1;
   margin: 0;
+}
+
+.itemImagenesProducto {
+  margin: 1em 0;
 }
 
 /* Precio */
