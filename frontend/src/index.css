@@ -152,14 +152,19 @@ ol.breadcrumb li a:hover {
 }
 
 /* Imagen grande */
-.contenedorImagenGrande{
-  overflow: hidden; 
+
+.contenedorImagenGrande {
+  overflow: hidden;
   margin: 1em 0;
-  background-color: #f2f2f2;
+  background-color: #dddddd;
 }
 
 .contenedorImagenGrande:hover .imagenGrande {
   opacity: 0;
+}
+
+.imagenGrande{
+  margin: 0;
 }
 
 /*.imagenGrande{
