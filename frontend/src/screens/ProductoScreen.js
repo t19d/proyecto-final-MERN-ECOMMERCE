@@ -72,7 +72,7 @@ function ProductoScreen(props) {
     const handleAnhadirCarrito = () => {
         if (!((producto.cantidadStockS === -1) &&
             (producto.cantidadStockM === -1) &&
-            (producto.cantidadStockL === -1) && 
+            (producto.cantidadStockL === -1) &&
             (producto.cantidadStockXL === -1))) {
             dispatch(anhadirAlCarrito(producto._id, cantidad, talla));
         } else {
@@ -98,9 +98,33 @@ function ProductoScreen(props) {
                                     </Link>
                                 </li>
                                 <li className="breadcrumb-item">
-                                    <Link to="/equipaciones">
-                                        <span href="/equipaciones">Equipaciones</span>
-                                    </Link>
+                                    {
+                                        producto.categorias && producto.categorias.map((categoriaProducto,) =>
+                                            (categoriaProducto === "equipacion")
+                                                ? <Link to="/equipaciones">
+                                                    <span>Equipaciones</span>
+                                                </Link>
+                                                : ((categoriaProducto === "entrenamiento")
+                                                    ? <Link to="/entrenamiento">
+                                                        <span>Entrenamiento</span>
+                                                    </Link>
+                                                    : ((categoriaProducto === "ropa")
+                                                        ? <Link to="/moda">
+                                                            <span>Moda</span>
+                                                        </Link>
+                                                        : ((categoriaProducto === "bufanda")
+                                                            ? <Link to="/bufandas">
+                                                                <span>Bufandas</span>
+                                                            </Link>
+                                                            : (categoriaProducto === "accesorio")
+                                                            && (<Link to="/accesorios">
+                                                                <span>Accesorios</span>
+                                                            </Link>)
+                                                        )
+                                                    )
+                                                )
+                                        )
+                                    }
                                 </li>
                                 <li className="breadcrumb-item active" aria-current="page">{producto.nombre}</li>
                             </ol>
