@@ -90,7 +90,7 @@ function ProductoScreen(props) {
                                 {/* Imágenes carrusel */}
                                 {
                                     producto.imagenes &&
-                                    <div className="conjuntoImagenesProducto">
+                                    <div className="conjuntoImagenesProducto row">
                                         {producto.imagenes.map((imagenProducto, i) =>
                                             i === 0 ?
                                                 <div className="itemImagenesProducto col-md-4 col-sm-12 ">
