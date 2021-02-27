@@ -87,7 +87,7 @@ function EquipacionesScreen(props) {
 
     return (
         <section>
-            <img src="/images/recursos_web/cabecera_camiseta_blanca_grande.png" width="100%" alt="Cabecera camiseta blanca" />
+            <img className="bannerEquipaciones" src="/images/recursos_web/cabecera_camiseta_blanca_grande.png" width="100%" alt="Cabecera camiseta blanca" />
             <div className="container">
                 <h1 className="text-center tituloPagina">Equipaciones</h1>
                 {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}

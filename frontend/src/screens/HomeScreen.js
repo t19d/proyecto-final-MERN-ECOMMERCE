@@ -25,7 +25,7 @@ function HomeScreen(props) {
     return (
         <section>
             <Link to="/equipaciones">
-            <img src="/images/recursos_web/cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra" />
+                <img className="bannerEquipaciones" src="/images/recursos_web/cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra" />
             </Link>
             <div className="container">
                 <h1 className="text-center tituloPagina">Equipaciones oficiales</h1>
