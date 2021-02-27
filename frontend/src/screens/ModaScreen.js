@@ -9,11 +9,10 @@ function ModaScreen(props) {
     const { productos, loading, error } = listaProductos;
     const dispatch = useDispatch();
     const [orden, setOrden] = useState('mayMen');
-    const [filtros, setFiltros] = useState(["XS", "S", "M", "L", "XL", "chaqueta"]);
+    const [filtros, setFiltros] = useState([]);
 
     const filtrarProductos = () => {
         return (getProductosModa(productos).filter(itemProducto => {
-
             return filtros.every((itemFiltro) => {
                 console.log(itemFiltro)
                 switch (itemFiltro) {
@@ -47,8 +46,26 @@ function ModaScreen(props) {
                             return itemProducto;
                         }
                         break;
-                    default:
-                        return itemProducto;
+                    case "chaqueta":
+                        return itemProducto.categorias.includes('chaqueta');
+                    case "camiseta":
+                        return itemProducto.categorias.includes('camiseta');
+                    case "polo":
+                        return itemProducto.categorias.includes('polo');
+                    case "sudadera":
+                        return itemProducto.categorias.includes('sudadera');
+                    case "partes de arriba":
+                        return itemProducto.categorias.includes('partes de arriba');
+                    case "ecologica":
+                        return itemProducto.categorias.includes('ecologica');
+                    case "con capucha":
+                        return itemProducto.categorias.includes('con capucha');
+                    case "sin capucha":
+                        return itemProducto.categorias.includes('sin capucha');
+                    case "manga corta":
+                        return itemProducto.categorias.includes('manga corta');
+                    case "manga larga":
+                        return itemProducto.categorias.includes('manga larga');
                 }
             })
         }
@@ -72,9 +89,9 @@ function ModaScreen(props) {
         console.log(filtrarProductos());
         switch (order) {
             case "menMey":
-                return getProductosModa(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
+                return filtrarProductos().sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
             case "mayMen":
-                return getProductosModa(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
+                return filtrarProductos().sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
         }
     }
 
