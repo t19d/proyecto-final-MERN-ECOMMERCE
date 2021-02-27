@@ -40,6 +40,7 @@ ul.menuUsuario {
 }
 
 .resultadosBuscador {
+  border-top: #ffffff 3px solid;
   top: 0;
   right: 0;
   position: absolute;
@@ -51,9 +52,6 @@ ul.menuUsuario {
   background-color: #0a97b0;
   display: flex;
   align-items: flex-end;
-}
-
-.itemResultadosListaBuscar{
 }
 
 .resultadosBuscador .itemResultadosListaBuscar a {
