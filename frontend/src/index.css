@@ -121,6 +121,10 @@ ul.menuUsuario {
 #contenedorPequeUsuarioCarrito ul li a {
   color: #4b4b4b;
   transition: .3s all;
+  padding-right: 1em;
+}
+#contenedorPequeUsuarioCarrito ul li:first-child a {
+  color: #d13131;
 }
 
 #contenedorPequeUsuarioCarrito ul li a:hover, #contenedorPequeUsuarioCarrito ul a:active {
