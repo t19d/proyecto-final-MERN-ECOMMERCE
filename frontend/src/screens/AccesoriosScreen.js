@@ -9,28 +9,27 @@ function AccesoriosScreen(props) {
     const { productos, loading, error } = listaProductos;
     const dispatch = useDispatch();
     const [orden, setOrden] = useState('mayMen');
+    const [listaProductosFiltrada, setListaProductosFiltrada] = useState([]);
 
-    const isAccesorio = (categorias) => {
-        var respuesta = false;
-        categorias.forEach(element => {
-            if (element.toLowerCase() === "accesorio") {
-                respuesta = true;
-            }
-        });
-        return respuesta;
+    const getProductosAccesorios = (productos) => {
+        // Mostrar solo los de la categoría accesorio
+        return (productos.filter(productoItem => {
+            return productoItem.categorias.includes('accesorio');
+        }));
     }
 
     const ordenarPor = (order) => {
         switch (order) {
             case "menMey":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
+                return getProductosAccesorios(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
             case "mayMen":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
+                return getProductosAccesorios(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
         }
     }
 
     useEffect(() => {
         dispatch(hacerListaProductos());
+        //setListaProductosFiltrada(productos.filter(item => item. > 3));
         return () => {
             //
         }
@@ -38,38 +37,46 @@ function AccesoriosScreen(props) {
 
     return (
         <section>
-        <div className="container">
-        <h1 className="text-center tituloPagina">Accesorios</h1>
-            {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-            {error && <div>{error}</div>}
-                <div className="ordenarPorListaProductos">
-                    <select id="ordenarPorProductos" value={orden} onChange={(e) => setOrden(e.target.value)}>
-                        <option value="mayMen">Ordenar por precio: mayor a menor</option>
-                        <option value="menMey">Ordenar por precio: menor a mayor</option>
-                    </select>
-                </div>
-                <ul className="row listaProductos">
-                    {
-                        ordenarPor(orden).map(
-                            producto =>
-                                isAccesorio(producto.categorias) && (
-                                    <li className="col-md-4 col-sm-6 col-xs-12" key={producto._id}>
-                                        <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
-                                            <div className="card text-center">
-                                                <div className="card-body">
-                                                    {(producto.precioOferta < producto.precio) && <h4 className="descuentoPrecioOferta">{(((producto.precioOferta * (-100)) / producto.precio) + 100).toFixed(0)}%</h4>}
-                                                    <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
-                                                    <h5 className="card-title">{producto.nombre}</h5>
-                                                    {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
-                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>}
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </li>
+            <div className="container">
+                <h1 className="text-center tituloPagina">Accesorios</h1>
+                {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
+                {error && <div>{error}</div>}
+                <div className="row">
+                    <div id="contenedorFiltros" className="col-sm-3">
+                        <div>Filtro</div>
+                    </div>
+                    <div className="col-sm-9">
+                        <div className="ordenarPorListaProductos">
+                            <select id="ordenarPorProductos" value={orden} onChange={(e) => setOrden(e.target.value)}>
+                                <option value="mayMen">Ordenar por precio: mayor a menor</option>
+                                <option value="menMey">Ordenar por precio: menor a mayor</option>
+                            </select>
+                        </div>
+                        <ul className="row listaProductos">
+                            {
+                                ordenarPor(orden).map(
+                                    producto =>
+                                        /*isAccesorio(producto.categorias) &&*/ (
+                                            <li className="col-md-4 col-sm-6 col-xs-12" key={producto._id}>
+                                                <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
+                                                    <div className="card text-center">
+                                                        <div className="card-body">
+                                                            {(producto.precioOferta < producto.precio) && <h4 className="descuentoPrecioOferta">{(((producto.precioOferta * (-100)) / producto.precio) + 100).toFixed(0)}%</h4>}
+                                                            <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
+                                                            <h5 className="card-title">{producto.nombre}</h5>
+                                                            {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
+                                                                <h5 className="card-title precioItem">{producto.precio} €</h5>}
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            </li>
+                                        )
                                 )
-                        )
-                    }
-                </ul>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </section>);
 }

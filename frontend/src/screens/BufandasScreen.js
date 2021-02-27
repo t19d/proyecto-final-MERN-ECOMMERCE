@@ -10,22 +10,19 @@ function BufandasScreen(props) {
     const dispatch = useDispatch();
     const [orden, setOrden] = useState('mayMen');
 
-    const isBufanda = (categorias) => {
-        var respuesta = false;
-        categorias.forEach(element => {
-            if (element.toLowerCase() === "bufanda") {
-                respuesta = true;
-            }
-        });
-        return respuesta;
+    const getProductosBufandas = (productos) => {
+        // Mostrar solo los de la categoría bufanda
+        return (productos.filter(productoItem => {
+            return productoItem.categorias.includes('bufanda');
+        }));
     }
 
     const ordenarPor = (order) => {
         switch (order) {
             case "menMey":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
+                return getProductosBufandas(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
             case "mayMen":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
+                return getProductosBufandas(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
         }
     }
 
@@ -52,7 +49,7 @@ function BufandasScreen(props) {
                     {
                         ordenarPor(orden).map(
                             producto =>
-                                isBufanda(producto.categorias) && (
+                                /*isBufanda(producto.categorias) && */(
                                     <li className="col-md-4 col-sm-6 col-xs-12" key={producto._id}>
                                         <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
                                             <div className="card text-center">

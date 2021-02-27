@@ -10,23 +10,19 @@ function EquipacionesScreen(props) {
     const dispatch = useDispatch();
     const [orden, setOrden] = useState('mayMen');
 
-    const isEquipacion = (categorias) => {
-        var respuesta = false;
-        //console.log(categorias)
-        categorias.forEach(element => {
-            if (element.toLowerCase() === "equipacion") {
-                respuesta = true;
-            }
-        });
-        return respuesta;
+    const getProductosEquipacion = (productos) => {
+        // Mostrar solo los de la categoría equipacion
+        return (productos.filter(productoItem => {
+            return productoItem.categorias.includes('equipacion');
+        }));
     }
 
     const ordenarPor = (order) => {
         switch (order) {
             case "menMey":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
+                return getProductosEquipacion(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
             case "mayMen":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
+                return getProductosEquipacion(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
         }
     }
 
@@ -45,7 +41,7 @@ function EquipacionesScreen(props) {
                 {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
                 {error && <div>{error}</div>}
                 <div className="row">
-                    <div id="nav_left_container" className="col-sm-3">
+                    <div id="contenedorFiltros" className="col-sm-3">
                         <div>Filtro</div>
                     </div>
                     <div className="col-sm-9">
@@ -59,7 +55,7 @@ function EquipacionesScreen(props) {
                             {
                                 ordenarPor(orden).map(
                                     producto =>
-                                        isEquipacion(producto.categorias) && (
+                                        /*isEquipacion(producto.categorias) && */(
                                             <li className="col-md-4 col-sm-6 col-xs-12" key={producto._id}>
                                                 <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
                                                     <div className="card text-center">

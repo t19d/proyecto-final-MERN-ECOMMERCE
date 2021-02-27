@@ -9,15 +9,11 @@ function HomeScreen(props) {
     const { productos, loading, error } = listaProductos;
     const dispatch = useDispatch();
 
-    const isPortada = (categorias) => {
-        var respuesta = false;
-        //console.log(categorias)
-        categorias.forEach(element => {
-            if (element.toLowerCase() === "portada") {
-                respuesta = true;
-            }
-        });
-        return respuesta;
+    const getProductosPortada = (productos) => {
+        // Mostrar solo los de la categoría portada
+        return (productos.filter(productoItem => {
+            return productoItem.categorias.includes('portada');
+        }));
     }
 
     useEffect(() => {
@@ -35,9 +31,9 @@ function HomeScreen(props) {
                 {error && <div>{error}</div>}
                 <ul className="row listaProductos">
                     {
-                        productos.map(
+                        getProductosPortada(productos).map(
                             producto =>
-                                isPortada(producto.categorias) && (
+                                /*isPortada(producto.categorias) &&*/ (
                                     <li className="col-md-6 col-sm-6 col-xs-12" key={producto._id}>
                                         <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
                                             <div className="card text-center">

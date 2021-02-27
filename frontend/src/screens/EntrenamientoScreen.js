@@ -10,22 +10,19 @@ function EntrenamientoScreen(props) {
     const dispatch = useDispatch();
     const [orden, setOrden] = useState('mayMen');
 
-    const isEntrenamiento = (categorias) => {
-        var respuesta = false;
-        categorias.forEach(element => {
-            if (element.toLowerCase() === "entrenamiento") {
-                respuesta = true;
-            }
-        });
-        return respuesta;
+    const getProductosEntrenamiento = (productos) => {
+        // Mostrar solo los de la categoría entrenamiento
+        return (productos.filter(productoItem => {
+            return productoItem.categorias.includes('entrenamiento');
+        }));
     }
 
     const ordenarPor = (order) => {
         switch (order) {
             case "menMey":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
+                return getProductosEntrenamiento(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta);
             case "mayMen":
-                return productos.sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
+                return getProductosEntrenamiento(productos).sort((productoA, productoB) => productoA.precioOferta - productoB.precioOferta).reverse();
         }
     }
 
@@ -43,7 +40,7 @@ function EntrenamientoScreen(props) {
                 {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
                 {error && <div>{error}</div>}
                 <div className="row">
-                    <div id="nav_left_container" className="col-sm-3">
+                    <div id="contenedorFiltros" className="col-sm-3">
                         <div>Filtro</div>
                     </div>
                     <div className="col-sm-9">
@@ -57,7 +54,7 @@ function EntrenamientoScreen(props) {
                             {
                                 ordenarPor(orden).map(
                                     producto =>
-                                        isEntrenamiento(producto.categorias) && (
+                                        /*isEntrenamiento(producto.categorias) && */(
                                             <li className="col-md-4 col-sm-6 col-xs-12" key={producto._id}>
                                                 <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
                                                     <div className="card text-center">
