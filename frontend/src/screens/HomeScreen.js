@@ -24,7 +24,9 @@ function HomeScreen(props) {
     }, []);
     return (
         <section>
-            <a href="/equipaciones"><img src="/images/recursos_web/Cabecera_camiseta_negra_grande.png" width="100%" alt="Cabecera camiseta negra" /></a>
+            <Link to="/equipaciones">
+                <img src="/images/recursos_web/cabecera_camiseta_negra_grande" width="100%" alt="Cabecera camiseta negra" />
+            </Link>
             <div className="container">
                 <h1 className="text-center tituloPagina">Equipaciones oficiales</h1>
                 {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
