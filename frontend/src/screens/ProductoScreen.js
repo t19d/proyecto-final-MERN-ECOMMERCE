@@ -144,7 +144,7 @@ function ProductoScreen(props) {
                                     producto.imagenes &&
                                     <div className="conjuntoImagenesProducto row form-group">
                                         {producto.imagenes.map((imagenProducto) =>
-                                            <div className="col-md-4 col-sm-6 col-xs-12">
+                                            <div className="col-md-4 col-sm-4 col-xs-12">
                                                 <input className="" type="radio" name={imagenProducto} id={imagenProducto} value={imagenProducto}
                                                     checked={imagenGrande === imagenProducto} onChange={(e) => setImagenGrande(e.target.value)} />
                                                 <label htmlFor={imagenProducto} className="">
