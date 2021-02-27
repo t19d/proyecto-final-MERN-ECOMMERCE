@@ -126,7 +126,9 @@ function ManageProductosScreen(props) {
                                 <tr key={producto._id}>
                                     <td>{producto._id}</td>
                                     <td>{producto.nombre}</td>
-                                    <td><img className="img-thumbnail" src={producto.miniatura} /></td>
+                                    <td className="filaImagenMiniaturaLista">
+                                        <img className="img-thumbnail imagenMiniaturaLista" src={producto.miniatura} />
+                                    </td>
                                     <td>{producto.precio}</td>
                                     <td>{producto.precioOferta}</td>
                                     <td>{producto.cantidadStockXS}</td>

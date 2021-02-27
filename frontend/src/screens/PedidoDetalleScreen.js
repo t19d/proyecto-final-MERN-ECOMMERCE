@@ -18,59 +18,67 @@ function PedidoDetalleScreen(props) {
     return (
         loading ? <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div> :
             error ? <div>{error}</div> :
+                pedido &&
                 <section>
                     <div className="container">
-                        <h3>ID: {pedido._id}</h3>
-                        <h3 className="">Total: {pedido.total} €</h3>
-                        <h3 className="">Subtotal: {pedido.subtotal} €</h3>
-                        <h3 className="">Gastos de envío: {pedido.gastosEnvio} €</h3>
-                        <h3 className="">Pagado con {pedido.metodoPago}</h3>
-                        <h3 className="">Fecha de compra: {pedido.pagadoDia.split("T")[0].split("-")[2]}-{pedido.pagadoDia.split("T")[0].split("-")[1]}-{pedido.pagadoDia.split("T")[0].split("-")[0]}</h3>
-                        <h3 className="">Fecha de llegada: {pedido.llegadaEnvioDia.split("T")[0].split("-")[2]}-{pedido.llegadaEnvioDia.split("T")[0].split("-")[1]}-{pedido.llegadaEnvioDia.split("T")[0].split("-")[0]}</h3>
-                        <h3 className="">Datos de envío:</h3>
-                        <ul className="itemPedidosDatosEnvio">
-                            <h3 className="">Nombre: {pedido.direccion.nombre}</h3>
-                            <h3 className="">Apellidos: {pedido.direccion.apellidos}</h3>
-                            <h3 className="">Dni - Nif - Cif - Pasaporte: {pedido.direccion.dni}</h3>
-                            <h3 className="">Teléfono: {pedido.direccion.telefono}</h3>
-                            <h3 className="">Dirección: {pedido.direccion.direccion}</h3>
-                            <h3 className="">Código postal: {pedido.direccion.codigoPostal}</h3>
-                            <h3 className="">País: {pedido.direccion.pais}</h3>
-                            <h3 className="">Provincia: {pedido.direccion.provincia}</h3>
-                            <h3 className="">Email: {pedido.direccion.email}</h3>
-                        </ul>
-                        <h3 className="">Productos: ({pedido.pedidoItems.length} items)</h3>
-                        <div className="table-responsive">
-                            <table className="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"> </th>
-                                        <th scope="col">Producto</th>
-                                        <th scope="col">Talla</th>
-                                        <th scope="col" className="text-center">Cantidad</th>
-                                        <th scope="col" className="text-center">Precio</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {pedido.pedidoItems.map(
-                                        producto => (
-                                            <tr key={producto._id}>
-                                                <td><img className="img-thumbnail" src={producto.miniatura} /> </td>
-                                                <td>
-                                                    <Link to={"/productos/" + producto.producto}>
-                                                        {producto.nombre}
-                                                    </Link>
+                        <h1 className="tituloPagina text-center">Detalles del pedido {pedido._id}</h1>
+                        <div className="row">
+                            <div className="col-md-6 col-sm-12 col-xs-12 datosPedido">
+                                <h2>Datos de envío:</h2>
+                                <div className=""><span>Nombre: </span><span>{pedido.direccion.nombre} {pedido.direccion.apellidos}</span></div>
+                                <div className=""><span>Dni - Nif - Cif - Pasaporte: </span><span>{pedido.direccion.dni}</span></div>
+                                <div className=""><span>Teléfono: </span><span>{pedido.direccion.telefono}</span></div>
+                                <div className=""><span>Dirección: </span><span>{pedido.direccion.direccion}</span></div>
+                                <div className=""><span>Código postal: </span><span>{pedido.direccion.codigoPostal}</span></div>
+                                <div className=""><span>País: </span><span>{pedido.direccion.pais}</span></div>
+                                <div className=""><span>Provincia: </span><span>{pedido.direccion.provincia}</span></div>
+                                <div className=""><span>Email: </span><span>{pedido.direccion.email}</span></div>
+                            </div>
+                            <div className="col-md-6 col-sm-12 col-xs-12 datosPedido">
+                                <h2>Datos de pedido:</h2>
+                                    <div className=""><span>ID: </span><span>{pedido._id}</span></div>
+                                    <div className=""><span>Total: </span><span>{pedido.total} €</span></div>
+                                    <div className=""><span>Subtotal: </span><span>{pedido.subtotal} €</span></div>
+                                    <div className=""><span>Gastos de envío: </span><span>{pedido.gastosEnvio} €</span></div>
+                                    <div className=""><span>Pagado con </span><span>{pedido.metodoPago}</span></div>
+                                    <div className=""><span>Fecha de compra: </span><span>{pedido.pagadoDia.split("T")[0].split("-")[2]}-{pedido.pagadoDia.split("T")[0].split("-")[1]}-{pedido.pagadoDia.split("T")[0].split("-")[0]}</span></div>
+                                    <div className=""><span>Fecha de llegada: </span><span>{pedido.llegadaEnvioDia.split("T")[0].split("-")[2]}-{pedido.llegadaEnvioDia.split("T")[0].split("-")[1]}-{pedido.llegadaEnvioDia.split("T")[0].split("-")[0]}</span></div>
+                            </div>
+                            </div>
+                            <h2 className="text-center mt-4">Productos: ({pedido.pedidoItems.length} items)</h2>
+                            <div className="table-responsive">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col"> </th>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Talla</th>
+                                            <th scope="col" className="text-center">Cantidad</th>
+                                            <th scope="col" className="text-center">Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {pedido.pedidoItems.map(
+                                            producto => (
+                                                <tr key={producto._id}>
+                                                    <td className="filaImagenMiniaturaLista">
+                                                        <img className="img-thumbnail imagenMiniaturaLista" src={producto.miniatura} />
                                                     </td>
-                                                <td className="text-center">{producto.talla}</td>
-                                                <td className="text-center">{producto.cantidad}</td>
-                                                <td className="text-right">{producto.precio}€</td>
-                                            </tr>
-                                        ))
-                                    }
-                                </tbody>
-                            </table>
+                                                    <td>
+                                                        <Link to={"/productos/" + producto.producto}>
+                                                            {producto.nombre}
+                                                        </Link>
+                                                    </td>
+                                                    <td className="text-center">{producto.talla}</td>
+                                                    <td className="text-center">{producto.cantidad}</td>
+                                                    <td className="text-right">{producto.precio}€</td>
+                                                </tr>
+                                            ))
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
                 </section>
     );
 }

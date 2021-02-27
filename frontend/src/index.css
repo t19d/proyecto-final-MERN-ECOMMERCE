@@ -123,6 +123,7 @@ ul.menuUsuario {
   transition: .3s all;
   padding-right: 1em;
 }
+
 #contenedorPequeUsuarioCarrito ul li:first-child a {
   color: #d13131;
 }
@@ -531,6 +532,32 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 
 /* -------------------------------------------------------------------------------------- */
 
+/* MINIATURA IMAGEN */
+
+.filaImagenMiniaturaLista {
+  width: 10rem;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+/* DATOS PEDIDO */
+
+.datosPedido div {
+  border-bottom: #c5c5c5 1px solid;
+  margin-top: .3em;
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 .4em;
+}
+
+.datosPedido div span:first-child {
+  font-size: 1.2rem;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
 @media screen and (max-width: 1024px) {}
 
 /*@media screen and (min-width: 375px) {
@@ -547,22 +574,20 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 
 @media screen and (max-width: 576px) {
   /* Filtros */
-  #contenedorFiltros{
+  #contenedorFiltros {
     display: none;
   }
   /* Imágenes detalle producto */
-  .contenedorImagenGrande{
+  .contenedorImagenGrande {
     display: none;
   }
   .conjuntoImagenesProducto>div>label {
     background-color: #f2f2f2;
     border: #000000 1px solid;
   }
-  
   /*.conjuntoImagenesProducto>div:last-child {
     border-radius: 50px;
   }*/
-  
   .conjuntoImagenesProducto>div>input:checked+label {
     background-color: #f2f2f2;
     border: #000000 1px solid;
@@ -572,7 +597,7 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
   }
 }
 
-@media screen and (max-width: 992px){
+@media screen and (max-width: 992px) {
   #header_superior, #header_inferior_izquierda, #navbarNavDropdown ul li:last-child, .bannerEquipaciones {
     display: none;
   }
@@ -589,11 +614,11 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
     width: 5em;
   }
   /* Menú desplegable */
-  #header_inferior_derecha{
+  #header_inferior_derecha {
     position: relative;
     z-index: 1;
   }
-  #header_inferior_derecha button{
+  #header_inferior_derecha button {
     border: none;
     background-color: #0a97b0;
   }
@@ -601,31 +626,30 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
   .navbar-collapse.collapse.show, .navbar-collapse.collapsing {
     margin-top: .1em;
   }
-
   #navbarNavDropdown {
     position: absolute;
     padding: 0 2em 1em 2em;
     background-color: #0a97b0;
   }
-  #navbarNavDropdown ul li{
+  #navbarNavDropdown ul li {
     text-align: center;
     border-bottom: 1px white solid;
   }
-  #navbarNavDropdown ul li:first-child{
+  #navbarNavDropdown ul li:first-child {
     margin-top: .2em;
   }
-  #navbarNavDropdown ul li a{
+  #navbarNavDropdown ul li a {
     color: white;
     font-weight: bold;
     font-size: 1rem;
   }
   /* Desplegable Afición */
-  #navbarNavDropdown ul li div{
+  #navbarNavDropdown ul li div {
     padding: 0;
     background-color: #11788a;
     min-width: 0;
   }
-  #navbarNavDropdown ul li div a{
+  #navbarNavDropdown ul li div a {
     padding-left: 0;
     padding-right: 0;
     margin: 0;
@@ -635,6 +659,10 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
     font-weight: bold;
     font-size: 1rem;
     margin: 0;
+  }
+  /* MINIATURA IMAGEN */
+  .filaImagenMiniaturaLista {
+    width: 4rem;
   }
 }
 

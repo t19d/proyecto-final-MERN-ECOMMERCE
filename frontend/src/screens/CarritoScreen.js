@@ -36,12 +36,12 @@ function CarritoScreen(props) {
         <div>
             <section className="jumbotron text-center">
                 <div className="container">
-                    <h1 className="jumbotron-heading">RESUMEN DE MI PEDIDO</h1>
+                    <h1 className="jumbotron-heading">CARRITO</h1>
                 </div>
             </section>
             {
                 carritoItems.length === 0 ?
-                    <div className="container mb-4">
+                    <div className="container mb-4 text-center">
                         EL CARRITO ESTÁ VACÍO
                     </div>
                     :
@@ -66,7 +66,9 @@ function CarritoScreen(props) {
                                                 carritoItems.map(item =>
 
                                                     <tr key={item._id}>
-                                                        <td><img className="img-thumbnail" src={item.miniatura} /> </td>
+                                                        <td className="filaImagenMiniaturaLista">
+                                                            <img className="img-thumbnail imagenMiniaturaLista" src={item.miniatura} />
+                                                        </td>
                                                         <td>
                                                             <Link to={"/productos/" + item.producto}>
                                                                 {item.nombre}
@@ -104,31 +106,16 @@ function CarritoScreen(props) {
                                             }
 
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
-                                                <td className="text-right">{subtotal} €</td>
+                                                <td colspan="5">SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
+                                                <td colspan="2" className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>GASTOS DE ENVIO</td>
-                                                <td className="text-right">{gastosEnvio} €</td>
+                                                <td colspan="5">GASTOS DE ENVIO</td>
+                                                <td colspan="2" className="text-right">{gastosEnvio} €</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>TOTAL</td>
-                                                <td className="text-right">{total} €</td>
+                                                <td colspan="5">TOTAL</td>
+                                                <td colspan="2" className="text-right">{total} €</td>
                                             </tr>
                                         </tbody>
                                     </table>

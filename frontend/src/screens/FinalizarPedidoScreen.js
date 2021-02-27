@@ -31,9 +31,9 @@ function FinalizarPedidoScreen(props) {
             pedidoItems: carrito.carritoItems,
             direccion: carrito.envio,
             metodoPago: carrito.pago.metodoPago,
-            subtotal: subtotal,
-            gastosEnvio: gastosEnvio,
-            total: total,
+            subtotal: Number.parseFloat(subtotal),
+            gastosEnvio: Number.parseFloat(gastosEnvio),
+            total: Number.parseFloat(total),
             usuario: usuarioInfo._id,
             pagadoDia: new Date(),
             llegadaEnvioDia: new Date().setDate(new Date().getDate() + 7),
@@ -52,26 +52,29 @@ function FinalizarPedidoScreen(props) {
     }, [dispatch, pedido, props.history, error]);
 
     return (
-        <div>
+        <div className="container">
             <CheckoutPasos paso1 paso2 paso3 paso4></CheckoutPasos>
             <section className="jumbotron text-center">
                 <div className="container">
                     <h1 className="jumbotron-heading">FINALIZAR PEDIDO</h1>
                 </div>
             </section>
-            <div className="text-center">
-                <h2>Datos de envío envío</h2>
-                <div>Nombre: {carrito.envio.nombre} {carrito.envio.apellidos}</div>
-                <div>DNI: {carrito.envio.dni}</div>
-                <div>email: {carrito.envio.email}</div>
-                <div>Teléfono: {carrito.envio.telefono}</div>
-                <div>Dirección 1: {carrito.envio.direccion}, {carrito.envio.codigoPostal}</div>
-                <div>Dirección 2: {carrito.envio.provincia}, {carrito.envio.pais}</div>
+            <div className="row">
+                <div className="col-md-6 col-sm-12 col-xs-12 datosPedido">
+                    <h2>Datos de envío:</h2>
+                    <div><span>Nombre: </span><span>{carrito.envio.nombre} {carrito.envio.apellidos}</span></div>
+                    <div><span>DNI: </span><span>{carrito.envio.dni}</span></div>
+                    <div><span>Email: </span><span>{carrito.envio.email}</span></div>
+                    <div><span>Teléfono: </span><span>{carrito.envio.telefono}</span></div>
+                    <div><span>Dirección 1: </span><span>{carrito.envio.direccion}, {carrito.envio.codigoPostal}</span></div>
+                    <div><span>Dirección 2: </span><span>{carrito.envio.provincia}, {carrito.envio.pais}</span></div>
+                </div>
+                <div className="col-md-6 col-sm-12 col-xs-12 datosPedido">
+                    <h2>Datos de pago:</h2>
+                    <div><span>Método de pago: </span><span>{carrito.pago.metodoPago}</span></div>
+                </div>
             </div>
-            <div className="text-center">
-                <h2>Datos de pago</h2>
-                <div>Método de pago: {carrito.pago.metodoPago}</div>
-            </div>
+            <h2 className="text-center mt-4">Productos: ({carrito.carritoItems.length} items)</h2>
             {
                 carritoItems.length === 0 ?
                     <div className="container mb-4">
@@ -99,7 +102,9 @@ function FinalizarPedidoScreen(props) {
                                                 carritoItems.map(item =>
 
                                                     <tr key={item._id}>
-                                                        <td><img className="img-thumbnail" src={item.miniatura} /> </td>
+                                                        <td className="filaImagenMiniaturaLista">
+                                                            <img className="img-thumbnail imagenMiniaturaLista" src={item.miniatura} />
+                                                        </td>
                                                         <td>{item.nombre}</td>
                                                         {
                                                             item.cantidadStock === 0 ?
@@ -116,28 +121,16 @@ function FinalizarPedidoScreen(props) {
                                             }
 
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
-                                                <td className="text-right">{subtotal} €</td>
+                                                <td colspan="4">SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
+                                                <td colspan="2" className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>GASTOS DE ENVIO</td>
-                                                <td className="text-right">{gastosEnvio} €</td>
+                                                <td colspan="4">GASTOS DE ENVIO</td>
+                                                <td colspan="2" className="text-right">{gastosEnvio} €</td>
                                             </tr>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>TOTAL</td>
-                                                <td className="text-right">{total} €</td>
+                                                <td colspan="4">TOTAL</td>
+                                                <td colspan="2" className="text-right">{total} €</td>
                                             </tr>
                                         </tbody>
                                     </table>
