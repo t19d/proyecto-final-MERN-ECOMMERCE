@@ -117,7 +117,7 @@ function App() {
                     }
                   </div>
                   <div className="form-inline filtroBuscador">
-                    <input className="form-control mr-sm-2" onBlur={limpiarFiltro} onClick={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} onChange={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
+                    <input className="form-control mr-sm-2" onClick={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} onChange={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
                   </div>
                 </div>
               </div>
