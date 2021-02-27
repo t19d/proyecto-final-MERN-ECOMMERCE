@@ -25,12 +25,18 @@ function ModificarContrasenhaUsuarioScreen(props) {
         e.preventDefault();
         // Comprobar que la contraseña antigua es la activa
         if (usuario.password === oldPassword) {
-            if (password === rePassword) {
-                dispatch(actualizarUsuario({
-                    _id: usuarioId, isAdmin: isAdmin, nombre: usuario.nombre, email: usuario.email, password: password
-                }));
+            if (oldPassword != password) {
+                if (password === rePassword) {
+                    if (window.confirm("¿Está seguro que quiere cambiar su contraseña?")) {
+                        dispatch(actualizarUsuario({
+                            _id: usuarioId, isAdmin: isAdmin, nombre: usuario.nombre, email: usuario.email, password: password
+                        }));
+                    }
+                } else {
+                    alert("Las contraseñas no coinciden.");
+                }
             } else {
-                alert("Las contraseñas no coinciden.");
+                alert("La contraseña nueva no puede ser la misma que la antigua.");
             }
         } else {
             alert("La contraseña antigua no coincide.");
