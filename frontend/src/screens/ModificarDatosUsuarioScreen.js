@@ -57,7 +57,7 @@ function ModificarDatosUsuarioScreen(props) {
         <div className="text-center container-sm" onSubmit={submitHandler}>
             <h1 className="text-center tituloPagina">Editar datos usuario</h1>
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-            {error && <div>{error}</div>}
+            {error && <div className="text-danger text-center">{error}</div>}
             {loadingActualizacion && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {errorActualizacion && <div>{errorActualizacion}</div>}
             <form className="formRegistro">

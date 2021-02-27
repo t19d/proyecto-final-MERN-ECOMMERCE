@@ -37,7 +37,7 @@ function ListaPedidosScreen(props) {
             <div className="container">
                 <h1 className="text-center tituloPagina">Mis pedidos</h1>
                 {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-                {error && <div>{error}</div>}
+                {error && <div className="text-danger text-center">{error}</div>}
                 {pedidos && <div className="ordenarPorListaPedidos">
                     <select id="ordenarPorPedidos" value={orden} onChange={(e) => setOrden(e.target.value)}>
                         <option value="carBar">Ordenar por total: de más caro a más barato</option>

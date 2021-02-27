@@ -28,29 +28,31 @@ function HomeScreen(props) {
             <div className="container">
                 <h1 className="text-center tituloPagina">Equipaciones oficiales</h1>
                 {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-                {error && <div>{error}</div>}
-                <ul className="row listaProductos">
-                    {
-                        getProductosPortada(productos).map(
+                {error && <div className="text-danger text-center">{error}</div>}
+                {productos ?
+                    <ul className="row listaProductos">
+                        {getProductosPortada(productos).map(
                             producto =>
-                                /*isPortada(producto.categorias) &&*/ (
-                                    <li className="col-md-6 col-sm-6 col-xs-12" key={producto._id}>
-                                        <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
-                                            <div className="card text-center">
-                                                <div className="card-body">
-                                                    {(producto.precioOferta < producto.precio) && <h4 className="descuentoPrecioOferta">{(((producto.precioOferta * (-100)) / producto.precio) + 100).toFixed(0)}%</h4>}
-                                                    <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
-                                                    <h5 className="card-title">{producto.nombre}</h5>
-                                                    {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
-                                                        <h5 className="card-title precioItem">{producto.precio} €</h5>}
-                                                </div>
+                                /*isPortada(producto.categorias) &&*/(
+                                <li className="col-md-6 col-sm-6 col-xs-12" key={producto._id}>
+                                    <Link to={'/productos/' + producto._id} className="col-sm itemProductos">
+                                        <div className="card text-center">
+                                            <div className="card-body">
+                                                {(producto.precioOferta < producto.precio) && <h4 className="descuentoPrecioOferta">{(((producto.precioOferta * (-100)) / producto.precio) + 100).toFixed(0)}%</h4>}
+                                                <img src={producto.miniatura} className="card-img imagenItem" alt={producto.imgDescripcion} />
+                                                <h5 className="card-title">{producto.nombre}</h5>
+                                                {(producto.precioOferta < producto.precio) ? <h5 className="card-title precioItem">{producto.precioOferta}€ <span className="precioAntiguoOfertaLista">{producto.precio}€</span></h5> :
+                                                    <h5 className="card-title precioItem">{producto.precio} €</h5>}
                                             </div>
-                                        </Link>
-                                    </li>
-                                )
+                                        </div>
+                                    </Link>
+                                </li>
+                            )
                         )
-                    }
-                </ul>
+                        }
+                    </ul>
+                    :
+                    <div className="text-danger text-center">Fallo de conexión a la base de datos</div>}
             </div>
         </section>
     );

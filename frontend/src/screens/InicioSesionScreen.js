@@ -30,7 +30,7 @@ function InicioSesionScreen(props) {
         <div className="text-center container" onSubmit={submitHandler}>
             <h1 className="text-center tituloPagina">Iniciar sesión</h1>
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
-            {error && <div>{error}</div>}
+            {error && <div className="text-danger text-center">{error}</div>}
             <form className="formInicioSesion">
                 <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required autoFocus onChange={(e) => setEmail(e.target.value)} />
                 <input id="inputPassword" className="form-control" type="password" name="password" placeholder="Contraseña" required onChange={(e) => setPassword(e.target.value)} />
