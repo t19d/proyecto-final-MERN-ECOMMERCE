@@ -40,18 +40,20 @@ function App() {
     setFiltroListaProductosBuscador("");
   }
 
-  const resultadosListaBuscador = productos
-    .filter(item => item.nombre.toLowerCase().includes(filtroListaProductosBuscador.toLowerCase()))
-    .map((item) =>
-      <li key={item.id} className="itemResultadosListaBuscar col-md-3 col-sm-4 col-xs-12" onClick={limpiarFiltro}>
-        <Link to={'/productos/' + item._id}>
-          <div className="row">
-            <div className="col-4"><img src={item.miniatura} className="img-fluid imagenItemResultadosListaBuscar" alt={item.imgDescripcion} /></div>
-            <div className="col-8">{item.nombre}</div>
-          </div>
-        </Link>
-      </li>
-    );
+  const resultadosListaBuscador = productos ?
+    productos
+      .filter(item => item.nombre.toLowerCase().includes(filtroListaProductosBuscador.toLowerCase()))
+      .map((item) =>
+        <li key={item.id} className="itemResultadosListaBuscar col-md-3 col-sm-4 col-xs-12" onClick={limpiarFiltro}>
+          <Link to={'/productos/' + item._id}>
+            <div className="row">
+              <div className="col-4"><img src={item.miniatura} className="img-fluid imagenItemResultadosListaBuscar" alt={item.imgDescripcion} /></div>
+              <div className="col-8">{item.nombre}</div>
+            </div>
+          </Link>
+        </li>
+      ) :
+    <li></li>;
 
   const dispatch = useDispatch();
   const cerrarSesionHandler = () => {
@@ -117,7 +119,7 @@ function App() {
                     }
                   </div>
                   <div className="form-inline filtroBuscador">
-                    <input className="form-control mr-sm-2" onClick={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} onChange={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
+                    <input className="form-control mr-sm-2" onClick={(e) => (e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} onChange={(e) => (e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
                   </div>
                 </div>
               </div>
