@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
@@ -32,10 +32,26 @@ function App() {
   const usuarioDetalles = useSelector((state) => state.usuarioDetalles);
   const { loading, error, usuario } = usuarioDetalles;
 
+  const listaProductos = useSelector(state => state.listaProductos);
+  const { productos, loading: loadingListaProductos, error: errorListaProductos } = listaProductos;
+
+  const [filtroListaProductosBuscador, setFiltroListaProductosBuscador] = useState("");
+
+  const resultadosListaBuscador = productos
+    .filter(item => item.nombre.toLowerCase().includes(filtroListaProductosBuscador.toLowerCase()))
+    .map(item =>
+      <li key={item.id}>
+        <Link to={'/productos/' + item._id}>
+          {item.nombre}
+        </Link>
+      </li>
+    );
+
   const dispatch = useDispatch();
   const cerrarSesionHandler = () => {
     dispatch(cerrarSesion());
   };
+
 
   return (
     <BrowserRouter>
@@ -95,8 +111,8 @@ function App() {
                     }
                   </div>
                   <form className="form-inline">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Buscar..."
-                      aria-label="Buscar" />
+                    <input className="form-control mr-sm-2" onChange={(e) => setFiltroListaProductosBuscador(e.target.value)} type="search" placeholder="Buscar..." aria-label="Buscar" />
+                    <ul>{resultadosListaBuscador}</ul>
                     <button className="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
                   </form>
                 </div>
