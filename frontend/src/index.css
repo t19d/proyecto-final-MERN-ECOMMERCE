@@ -33,12 +33,62 @@ ul.menuUsuario {
   border: aliceblue 1px solid;
 }
 
-/* BUSCADOR CABECERA */
-.resultadosBuscador{
-  position: absolute;
-  z-index: 100000;
+/* RESULTADOS BUSCADOR CABECERA */
+
+.contenedorResultadosBuscador {
+  position: relative;
 }
 
+.resultadosBuscador {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+  list-style-type: none;
+  padding-inline-start: 0;
+  background-color: #0a97b0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.itemResultadosListaBuscar{
+}
+
+.resultadosBuscador .itemResultadosListaBuscar a {
+  color: #f3f3f3;
+  text-decoration: none;
+}
+
+.resultadosBuscador .itemResultadosListaBuscar a>div {
+  display: flex;
+  align-items: center;
+  background-color: #0a97b0;
+  font-size: 1em;
+  padding: .3em 1em;
+  transition: .3s all;
+  border-right: #ffffff8a 1px solid;
+  border-bottom: #ffffff8a 1px solid;
+  margin-bottom: .1em;
+}
+
+.resultadosBuscador .itemResultadosListaBuscar a:hover>div {
+  background-color: #0c8196;
+  color: #f3f3f3;
+}
+
+.resultadosBuscador .itemResultadosListaBuscar a>div>div {
+  padding-right: 0;
+}
+
+/* img resultados */
+
+.resultadosBuscador .itemResultadosListaBuscar a>div>div:first-child {
+  padding-left: 0;
+}
+
+/* Segunda cabecera */
 
 #header_escudo {
   width: 100%;
@@ -168,7 +218,7 @@ ol.breadcrumb li a:hover {
   opacity: 0;
 }
 
-.imagenGrande{
+.imagenGrande {
   margin: 0;
 }
 

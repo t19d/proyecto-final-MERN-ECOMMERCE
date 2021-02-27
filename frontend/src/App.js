@@ -39,10 +39,13 @@ function App() {
 
   const resultadosListaBuscador = productos
     .filter(item => item.nombre.toLowerCase().includes(filtroListaProductosBuscador.toLowerCase()))
-    .map(item =>
-      <li key={item.id}>
+    .map((item) =>
+      <li key={item.id} className="itemResultadosListaBuscar col-md-3 col-sm-4 col-xs-12">
         <Link to={'/productos/' + item._id}>
-          {item.nombre}
+          <div className="row">
+            <div className="col-4"><img src={item.miniatura} className="img-fluid imagenItemResultadosListaBuscar" alt={item.imgDescripcion} /></div>
+            <div className="col-8">{item.nombre}</div>
+          </div>
         </Link>
       </li>
     );
@@ -111,13 +114,15 @@ function App() {
                     }
                   </div>
                   <div className="form-inline filtroBuscador">
-                    <input className="form-control mr-sm-2" onChange={(e) => setFiltroListaProductosBuscador(e.target.value)} type="search" placeholder="Buscar..." aria-label="Buscar" />
-                    <ul className="resultadosBuscador">{filtroListaProductosBuscador.length > 0 && resultadosListaBuscador}</ul>
+                    <input className="form-control mr-sm-2" onChange={(e) => (e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div className="contenedorResultadosBuscador" style={{ position: "relative" }}>
+          <ul className="resultadosBuscador row">{filtroListaProductosBuscador.length > 0 && resultadosListaBuscador}</ul>
         </div>
 
         <div id="header_inferior" className="container-fluid">
