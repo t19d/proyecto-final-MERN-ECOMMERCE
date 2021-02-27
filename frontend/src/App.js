@@ -134,9 +134,7 @@ function App() {
           <div className="container">
             <div id="header_inferior_izquierda">
               <Link to="/">
-                {/*<a href="/">*/}
                 <img id="header_escudo" src="/images/escudos/vector_escudo_nombre.svg" alt="Icono inicio" />
-                {/*</a>*/}
               </Link>
             </div>
             <nav className="navbar navbar-expand-lg justify-content-end">
@@ -149,19 +147,16 @@ function App() {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul className="navbar-nav">
                     <li className="nav-item active">
-                      {/*<a className="nav-link" href="/equipaciones">EQUIPACIONES 20/21</a>*/}
                       <Link to="/equipaciones" className="nav-link">
                         <span >EQUIPACIONES 20/21</span>
                       </Link>
                     </li>
                     <li className="nav-item active">
-                      {/*<a className="nav-link" href="/entrenamiento">ENTRENAMIENTO 20/21</a>*/}
                       <Link to="/entrenamiento" className="nav-link">
                         <span>ENTRENAMIENTO 20/21</span>
                       </Link>
                     </li>
                     <li className="nav-item">
-                      {/*<a className="nav-link" href="/moda">MODA</a>*/}
                       <Link to="/moda" className="nav-link">
                         <span>MODA</span>
                       </Link>
@@ -172,18 +167,15 @@ function App() {
                         AFICIÓN
                       </a>
                       <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        {/*<a className="dropdown-item" href="/bufandas">BUFANDAS</a>*/}
                         <Link to="/bufandas" className="dropdown-item">
                           <span>BUFANDAS</span>
                         </Link>
-                        {/*<a className="dropdown-item" href="/accesorios">ACCESORIOS</a>*/}
                         <Link to="/accesorios" className="dropdown-item">
                           <span>ACCESORIOS</span>
                         </Link>
                       </div>
                     </li>
                     <li className="nav-item">
-                      {/*<a className="nav-link" href="/outlet">OUTLET</a>*/}
                       <Link to="/outlet" className="nav-link">
                         <span>OUTLET</span>
                       </Link>
@@ -234,94 +226,44 @@ function App() {
         <div className="container text-center text-md-left">
           <div className="row">
             <div className="col-md-4 col-sm-12 col-xs-12 mx-auto">
-              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-              <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-              consectetur
-  adipisicing elit.</p>
+              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Club Pastoriza Balompié</h5>
+              <p>Esta es la web de merchandising oficial del Club Pastoriza Balompié</p>
             </div>
             <hr className="clearfix w-100 d-md-none" />
             <div className="col-md-2 col-sm-12 col-xs-12 mx-auto">
-              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+              <h5 className="font-weight-bold text-uppercase mt-3 mb-4 text-center">20/21</h5>
               <ul className="list-unstyled">
-                <li>
-                  {/*<a href="#!">Link 1</a>*/}
-                  <Link to="/">
-                    <span>Link 1</span>
+                <li className="text-center">
+                  <Link to="/equipaciones">
+                    <span>Equipaciones</span>
                   </Link>
                 </li>
-                <li>
-                  {/*<a href="#!">Link 2</a>*/}
-                  <Link to="/">
-                    <span>Link 2</span>
+                <li className="text-center">
+                  <Link to="/entrenamiento">
+                    <span>Entrenemiento</span>
                   </Link>
                 </li>
               </ul>
             </div>
             <hr className="clearfix w-100 d-md-none" />
             <div className="col-md-2 col-sm-12 col-xs-12 mx-auto">
-              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+              <h5 className="font-weight-bold text-uppercase mt-3 mb-4 text-center">Afición</h5>
               <ul className="list-unstyled">
-                <li>
-                  {/*<a href="#!">Link 1</a>*/}
-                  <Link to="/">
-                    <span>Link 1</span>
+                <li className="text-center">
+                  <Link to="/bufandas">
+                    <span>Bufandas</span>
                   </Link>
                 </li>
-                <li>
-                  {/*<a href="#!">Link 2</a>*/}
-                  <Link to="/">
-                    <span>Link 2</span>
+                <li className="text-center">
+                  <Link to="/accesorios">
+                    <span>Accesorios</span>
                   </Link>
                 </li>
               </ul>
             </div>
             <hr className="clearfix w-100 d-md-none" />
-            <div className="col-md-2 col-sm-12 col-xs-12 mx-auto">
-              <h5 className="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-              <ul className="list-unstyled">
-                <li>
-                  {/*<a href="#!">Link 1</a>*/}
-                  <Link to="/">
-                    <span>Link 1</span>
-                  </Link>
-                </li>
-                <li>
-                  {/*<a href="#!">Link 2</a>*/}
-                  <Link to="/">
-                    <span>Link 2</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
-        {/*<ul className="list-unstyled list-inline text-center">
-          <li className="list-inline-item">
-            <a className="btn-floating btn-fb mx-1">
-              <i className="fab fa-facebook-f"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-tw mx-1">
-              <i className="fab fa-twitter"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-gplus mx-1">
-              <i className="fab fa-google-plus-g"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-li mx-1">
-              <i className="fab fa-linkedin-in"> </i>
-            </a>
-          </li>
-          <li className="list-inline-item">
-            <a className="btn-floating btn-dribbble mx-1">
-              <i className="fab fa-dribbble"> </i>
-            </a>
-          </li>
-        </ul>*/}
       </footer>
 
     </BrowserRouter>
