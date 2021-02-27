@@ -110,11 +110,10 @@ function App() {
                         </Link>)
                     }
                   </div>
-                  <form className="form-inline">
+                  <div className="form-inline filtroBuscador">
                     <input className="form-control mr-sm-2" onChange={(e) => setFiltroListaProductosBuscador(e.target.value)} type="search" placeholder="Buscar..." aria-label="Buscar" />
-                    <ul>{resultadosListaBuscador}</ul>
-                    <button className="btn btn-light my-2 my-sm-0" type="submit">Buscar</button>
-                  </form>
+                    <ul className="resultadosBuscador">{filtroListaProductosBuscador.length > 0 && resultadosListaBuscador}</ul>
+                  </div>
                 </div>
               </div>
             </div>

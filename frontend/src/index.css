@@ -34,6 +34,11 @@ ul.menuUsuario {
 }
 
 /* BUSCADOR CABECERA */
+.resultadosBuscador{
+  position: absolute;
+  z-index: 100000;
+}
+
 
 #header_escudo {
   width: 100%;
@@ -156,7 +161,7 @@ ol.breadcrumb li a:hover {
 .contenedorImagenGrande {
   overflow: hidden;
   margin: 1em 0;
-  background-color: #dddddd;
+  /*background-color: #dddddd;*/
 }
 
 .contenedorImagenGrande:hover .imagenGrande {
