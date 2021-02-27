@@ -106,6 +106,27 @@ ul.menuUsuario {
   color: black;
 }
 
+#contenedorPequeUsuarioCarrito, #contenedorPequeImagen {
+  display: none;
+}
+
+#contenedorPequeUsuarioCarrito ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+#contenedorPequeUsuarioCarrito ul li a {
+  color: #4b4b4b;
+  transition: .3s all;
+}
+
+#contenedorPequeUsuarioCarrito ul li a:hover, #contenedorPequeUsuarioCarrito ul a:active {
+  color: #202020;
+}
+
 /* -------------------------------------------------------------------------------------- */
 
 /* PRODUCTO */
@@ -506,11 +527,7 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 
 /* -------------------------------------------------------------------------------------- */
 
-@media screen and (max-width: 1024px) {
-  #header_superior {
-    display: none;
-  }
-}
+@media screen and (max-width: 1024px) {}
 
 section img {
   margin-bottom: 1em;
@@ -525,6 +542,79 @@ section img {
 @media screen and (min-width: 768px) {
   #header_escudo {
     max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 992px){
+  #header_superior, #header_inferior_izquierda, #navbarNavDropdown ul li:last-child, .bannerEquipaciones {
+    display: none;
+  }
+  #contenedorPequeUsuarioCarrito, #contenedorPequeImagen {
+    display: flex;
+  }
+  #header_inferior>div {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #header_escudo_peque {
+    width: 5em;
+  }
+  /* Menú desplegable */
+  #header_inferior_derecha{
+    position: relative;
+    z-index: 1;
+  }
+  #header_inferior_derecha button{
+    border: none;
+    background-color: #0a97b0;
+  }
+  /* Separación del desplegable y el menú */
+  .navbar-collapse.collapse.show, .navbar-collapse.collapsing {
+    margin-top: .1em;
+  }
+
+  #navbarNavDropdown {
+    position: absolute;
+    padding: 0 2em 1em 2em;
+    background-color: #0a97b0;
+  }
+  #navbarNavDropdown ul li{
+    text-align: center;
+    border-bottom: 1px white solid;
+  }
+  #navbarNavDropdown ul li:first-child{
+    margin-top: .2em;
+  }
+  #navbarNavDropdown ul li a{
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  /* Desplegable Afición */
+  #navbarNavDropdown ul li div{
+    padding: 0;
+    background-color: #11788a;
+    min-width: 0;
+  }
+  #navbarNavDropdown ul li div a{
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    border-top: 1px white solid;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+}
+
+@media screen and (max-width: 320px) {
+  #contenedorPequeImagen {
+    display: none;
   }
 }
 
