@@ -9,7 +9,6 @@ RUN npm install
 COPY . .
 # Abrir el puerto para poder conectarse desde fuera
 EXPOSE 4000/tcp
-EXPOSE 27017
 CMD [ "npm", "start" ]
 # Comandos para cmd
 # docker build -t backend .
