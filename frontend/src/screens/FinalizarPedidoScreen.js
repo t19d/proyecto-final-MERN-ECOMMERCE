@@ -39,6 +39,13 @@ function FinalizarPedidoScreen(props) {
         }));
     }
 
+    const cancelarCompra = () => {
+        props.history.push("/carrito");
+        /* Eliminar datos de envío */
+        localStorage.removeItem('envio');
+        /* Eliminar datos de pago si hubiera */
+    }
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -134,8 +141,11 @@ function FinalizarPedidoScreen(props) {
                                     </table>
                                 </div>
                             </div>
-                            <div className="col mb-2">
-                                <div className="center">
+                            <div className="row">
+                                <div className="col-sm-12 col-xs-12 col-md-6">
+                                    <button onClick={cancelarCompra} className="btn btn-lg btn-block btn-danger text-uppercase">Cancelar compra</button>
+                                </div>
+                                <div className="col-sm-12 col-xs-12 col-md-6">
                                     <button onClick={realizarPedidoHandler} className="btn btn-lg btn-block btn-primary text-uppercase" disabled={carritoItems.length === 0} >Finalizar pedido</button>
                                 </div>
                             </div>
