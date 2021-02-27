@@ -36,11 +36,14 @@ function App() {
   const { productos, loading: loadingListaProductos, error: errorListaProductos } = listaProductos;
 
   const [filtroListaProductosBuscador, setFiltroListaProductosBuscador] = useState("");
+  const limpiarFiltro = () => {
+    setFiltroListaProductosBuscador("");
+  }
 
   const resultadosListaBuscador = productos
     .filter(item => item.nombre.toLowerCase().includes(filtroListaProductosBuscador.toLowerCase()))
     .map((item) =>
-      <li key={item.id} className="itemResultadosListaBuscar col-md-3 col-sm-4 col-xs-12">
+      <li key={item.id} className="itemResultadosListaBuscar col-md-3 col-sm-4 col-xs-12" onClick={limpiarFiltro}>
         <Link to={'/productos/' + item._id}>
           <div className="row">
             <div className="col-4"><img src={item.miniatura} className="img-fluid imagenItemResultadosListaBuscar" alt={item.imgDescripcion} /></div>
@@ -114,7 +117,7 @@ function App() {
                     }
                   </div>
                   <div className="form-inline filtroBuscador">
-                    <input className="form-control mr-sm-2" onChange={(e) => (e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
+                    <input className="form-control mr-sm-2" onBlur={limpiarFiltro} onClick={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} onChange={(e) => ( e.target.value.length > 1) ? setFiltroListaProductosBuscador(e.target.value) : setFiltroListaProductosBuscador("")} type="search" placeholder="Buscar..." aria-label="Buscar" />
                   </div>
                 </div>
               </div>
