@@ -124,7 +124,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="contenedorResultadosBuscador" style={{ position: "relative" }}>
+        <div className="contenedorResultadosBuscador">
           <ul className="resultadosBuscador row">{filtroListaProductosBuscador.length > 0 && resultadosListaBuscador}</ul>
         </div>
 
