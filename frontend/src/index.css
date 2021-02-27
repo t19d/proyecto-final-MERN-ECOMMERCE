@@ -266,9 +266,9 @@ ol.breadcrumb li a:hover {
   background-color: #f2f2f2;
 }
 
-.conjuntoImagenesProducto>div:last-child {
+/*.conjuntoImagenesProducto>div:last-child {
   border-radius: 50px;
-}
+}*/
 
 .conjuntoImagenesProducto>div>input:checked+label {
   background-color: #e2e2e2;
@@ -529,10 +529,6 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 
 @media screen and (max-width: 1024px) {}
 
-section img {
-  margin-bottom: 1em;
-}
-
 /*@media screen and (min-width: 375px) {
   #header_escudo {
       max-width: 210px;
@@ -542,6 +538,33 @@ section img {
 @media screen and (min-width: 768px) {
   #header_escudo {
     max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Filtros */
+  #contenedorFiltros{
+    display: none;
+  }
+  /* Imágenes detalle producto */
+  .contenedorImagenGrande{
+    display: none;
+  }
+  .conjuntoImagenesProducto>div>label {
+    background-color: #f2f2f2;
+    border: #000000 1px solid;
+  }
+  
+  /*.conjuntoImagenesProducto>div:last-child {
+    border-radius: 50px;
+  }*/
+  
+  .conjuntoImagenesProducto>div>input:checked+label {
+    background-color: #f2f2f2;
+    border: #000000 1px solid;
+  }
+  .conjuntoImagenesProducto>div label:hover {
+    background-color: #f2f2f2;
   }
 }
 
@@ -609,7 +632,6 @@ section img {
     font-size: 1rem;
     margin: 0;
   }
-
 }
 
 @media screen and (max-width: 320px) {
