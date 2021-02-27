@@ -59,7 +59,7 @@ function FinalizarPedidoScreen(props) {
                     <h1 className="jumbotron-heading">FINALIZAR PEDIDO</h1>
                 </div>
             </section>
-            <div>
+            <div className="text-center">
                 <h2>Datos de envío envío</h2>
                 <div>Nombre: {carrito.envio.nombre} {carrito.envio.apellidos}</div>
                 <div>DNI: {carrito.envio.dni}</div>
@@ -68,7 +68,7 @@ function FinalizarPedidoScreen(props) {
                 <div>Dirección 1: {carrito.envio.direccion}, {carrito.envio.codigoPostal}</div>
                 <div>Dirección 2: {carrito.envio.provincia}, {carrito.envio.pais}</div>
             </div>
-            <div>
+            <div className="text-center">
                 <h2>Datos de pago</h2>
                 <div>Método de pago: {carrito.pago.metodoPago}</div>
             </div>
