@@ -42,7 +42,7 @@ function ProductoScreen(props) {
         return () => {
             //
         };
-    }, [producto]);
+    }, [dispatch, props, producto]);
 
     const getStock = (producto) => {
         var cantidadStock = 0;
