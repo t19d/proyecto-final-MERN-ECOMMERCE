@@ -25,7 +25,10 @@ const iniciarSesion = (email, password) => async (dispatch) => {
         /* localstorage */
         localStorage.setItem('usuarioInfo', JSON.stringify(data));
     } catch (error) {
-        dispatch({ type: USUARIO_INICIOSESION_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: USUARIO_INICIOSESION_FAIL, payload: message });
     }
 };
 
@@ -39,7 +42,10 @@ const registrar = (nombre, email, password) => async (dispatch) => {
         /* localstorage */
         localStorage.setItem('usuarioInfo', JSON.stringify(data));
     } catch (error) {
-        dispatch({ type: USUARIO_REGISTRO_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: USUARIO_REGISTRO_FAIL, payload: message });
     }
 };
 
@@ -54,7 +60,10 @@ const detallesUsuario = (usuarioId) => async (dispatch, getState) => {
         });
         dispatch({ type: USUARIO_DETALLES_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: USUARIO_DETALLES_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: USUARIO_DETALLES_FAIL, payload: message });
     }
 };
 
@@ -69,7 +78,10 @@ const actualizarUsuario = (usuario) => async (dispatch, getState) => {
         });
         dispatch({ type: USUARIO_MODIFICARDATOS_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: USUARIO_MODIFICARDATOS_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: USUARIO_MODIFICARDATOS_FAIL, payload: message });
     }
 };
 

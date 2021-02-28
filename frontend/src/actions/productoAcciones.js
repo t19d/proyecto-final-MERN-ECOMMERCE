@@ -7,7 +7,10 @@ const hacerListaProductos = () => async (dispatch) => {
         const { data } = await axios.get("/api/productos");
         dispatch({ type: LISTA_PRODUCTOS_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: LISTA_PRODUCTOS_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: LISTA_PRODUCTOS_FAIL, payload: message });
     }
 }
 
@@ -32,7 +35,10 @@ const guardarProducto = (producto) => async (dispatch, getState) => {
             dispatch({ type: PRODUCTO_GUARDADO_SUCCESS, payload: data });
         }
     } catch (error) {
-        dispatch({ type: PRODUCTO_GUARDADO_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: PRODUCTO_GUARDADO_FAIL, payload: message });
     }
 }
 
@@ -43,7 +49,10 @@ const hacerProductoDetalles = (productoId) => async (dispatch) => {
         const { data } = await axios.get("/api/productos/" + productoId);
         dispatch({ type: PRODUCTO_DETALLES_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: PRODUCTO_DETALLES_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: PRODUCTO_DETALLES_FAIL, payload: message });
     }
 }
 
@@ -58,7 +67,10 @@ const eliminarProducto = (productoId) => async (dispatch, getState) => {
         });
         dispatch({ type: PRODUCTO_ELIMINADO_SUCCESS, payload: data, success: true });
     } catch (error) {
-        dispatch({ type: PRODUCTO_ELIMINADO_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: PRODUCTO_ELIMINADO_FAIL, payload: message });
     }
 }
 

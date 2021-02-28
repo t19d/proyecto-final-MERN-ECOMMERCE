@@ -30,7 +30,10 @@ export const crearPedido = (pedido) => async (dispatch, getState) => {
         localStorage.removeItem('carritoItems');
         localStorage.removeItem('envio');
     } catch (error) {
-        dispatch({ type: PEDIDO_CREADO_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: PEDIDO_CREADO_FAIL, payload: message });
     }
 };
 
@@ -45,7 +48,10 @@ export const hacerPedidoDetalles = (pedidoId) => async (dispatch, getState) => {
         });
         dispatch({ type: PEDIDO_DETALLES_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: PEDIDO_DETALLES_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: PEDIDO_DETALLES_FAIL, payload: message });
     }
 };
 
@@ -60,7 +66,10 @@ export const hacerListaPedidosUsuario = () => async (dispatch, getState) => {
         });
         dispatch({ type: LISTA_PEDIDOS_USUARIO_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: LISTA_PEDIDOS_USUARIO_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: LISTA_PEDIDOS_USUARIO_FAIL, payload: message });
     }
 };
 
@@ -76,6 +85,9 @@ export const hacerListaPedidos = () => async (dispatch, getState) => {
         console.log(data);
         dispatch({ type: LISTA_PEDIDOS_SUCCESS, payload: data });
     } catch (error) {
-        dispatch({ type: LISTA_PEDIDOS_FAIL, payload: error.message });
+        const message = error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message;
+        dispatch({ type: LISTA_PEDIDOS_FAIL, payload: message });
     }
 };
