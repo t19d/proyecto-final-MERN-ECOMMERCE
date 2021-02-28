@@ -14,6 +14,7 @@ import {
     LISTA_PEDIDOS_USUARIO_FAIL,
     LISTA_PEDIDOS_USUARIO_REQUEST
 } from '../constants/pedidoConstantes';
+import { guardarProducto } from './productoAcciones';
 
 export const crearPedido = (pedido) => async (dispatch, getState) => {
     dispatch({ type: PEDIDO_CREADO_REQUEST, payload: pedido });
@@ -24,6 +25,16 @@ export const crearPedido = (pedido) => async (dispatch, getState) => {
                 Authorization: 'Bearer ' + usuarioInfo.token
             }
         });
+        try {
+            pedido.pedidoItems.forEach(p => {
+                dispatch(guardarProducto({ _id: p.producto, nombre: p.nombre, cantidad: p.cantidad, talla: p.talla }));
+            });
+        } catch (error) {
+            const message = error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message;
+            dispatch({ type: PEDIDO_CREADO_FAIL, payload: message });
+        }
         dispatch({ type: PEDIDO_CREADO_SUCCESS, payload: data.pedido });
         dispatch({ type: VACIAR_CARRITO });
         /* localstorage */
