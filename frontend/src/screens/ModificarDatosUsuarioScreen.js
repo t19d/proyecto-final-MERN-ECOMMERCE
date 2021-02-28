@@ -23,7 +23,7 @@ function ModificarDatosUsuarioScreen(props) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(actualizarUsuario({
-            _id: usuarioId, isAdmin: isAdmin, nombre: nombre, email: email, password: usuario.password
+            _id: usuarioId, isAdmin: isAdmin, nombre: nombre, email: email
         }));
     };
 
