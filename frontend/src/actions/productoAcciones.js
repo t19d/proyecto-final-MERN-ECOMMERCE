@@ -15,7 +15,6 @@ const hacerListaProductos = () => async (dispatch) => {
 }
 
 const guardarProducto = (producto) => async (dispatch, getState) => {
-
     try {
         dispatch({ type: PRODUCTO_GUARDADO_REQUEST, payload: producto });
         const { usuarioInicioSesion: { usuarioInfo } } = getState();

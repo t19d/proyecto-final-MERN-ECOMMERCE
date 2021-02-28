@@ -39,12 +39,11 @@ function FinalizarPedidoScreen(props) {
         }));
     }
 
-    const cancelarCompra = () => {
+    /*const cancelarCompra = () => {
         props.history.push("/carrito");
-        /* Eliminar datos de envío */
+        // Eliminar datos de envío
         localStorage.removeItem('envio');
-        /* Eliminar datos de pago si hubiera */
-    }
+    }*/
 
     const dispatch = useDispatch();
 
