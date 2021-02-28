@@ -67,11 +67,11 @@ function EnvioScreen(props) {
                     <input id="inputProvincia" className="form-control inputFormularioUsuario" type="text" value={provincia} placeholder="Provincia" required onChange={(e) => setProvincia(e.target.value)} />
                     <label forhtml="inputEmail" className="labelFormularioUsuario">Email:</label>
                     <input id="inputEmail" className="form-control inputFormularioUsuario" type="email" value={email} placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
-                    <div className="row filaBotones">
-                        <div className="col-sm-12 col-xs-12 col-md-6 text-center">
+                    <div className="row filaBotones text-center">
+                        <div className="col-sm-12 col-xs-12 col-md-6">
                             <button onClick={volerACarrito} className="btn filaBotonesCancelar">Volver</button>
                         </div>
-                        <div className="col-sm-12 col-xs-12 col-md-6 text-center">
+                        <div className="col-sm-12 col-xs-12 col-md-6">
                             <button className="btn filaBotonesAceptar" type="submit">Continuar</button>
                         </div>
                     </div>

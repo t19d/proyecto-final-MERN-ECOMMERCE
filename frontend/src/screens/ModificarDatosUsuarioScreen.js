@@ -54,21 +54,23 @@ function ModificarDatosUsuarioScreen(props) {
     }, [dispatch, props.history, successActualizacion, usuario, usuarioId, loadingActualizacion]);
 
     return (
-        <div className="text-center container-sm" onSubmit={submitHandler}>
+        <div className="container-sm" onSubmit={submitHandler}>
             <h1 className="text-center tituloPagina">Editar datos usuario</h1>
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div className="text-danger text-center">{error}</div>}
             {loadingActualizacion && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {errorActualizacion && <div>{errorActualizacion}</div>}
             <form className="formRegistro">
-                <input id="inputNombre" className="form-control" type="text" value={nombre} placeholder="Nombre" required autoFocus onChange={(e) => setNombre(e.target.value)} />
-                <input id="inputEmail" className="form-control" type="email" value={email} placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
-                <div className="row">
+                <label forhtml="inputNombre" className="labelFormularioUsuario">Nombre:</label>
+                <input id="inputNombre" className="form-control inputFormularioUsuario" type="text" value={nombre} placeholder="Nombre" required autoFocus onChange={(e) => setNombre(e.target.value)} />
+                <label forhtml="inputEmail" className="labelFormularioUsuario">Email:</label>
+                <input id="inputEmail" className="form-control inputFormularioUsuario" type="email" value={email} placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+                <div className="row filaBotones text-center">
                     <div className="col-md-6 col-sm-6 col-xs-12">
-                        <button className="btn btn-lg btn-danger btn-block" onClick={volverPerfil}>Cancelar</button>
+                        <button className="btn filaBotonesCancelar" onClick={volverPerfil}>Cancelar</button>
                     </div>
                     <div className="col-md-6 col-sm-6 col-xs-12">
-                        <button className="btn btn-lg btn-primary btn-block" type="submit">Confirmar</button>
+                        <button className="btn filaBotonesAceptar" type="submit">Confirmar</button>
                     </div>
                 </div>
             </form>

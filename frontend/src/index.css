@@ -579,6 +579,7 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 }
 
 .inputFormularioUsuario {
+  color: #000000;
   transition: .3s all;
   background-color: #d6d6d6;
   border-radius: 0;
@@ -586,8 +587,12 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 }
 
 .inputFormularioUsuario:focus {
-  color: #000000;
+  color: #252525;
   background-color: #e7e7e7;
+}
+
+.inputFormularioUsuario::placeholder {
+  color: #777777;
 }
 
 .botonFormularioUsuario {

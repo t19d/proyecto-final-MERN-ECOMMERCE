@@ -125,11 +125,11 @@ function CarritoScreen(props) {
                                     </table>
                                 </div>
                             </div>
-                            <div className="row filaBotones">
-                                <div className="col-sm-12 col-xs-12 col-md-6 text-center">
+                            <div className="row filaBotones text-center">
+                                <div className="col-sm-12 col-xs-12 col-md-6">
                                     <button onClick={seguirComprando} className="btn filaBotonesCancelar">Seguir comprando</button>
                                 </div>
-                                <div className="col-sm-12 col-xs-12 col-md-6 text-center">
+                                <div className="col-sm-12 col-xs-12 col-md-6">
                                     <button onClick={checkoutHandler} className="btn filaBotonesAceptar" disabled={carritoItems.length === 0} >Tramitar pedido</button>
                                 </div>
                             </div>
