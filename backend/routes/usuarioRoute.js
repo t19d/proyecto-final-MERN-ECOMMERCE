@@ -24,22 +24,26 @@ router.post('/iniciosesion', async (req, res) => {
 });
 
 router.post('/registro', async (req, res) => {
-    const usuario = new Usuario({
-        nombre: req.body.nombre,
-        email: req.body.email,
-        password: req.body.password
-    });
-    const newUsuario = await usuario.save();
-    if (newUsuario) {
-        res.send({
-            _id: newUsuario.id,
-            nombre: newUsuario.nombre,
-            email: newUsuario.email,
-            isAdmin: newUsuario.isAdmin,
-            token: getToken(newUsuario)
+    try {
+        const usuario = new Usuario({
+            nombre: req.body.nombre,
+            email: req.body.email,
+            password: req.body.password
         });
-    } else {
-        res.status(401).send({ message: 'Datos de usuario no válidos.' });
+        const newUsuario = await usuario.save();
+        if (newUsuario) {
+            res.send({
+                _id: newUsuario.id,
+                nombre: newUsuario.nombre,
+                email: newUsuario.email,
+                isAdmin: newUsuario.isAdmin,
+                token: getToken(newUsuario)
+            });
+        } else {
+            res.status(401).send({ message: 'Datos de usuario no válidos.' });
+        }
+    } catch (error) {
+        res.status(401).send({ message: 'El correo ya está registrado' });
     }
 });
 
