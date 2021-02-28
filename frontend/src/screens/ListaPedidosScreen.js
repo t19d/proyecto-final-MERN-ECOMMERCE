@@ -9,7 +9,7 @@ function ListaPedidosScreen(props) {
 
     const listaPedidosUsuario = useSelector(state => state.listaPedidosUsuario);
     const { loading, pedidos, error } = listaPedidosUsuario;
-    const [orden, setOrden] = useState('barCar');
+    const [orden, setOrden] = useState('nueAnt');
 
     const ordenarPor = (order) => {
         switch (order) {
@@ -17,6 +17,10 @@ function ListaPedidosScreen(props) {
                 return pedidos.sort((pedidoA, pedidoB) => pedidoA.total - pedidoB.total).reverse();
             case "barCar":
                 return pedidos.sort((pedidoA, pedidoB) => pedidoA.total - pedidoB.total);
+            case "nueAnt":
+                return pedidos.sort((pedidoA, pedidoB) => new Date(pedidoA.pagadoDia).getTime() - new Date(pedidoB.pagadoDia).getTime()).reverse();
+            case "antNue":
+                return pedidos.sort((pedidoA, pedidoB) => new Date(pedidoA.pagadoDia).getTime() - new Date(pedidoB.pagadoDia).getTime());
             default:
                 return pedidos;
         }
@@ -40,6 +44,8 @@ function ListaPedidosScreen(props) {
                 {error && <div className="text-danger text-center">{error}</div>}
                 {pedidos && <div className="ordenarPorListaPedidos">
                     <select id="ordenarPorPedidos" value={orden} onChange={(e) => setOrden(e.target.value)}>
+                        <option value="nueAnt">Ordenar por fecha: de más nuevo a más antiguo</option>
+                        <option value="antNue">Ordenar por fecha: de más antiguo a más nuevo</option>
                         <option value="carBar">Ordenar por total: de más caro a más barato</option>
                         <option value="barCar">Ordenar por total: de más barato a más caro</option>
                     </select>
