@@ -146,19 +146,19 @@ function App() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                   <ul className="navbar-nav">
-                    <li className="nav-item active">
+                    <li className="nav-item">
                       <Link to="/equipaciones" className="nav-link">
-                        <span >EQUIPACIONES 20/21</span>
+                        <span data-toggle="collapse" data-target=".navbar-collapse.show">EQUIPACIONES 20/21</span>
                       </Link>
                     </li>
-                    <li className="nav-item active">
+                    <li className="nav-item">
                       <Link to="/entrenamiento" className="nav-link">
-                        <span>ENTRENAMIENTO 20/21</span>
+                        <span data-toggle="collapse" data-target=".navbar-collapse.show">ENTRENAMIENTO 20/21</span>
                       </Link>
                     </li>
                     <li className="nav-item">
                       <Link to="/moda" className="nav-link">
-                        <span>MODA</span>
+                        <span data-toggle="collapse" data-target=".navbar-collapse.show">MODA</span>
                       </Link>
                     </li>
                     <li className="nav-item dropdown">
@@ -168,21 +168,21 @@ function App() {
                       </a>
                       <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <Link to="/bufandas" className="dropdown-item">
-                          <span>BUFANDAS</span>
+                          <span data-toggle="collapse" data-target=".navbar-collapse.show">BUFANDAS</span>
                         </Link>
                         <Link to="/accesorios" className="dropdown-item">
-                          <span>ACCESORIOS</span>
+                          <span data-toggle="collapse" data-target=".navbar-collapse.show">ACCESORIOS</span>
                         </Link>
                       </div>
                     </li>
                     <li className="nav-item">
                       <Link to="/outlet" className="nav-link">
-                        <span>OUTLET</span>
+                        <span data-toggle="collapse" data-target=".navbar-collapse.show">OUTLET</span>
                       </Link>
                     </li>
                     <li className="nav-item" >
                       <Link to="/carrito" className="nav-link">
-                        <span>
+                        <span data-toggle="collapse" data-target=".navbar-collapse.show">
                           <svg xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 22">
                             <path fillRule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                           </svg>
@@ -193,17 +193,19 @@ function App() {
                 </div>
               </div>
             </nav>
+
             <div id="contenedorPequeImagen">
               <Link to="/">
-                <img id="header_escudo_peque" src="/images/escudos/vector_escudo_clubpastorizabalompie.svg" alt="Icono inicio" />
+                <img id="header_escudo_peque" src="/images/escudos/vector_escudo_clubpastorizabalompie.svg" alt="Icono inicio" data-toggle="collapse" data-target=".navbar-collapse.show" />
               </Link>
             </div>
+            
             <div id="contenedorPequeUsuarioCarrito">
               <ul>
                 <li>
                   {usuarioInfo &&
                     <Link to="#cerrarsesion" className="-item" onClick={cerrarSesionHandler}>
-                      <span>
+                      <span data-toggle="collapse" data-target=".navbar-collapse.show">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" className="bi bi-door-open-fill" viewBox="0 0 16 16">
                           <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
                         </svg>
@@ -213,7 +215,7 @@ function App() {
                 </li>
                 <li>
                   <Link to={usuarioInfo ? "/perfil" : "/iniciosesion"} className="">
-                    <span>
+                    <span data-toggle="collapse" data-target=".navbar-collapse.show">
                       <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" className="bi bi-person-circle"
                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -230,7 +232,7 @@ function App() {
                 <li className="nav-item" >
                   {usuarioInfo && usuarioInfo.isAdmin === true &&
                     <Link to="/manageproductos" className="">
-                      <span>
+                      <span data-toggle="collapse" data-target=".navbar-collapse.show">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" className="bi bi-sliders" viewBox="0 0 16 16">
                           <path fillRule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z" />
                         </svg>
@@ -240,7 +242,7 @@ function App() {
                 </li>
                 <li className="nav-item" >
                   <Link to="/carrito" className="">
-                    <span>
+                    <span data-toggle="collapse" data-target=".navbar-collapse.show">
                       <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" fill="currentColor" className="bi bi-cart3" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
                       </svg>
