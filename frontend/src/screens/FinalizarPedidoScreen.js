@@ -126,28 +126,31 @@ function FinalizarPedidoScreen(props) {
                                             }
 
                                             <tr>
-                                                <td colspan="4">SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
-                                                <td colspan="2" className="text-right">{subtotal} €</td>
+                                                <td colSpan="4">SUBTOTAL ({carritoItems.reduce((a, c) => (Number.parseInt(a) + Number.parseInt(c.cantidad)), 0)} productos)</td>
+                                                <td colSpan="2" className="text-right">{subtotal} €</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4">GASTOS DE ENVIO</td>
-                                                <td colspan="2" className="text-right">{gastosEnvio} €</td>
+                                                <td colSpan="4">GASTOS DE ENVIO</td>
+                                                <td colSpan="2" className="text-right">{gastosEnvio} €</td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4">TOTAL</td>
-                                                <td colspan="2" className="text-right">{total} €</td>
+                                                <td colSpan="4">TOTAL</td>
+                                                <td colSpan="2" className="text-right">{total} €</td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <div className="row">
+                            {/*<div className="row">
                                 <div className="col-sm-12 col-xs-12 col-md-6">
                                     <button onClick={cancelarCompra} className="btn btn-lg btn-block btn-danger text-uppercase">Cancelar compra</button>
                                 </div>
                                 <div className="col-sm-12 col-xs-12 col-md-6">
                                     <button onClick={realizarPedidoHandler} className="btn btn-lg btn-block btn-primary text-uppercase" disabled={carritoItems.length === 0} >Finalizar pedido</button>
                                 </div>
+                            </div>*/}
+                            <div className="col-sm-12 col-xs-12 col-md-12">
+                                <button onClick={realizarPedidoHandler} className="btn btn-lg btn-block btn-primary text-uppercase" disabled={carritoItems.length === 0} >Finalizar pedido</button>
                             </div>
                         </div>
                     </div>
