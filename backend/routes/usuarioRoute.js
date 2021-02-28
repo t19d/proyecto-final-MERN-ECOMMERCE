@@ -1,29 +1,52 @@
 import express from 'express';
 import Usuario from '../models/usuarioModelo'
 import { getToken, isAuth, isAdmin } from '../util';
+import bcrypt from 'bcrypt';
 
 const router = express.Router();
+
+const encriptarContrasenha = async (contrasenha) => {
+    const saltRounds = 10;
+
+    const hashedPassword = await new Promise((resolve, reject) => {
+        bcrypt.hash(contrasenha, saltRounds, function (err, hash) {
+            if (err) {
+                reject(err);
+            }
+            resolve(hash);
+        });
+    });
+
+    console.log(hashedPassword);
+
+    return hashedPassword;
+}
 
 router.post('/iniciosesion', async (req, res) => {
     try {
         {/* Obtener usuario */ }
         const signinUsuario = await Usuario.findOne({
-            email: req.body.email,
-            password: req.body.password
+            email: req.body.email
         });
-        if (signinUsuario) {
-            res.send({
-                _id: signinUsuario.id,
-                nombre: signinUsuario.nombre,
-                email: signinUsuario.email,
-                isAdmin: signinUsuario.isAdmin,
-                token: getToken(signinUsuario)
+        try {
+            bcrypt.compare(req.body.password, signinUsuario.password, function (err, result) {
+                if (result) {
+                    res.send({
+                        _id: signinUsuario.id,
+                        nombre: signinUsuario.nombre,
+                        email: signinUsuario.email,
+                        isAdmin: signinUsuario.isAdmin,
+                        token: getToken(signinUsuario)
+                    });
+                } else {
+                    res.status(401).send({ message: 'El email y la contraseña no coinciden.' });
+                }
             });
-        } else {
-            res.status(401).send({ message: 'El email o la contraseña no coinciden.' });
+        } catch (error) {
+            res.status(401).send({ message: 'Email no encontrado.' });
         }
     } catch (error) {
-        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos.' });
     }
 });
 
@@ -31,10 +54,11 @@ router.post('/registro', async (req, res) => {
     try {
         const comprobacionUsuario = await Usuario.find({ email: req.body.email });
         if (comprobacionUsuario.length === 0) {
+
             const usuario = new Usuario({
                 nombre: req.body.nombre,
                 email: req.body.email,
-                password: req.body.password
+                password: await encriptarContrasenha(req.body.password)
             });
             const newUsuario = await usuario.save();
             if (newUsuario) {
@@ -49,10 +73,10 @@ router.post('/registro', async (req, res) => {
                 res.status(401).send({ message: 'Datos de usuario no válidos.' });
             }
         } else {
-            res.status(401).send({ message: 'El correo ya está registrado' });
+            res.status(401).send({ message: 'El correo ya está registrado.' });
         }
     } catch (error) {
-        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos.' });
     }
 });
 
@@ -61,7 +85,7 @@ router.get("/crearadmin", async (req, res) => {
         const usuario = new Usuario({
             nombre: 'David',
             email: 'davidtojo99@gmail.com',
-            password: 'abc123.',
+            password: await encriptarContrasenha('abc123.'),
             isAdmin: true
         });
         const newUsuario = await usuario.save();
@@ -77,10 +101,10 @@ router.get('/:id', async (req, res) => {
         if (usuario) {
             res.send(usuario);
         } else {
-            res.status(404).send({ message: 'Usuario no encontrado' });
+            res.status(404).send({ message: 'Usuario no encontrado.' });
         }
     } catch (error) {
-        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos.' });
     }
 });
 
@@ -104,10 +128,10 @@ router.put('/perfil', isAuth, async (req, res) => {
                 token: getToken(updatedUsuario),
             });
         } else {
-            res.status(404).send({ message: 'Usuario no encontrado' });
+            res.status(404).send({ message: 'Usuario no encontrado.' });
         }
     } catch (error) {
-        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos.' });
     }
 });
 
@@ -119,17 +143,16 @@ router.put('/:id', isAuth, async (req, res) => {
             usuario.nombre = req.body.nombre || usuario.nombre;
             usuario.email = req.body.email || usuario.email;
             if (req.body.password) {
-                // TODO: Encriptar contraseña si la actualizo
-                usuario.password = req.body.password;
+                usuario.password = await encriptarContrasenha(req.body.password);
             }
             usuario.isAdmin = Boolean(req.body.isAdmin);
             const updatedUsuario = await usuario.save();
             res.send({ message: 'Usuario actualizado', usuario: updatedUsuario });
         } else {
-            res.status(404).send({ message: 'Usuario no encontrado' });
+            res.status(404).send({ message: 'Usuario no encontrado.' });
         }
     } catch (error) {
-        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos.' });
     }
 });
 
@@ -138,7 +161,7 @@ router.get('/', isAuth, isAdmin, async (req, res) => {
         const usuarios = await Usuario.find({});
         res.send(usuarios);
     } catch (error) {
-        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos.' });
     }
 });
 
