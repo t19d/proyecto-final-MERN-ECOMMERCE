@@ -623,19 +623,40 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
   color: #f3f3f3;
   width: 20rem;
 }
-.filaBotonesCancelar{
+
+.filaBotonesCancelar {
   background-color: #ec3939;
 }
 
-.filaBotonesCancelar:hover{
+.filaBotonesCancelar:hover {
   background-color: #c42424;
 }
-.filaBotonesAceptar{
+
+.filaBotonesAceptar {
   background-color: #0a97b0;
 }
 
-.filaBotonesAceptar:hover{
+.filaBotonesAceptar:hover {
   background-color: #1cbcd8;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+/* FILTROS Y ORDERNAR POR */
+
+#ordenarPorProductos, #ordenarPorPedidos {
+  text-align-last: center;
+  padding: .5em;
+  text-align: center;
+  border: #aaaaaa 1px solid;
+  background: rgb(240, 240, 240);
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+
+#ordenarPorProductos:hover, #ordenarPorPedidos:hover {
+  background: rgb(226, 226, 226);
+  transition: .3s;
 }
 
 /* -------------------------------------------------------------------------------------- */
