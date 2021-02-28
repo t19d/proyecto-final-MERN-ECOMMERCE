@@ -142,12 +142,32 @@ router.put('/:id', isAuth, async (req, res) => {
             // Recoger valores del documento y si no existen, de la bbdd
             usuario.nombre = req.body.nombre || usuario.nombre;
             usuario.email = req.body.email || usuario.email;
+
+            // Esto es porque se ha cambiado la contraseña
             if (req.body.password) {
                 usuario.password = await encriptarContrasenha(req.body.password);
             }
             usuario.isAdmin = Boolean(req.body.isAdmin);
             const updatedUsuario = await usuario.save();
             res.send({ message: 'Usuario actualizado', usuario: updatedUsuario });
+            /*await bcrypt.compare(req.body.password, usuario.password, async function (err, result) {
+                // Recoger valores del documento y si no existen, de la bbdd
+                usuario.nombre = req.body.nombre || usuario.nombre;
+                usuario.email = req.body.email || usuario.email;
+
+                console.log("1 -   " + req.body.password);
+                console.log("2 -   " + usuario.password);
+                console.log(result);
+
+                if (!result) {
+                    console.log("Entró");
+                    console.log("1 -   " + req.body.password);
+                    usuario.password = await encriptarContrasenha(req.body.password);
+                }
+                usuario.isAdmin = Boolean(req.body.isAdmin);
+                const updatedUsuario = await usuario.save();
+                res.send({ message: 'Usuario actualizado', usuario: updatedUsuario });
+            });*/
         } else {
             res.status(404).send({ message: 'Usuario no encontrado.' });
         }
