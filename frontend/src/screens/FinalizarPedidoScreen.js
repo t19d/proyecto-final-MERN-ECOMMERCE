@@ -141,16 +141,8 @@ function FinalizarPedidoScreen(props) {
                                     </table>
                                 </div>
                             </div>
-                            {/*<div className="row">
-                                <div className="col-sm-12 col-xs-12 col-md-6">
-                                    <button onClick={cancelarCompra} className="btn btn-lg btn-block btn-danger text-uppercase">Cancelar compra</button>
-                                </div>
-                                <div className="col-sm-12 col-xs-12 col-md-6">
-                                    <button onClick={realizarPedidoHandler} className="btn btn-lg btn-block btn-primary text-uppercase" disabled={carritoItems.length === 0} >Finalizar pedido</button>
-                                </div>
-                            </div>*/}
-                            <div className="col-sm-12 col-xs-12 col-md-12">
-                                <button onClick={realizarPedidoHandler} className="btn btn-lg btn-block btn-primary text-uppercase" disabled={carritoItems.length === 0} >Finalizar pedido</button>
+                            <div className="col-sm-12 col-xs-12 col-md-12 text-center">
+                                <button onClick={realizarPedidoHandler} className="btn botonFormularioUsuario" disabled={carritoItems.length === 0} >Finalizar pedido</button>
                             </div>
                         </div>
                     </div>

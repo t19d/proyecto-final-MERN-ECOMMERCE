@@ -35,17 +35,21 @@ function RegistroScreen(props) {
     }, [usuarioInfo]);
 
     return (
-        <div className="text-center container-sm" onSubmit={submitHandler}>
+        <div className="container-sm" onSubmit={submitHandler}>
             <h1 className="text-center tituloPagina">Registrarse</h1>
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div className="text-danger text-center">{error}</div>}
             <form className="formRegistro">
-                <input id="inputNombre" className="form-control" type="text" name="name" placeholder="Nombre" required autoFocus onChange={(e) => setNombre(e.target.value)} />
-                <input id="inputEmail" className="form-control" type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
-                <input id="inputPassword" className="form-control" type="password" name="password" placeholder="Contraseña" required onChange={(e) => setPassword(e.target.value)} />
-                <input id="inputRePassword" className="form-control" type="password" name="repassword" placeholder="Repita la contraseña" required onChange={(e) => setRePassword(e.target.value)} />
-                <button className="btn btn-lg btn-primary btn-block" type="submit">Crear usuario</button>
-                <div>
+                <label forHtml="inputNombre" className="labelFormularioUsuario">Nombre:</label>
+                <input id="inputNombre" className="form-control inputFormularioUsuario" type="text" name="name" placeholder="Nombre" required autoFocus onChange={(e) => setNombre(e.target.value)} />
+                <label forHtml="inputEmail" className="labelFormularioUsuario">Email:</label>
+                <input id="inputEmail" className="form-control inputFormularioUsuario" type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
+                <label forHtml="inputPassword" className="labelFormularioUsuario">Contraseña:</label>
+                <input id="inputPassword" minLength="8" className="form-control inputFormularioUsuario" type="password" name="password" placeholder="Contraseña" required onChange={(e) => setPassword(e.target.value)} />
+                <label forHtml="inputRePassword" className="labelFormularioUsuario">Repita la contraseña:</label>
+                <input id="inputRePassword" minLength="8" className="form-control inputFormularioUsuario" type="password" name="repassword" placeholder="Repita la contraseña" required onChange={(e) => setRePassword(e.target.value)} />
+                <div className="text-center">
+                    <button className="btn botonFormularioUsuario" type="submit">Crear usuario</button>
                     <div>¿Ya tienes usuario?</div>
                     <Link to={redirect === "/" ? "iniciosesion" : "registro?iniciosesion=" + redirect}>Iniciar sesión</Link>
                 </div>

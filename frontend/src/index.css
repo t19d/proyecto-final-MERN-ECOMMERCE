@@ -308,7 +308,7 @@ ol.breadcrumb li a:hover {
 
 .precioAntiguoOferta {
   text-decoration: line-through;
-  color: rgb(236, 57, 57);
+  color: #ec3939;
   font-size: .8em;
 }
 
@@ -383,17 +383,19 @@ ol.breadcrumb li a:hover {
 }
 
 .botonAnhadirCarrito {
-  font-size: 1.2em;
+  margin-top: 1em;
   background-color: #0a97b0;
-  border: none;
-  display: flex;
-  align-items: center;
-  padding: .8em;
+  color: #f3f3f3;
+  font-size: 1.3rem;
+  width: 13rem;
+  transition: .3s all;
+  border-radius: 0;
 }
 
-.botonAnhadirCarrito:hover, .botonAnhadirCarrito:active {
-  border: none;
-  background-color: #0d7e92 !important;
+.botonAnhadirCarrito:hover {
+  background-color: #1cbcd8;
+  color: #f3f3f3;
+  width: 14rem;
 }
 
 /* DESCRIPCIÓN */
@@ -416,7 +418,7 @@ ol.breadcrumb li a:hover {
 /* OUT OF STOCK */
 
 .sinStockAvisoDetalles {
-  color: rgb(236, 57, 57);
+  color: #ec3939;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -563,6 +565,77 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 
 .datosPedido div span:first-child {
   font-size: 1.2rem;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+/* FORMULARIOS INICIO SESIÓN Y REGISTRO */
+
+.labelFormularioUsuario {
+  margin: .5em .1em 0 .1em;
+  color: #0a97b0;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.inputFormularioUsuario {
+  transition: .3s all;
+  background-color: #d6d6d6;
+  border-radius: 0;
+  border: none;
+}
+
+.inputFormularioUsuario:focus {
+  color: #000000;
+  background-color: #e7e7e7;
+}
+
+.botonFormularioUsuario {
+  margin: 1em;
+  background-color: #0a97b0;
+  color: #f3f3f3;
+  font-size: 1.3rem;
+  width: 13rem;
+  transition: .3s all;
+  border-radius: 0;
+}
+
+.botonFormularioUsuario:hover {
+  background-color: #1cbcd8;
+  color: #f3f3f3;
+  width: 14rem;
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+/* BOTONES COMPRA */
+
+.filaBotones div button {
+  margin: 1em;
+  color: #f3f3f3;
+  font-size: 1.3rem;
+  width: 18rem;
+  transition: .3s all;
+  border-radius: 0;
+}
+
+.filaBotones div button:hover {
+  color: #f3f3f3;
+  width: 20rem;
+}
+.filaBotonesCancelar{
+  background-color: #ec3939;
+}
+
+.filaBotonesCancelar:hover{
+  background-color: #c42424;
+}
+.filaBotonesAceptar{
+  background-color: #0a97b0;
+}
+
+.filaBotonesAceptar:hover{
+  background-color: #1cbcd8;
 }
 
 /* -------------------------------------------------------------------------------------- */
