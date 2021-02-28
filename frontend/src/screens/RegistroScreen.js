@@ -40,13 +40,13 @@ function RegistroScreen(props) {
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div className="text-danger text-center">{error}</div>}
             <form className="formRegistro">
-                <label forHtml="inputNombre" className="labelFormularioUsuario">Nombre:</label>
+                <label forhtml="inputNombre" className="labelFormularioUsuario">Nombre:</label>
                 <input id="inputNombre" className="form-control inputFormularioUsuario" type="text" name="name" placeholder="Nombre" required autoFocus onChange={(e) => setNombre(e.target.value)} />
-                <label forHtml="inputEmail" className="labelFormularioUsuario">Email:</label>
+                <label forhtml="inputEmail" className="labelFormularioUsuario">Email:</label>
                 <input id="inputEmail" className="form-control inputFormularioUsuario" type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
-                <label forHtml="inputPassword" className="labelFormularioUsuario">Contraseña:</label>
+                <label forhtml="inputPassword" className="labelFormularioUsuario">Contraseña:</label>
                 <input id="inputPassword" minLength="8" className="form-control inputFormularioUsuario" type="password" name="password" placeholder="Contraseña" required onChange={(e) => setPassword(e.target.value)} />
-                <label forHtml="inputRePassword" className="labelFormularioUsuario">Repita la contraseña:</label>
+                <label forhtml="inputRePassword" className="labelFormularioUsuario">Repita la contraseña:</label>
                 <input id="inputRePassword" minLength="8" className="form-control inputFormularioUsuario" type="password" name="repassword" placeholder="Repita la contraseña" required onChange={(e) => setRePassword(e.target.value)} />
                 <div className="text-center">
                     <button className="btn botonFormularioUsuario" type="submit">Crear usuario</button>

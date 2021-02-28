@@ -32,9 +32,9 @@ function InicioSesionScreen(props) {
             {loading && <div className="d-flex justify-content-center"><img src="/images/recursos_web/loading.gif" alt="Cargando" /></div>}
             {error && <div className="text-danger text-center">{error}</div>}
             <form className="formInicioSesion">
-                <label forHtml="inputEmail" className="labelFormularioUsuario">Email:</label>
+                <label forhtml="inputEmail" className="labelFormularioUsuario">Email:</label>
                 <input id="inputEmail" className="form-control inputFormularioUsuario" type="email" name="email" placeholder="Email" required autoFocus onChange={(e) => setEmail(e.target.value)} />
-                <label forHtml="inputEmail" className="labelFormularioUsuario">Contraseña:</label>
+                <label forhtml="inputEmail" className="labelFormularioUsuario">Contraseña:</label>
                 <input id="inputPassword" minLength="8" className="form-control inputFormularioUsuario" type="password" name="password" placeholder="Contraseña" required onChange={(e) => setPassword(e.target.value)} />
                 <div className="text-center">
                     <button className="btn botonFormularioUsuario" type="submit">Acceder</button>
