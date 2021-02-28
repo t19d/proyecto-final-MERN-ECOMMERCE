@@ -642,7 +642,7 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 
 /* -------------------------------------------------------------------------------------- */
 
-/* FILTROS Y ORDERNAR POR */
+/* ORDERNAR POR Y FILTROS */
 
 #ordenarPorProductos, #ordenarPorPedidos {
   text-align-last: center;
@@ -657,6 +657,36 @@ ul.panelOpcionesPerfil .enlaceOpcionesUsuario {
 #ordenarPorProductos:hover, #ordenarPorPedidos:hover {
   background: rgb(226, 226, 226);
   transition: .3s;
+}
+
+#contenedorFiltros {
+  background-color: #f3f3f3;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  height: fit-content;
+  position: sticky;
+  top: 1em;
+}
+
+#contenedorFiltros h3:not(:first-child) {
+  margin-top: 1em;
+}
+
+#contenedorFiltros h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#contenedorFiltros div:hover {
+  background-color: #ebebeb;
+}
+
+#contenedorFiltros div label {
+  width: 100%;
+}
+
+#contenedorFiltros *:not(h3) {
+  cursor: pointer;
 }
 
 /* -------------------------------------------------------------------------------------- */
