@@ -5,45 +5,61 @@ import { isAdmin, isAuth } from '../util';
 const router = express.Router();
 
 router.get("/", isAuth, isAdmin, async (req, res) => {
-    const pedidos = await Pedido.find({});
-    res.send(pedidos);
+    try {
+        const pedidos = await Pedido.find({});
+        res.send(pedidos);
+    } catch (error) {
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+    }
 });
 
 router.get('/usuario', isAuth, async (req, res) => {
-    const pedidos = await Pedido.find({ usuario: req.usuario._id });
-    res.send(pedidos);
+    try {
+        const pedidos = await Pedido.find({ usuario: req.usuario._id });
+        res.send(pedidos);
+    } catch (error) {
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
+    }
 });
 
 router.post('/', isAuth, async (req, res) => {
-    if (req.body.pedidoItems.length === 0) {
-        res.status(400).send({ message: 'Carrito vacío' });
-    } else {
-        const pedido = new Pedido({
-            pedidoItems: req.body.pedidoItems,
-            direccion: req.body.direccion,
-            metodoPago: req.body.metodoPago,
-            subtotal: req.body.subtotal,
-            gastosEnvio: req.body.gastosEnvio,
-            total: req.body.total,
-            usuario: req.usuario._id,
-            pagadoDia: req.body.pagadoDia,
-            llegadaEnvioDia: req.body.llegadaEnvioDia
-        });
-        const newPedido = await pedido.save();
-        if (newPedido) {
-            return res.status(201).send({ message: 'Nuevo pedido creado.', data: newPedido });
+    try {
+        if (req.body.pedidoItems.length === 0) {
+            res.status(400).send({ message: 'Carrito vacío' });
+        } else {
+            const pedido = new Pedido({
+                pedidoItems: req.body.pedidoItems,
+                direccion: req.body.direccion,
+                metodoPago: req.body.metodoPago,
+                subtotal: req.body.subtotal,
+                gastosEnvio: req.body.gastosEnvio,
+                total: req.body.total,
+                usuario: req.usuario._id,
+                pagadoDia: req.body.pagadoDia,
+                llegadaEnvioDia: req.body.llegadaEnvioDia
+            });
+            const newPedido = await pedido.save();
+            if (newPedido) {
+                res.status(201).send({ message: 'Nuevo pedido creado.', data: newPedido });
+            }
         }
+    } catch (error) {
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
     }
 });
 
 router.get('/:id', isAuth, async (req, res) => {
-    // Por seguridad, implementar la búsqueda al usuario activo
-    //const pedidos = await Pedido.find({ usuario: req.usuario._id });
-    const pedido = await Pedido.findById(req.params.id);
-    if (pedido) {
-        res.send(pedido);
-    } else {
-        res.status(404).send({ message: 'Pedido no encontrado' });
+    try {
+        // Por seguridad, implementar la búsqueda al usuario activo
+        //const pedidos = await Pedido.find({ usuario: req.usuario._id });
+        const pedido = await Pedido.findById(req.params.id);
+        if (pedido) {
+            res.send(pedido);
+        } else {
+            res.status(404).send({ message: 'Pedido no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).send({ message: 'No se ha podido conectar con la base de datos' });
     }
 });
 
