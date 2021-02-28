@@ -56,24 +56,55 @@ router.post("/", isAuth, isAdmin, async (req, res) => {
     }
 });
 
-router.put("/:id", isAuth, isAdmin, async (req, res) => {
+// isAdmin eliminado para poder restar producto en crearPedido
+router.put("/:id", isAuth, /*isAdmin,*/ async (req, res) => {
     try {
         const productoId = req.params.id;
         const producto = await Producto.findOne({ _id: productoId });
         if (producto) {
-            producto.nombre = req.body.nombre;
-            producto.miniatura = req.body.miniatura;
-            producto.precio = req.body.precio;
-            producto.precioOferta = req.body.precioOferta;
-            producto.imgDescripcion = req.body.imgDescripcion;
-            producto.descripcion = req.body.descripcion;
-            producto.imagenes = req.body.imagenes;
-            producto.categorias = req.body.categorias;
-            producto.cantidadStockXS = req.body.cantidadStockXS;
-            producto.cantidadStockS = req.body.cantidadStockS;
-            producto.cantidadStockM = req.body.cantidadStockM;
-            producto.cantidadStockL = req.body.cantidadStockL;
-            producto.cantidadStockXL = req.body.cantidadStockXL;
+            // Comprobar si es administrador que va a cambiar datos del producto o 
+            //      solo va a restar unidades vendidas
+            if (isAdmin && !(req.body.talla)) {
+                producto.nombre = req.body.nombre;
+                producto.miniatura = req.body.miniatura;
+                producto.precio = req.body.precio;
+                producto.precioOferta = req.body.precioOferta;
+                producto.imgDescripcion = req.body.imgDescripcion;
+                producto.descripcion = req.body.descripcion;
+                producto.imagenes = req.body.imagenes;
+                producto.categorias = req.body.categorias;
+                producto.cantidadStockXS = req.body.cantidadStockXS;
+                producto.cantidadStockS = req.body.cantidadStockS;
+                producto.cantidadStockM = req.body.cantidadStockM;
+                producto.cantidadStockL = req.body.cantidadStockL;
+                producto.cantidadStockXL = req.body.cantidadStockXL;
+            } else {
+                if (req.body.talla && req.body.cantidad) {
+                    switch (req.body.talla) {
+                        case "XS":
+                            producto.cantidadStockXS = producto.cantidadStockXS - req.body.cantidad;
+                            break;
+                        case "S":
+                            producto.cantidadStockS = producto.cantidadStockS - req.body.cantidad;
+                            break;
+                        case "M":
+                            producto.cantidadStockM = producto.cantidadStockM - req.body.cantidad;
+                            break;
+                        case "L":
+                            producto.cantidadStockL = producto.cantidadStockL - req.body.cantidad;
+                            break;
+                        case "XL":
+                            producto.cantidadStockXL = producto.cantidadStockXL - req.body.cantidad;
+                            break;
+                        case "-":
+                            producto.cantidadStockXS = producto.cantidadStockXS - req.body.cantidad;
+                            break;
+                        default:
+                            producto.cantidadStockXS = producto.cantidadStockXS - req.body.cantidad;
+                            break;
+                    }
+                }
+            }
 
             const updatedProducto = await producto.save();
             if (updatedProducto) {
