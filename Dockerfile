@@ -9,6 +9,8 @@ RUN npm install
 COPY . .
 # Abrir el puerto para poder conectarse desde fuera
 EXPOSE 4000/tcp
+# Reinstalar bcrypt porque da fallo
+RUN npm rebuild bcrypt --update-binary
 CMD [ "npm", "start" ]
 # Comandos para cmd
 # docker build -t backend .
