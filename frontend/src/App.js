@@ -76,7 +76,7 @@ function App() {
                     <path fillRule="evenodd"
                       d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                   </svg>
-                  <a className="navbar-link text-white" href="#">clubpastorizabalimpie.es</a>
+                  <a className="navbar-link text-white" href="#">clubpastorizabalompie.es</a>
                 </div>
               </div>
               <div className="col-6">
